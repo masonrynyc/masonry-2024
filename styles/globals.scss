@@ -1,0 +1,64 @@
+@import './tailwind';
+@import './mixins';
+@import './fonts';
+@import './themes';
+@import './typography';
+@import './animations';
+@import './button';
+@import './input';
+@import './video';
+@import './slider';
+@import './page-transition';
+@import './scroll-entrance';
+@import './loaders';
+@import './sanity-customizations';
+@import './modal';
+
+@media (prefers-color-scheme: dark) {}
+
+/* Global */
+html {
+	background: var(--bg-color);
+	color: var(--text-color);
+	font-family: var(--main-font);
+	font-display: block;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input, textarea, select, button {
+	-webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+#Layout {
+  input, textarea, select, button {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .main-header .logo-wrapper svg * {
+    fill: currentcolor;
+  }
+
+  svg *:not([fill = 'none']) {
+    fill: currentcolor;
+  }
+
+  .grid.reverse {
+    direction: rtl;
+  }
+
+  .grid.reverse > * {
+    direction: initial;
+  }
+}

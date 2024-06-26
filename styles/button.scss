@@ -1,0 +1,88 @@
+.button {
+  --button-height: 40px;
+  --button-border-width: 1px;
+  --button-bg: var(--text-color);
+  --button-color: var(--bg-color);
+  --button-border: var(--button-bg);
+  --button-hover-bg: var(--main-color);
+  --button-hover-color: var(--bg-color);
+  --button-hover-border: var(--button-hover-bg);
+  @extend .body-small;
+  height: var(--button-height);
+  padding: 0 calc(var(--button-height) / 3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-bg);
+  border: var(--button-border-width) solid var(--button-border);
+  border-radius: var(--button-border-radius);
+  color: var(--button-color);
+  cursor: pointer;
+  
+  &:hover {
+    color: var(--button-hover-color);
+    background-color: var(--button-hover-bg);
+    border-color: var(--button-hover-border);
+  }
+
+  &.disabled,
+  &[disabled] {
+    opacity: .5;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+  }
+
+  &:not([class*="transition"]) {
+    transition: background var(--md-speed) ease-in-out,
+                border var(--md-speed) ease-in-out,
+                opacity var(--md-speed) ease-in-out,
+                color var(--md-speed) ease-in-out,
+                box-shadow var(--md-speed) ease-in-out,
+                transform var(--md-speed) ease-in-out;
+  }
+
+  &.hollow {
+    --button-bg: transparent;
+    --button-color: var(--text-color);
+    --button-border: var(--text-color);
+    --button-hover-bg: var(--main-color);
+    --button-hover-color: var(--bg-color);
+    --button-hover-border: var(--main-color);
+  }
+
+  /* Button Themes */
+  &.transparent {
+    --button-bg: transparent;
+    --button-color: currentcolor;
+    --button-border: transparent;
+    --button-hover-bg: transparent;
+    --button-hover-color: currentcolor;
+    --button-hover-border: transparent;
+  }
+
+  /* Button Sizes */
+  &.large {
+    --button-height: 70px;
+  }
+
+  /* Button Shapes */
+  &.square,
+  &.circle {
+    width: var(--button-height);
+    padding: 0;
+  }
+
+  &.circle {
+    --button-border-radius: 50%;
+  }
+
+  &.square .button-label,
+  &.circle .button-label {
+    display: none;
+  }
+
+  &.unpadd {
+    margin: -12px;
+  }
+
+}

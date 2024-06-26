@@ -1,0 +1,54 @@
+import React from 'react'
+import { MdInsertDriveFile } from 'react-icons/md'
+
+export default {
+  title: '{{constantCase documentName}}',
+  name: '{{camelCase documentName}}',
+  type: 'document',
+  icon: () => <MdInsertDriveFile size='24px' />,
+  groups: [
+    { title: 'Content', name: 'content', default: true },
+    { title: 'Settings', name: 'settings' }
+  ],
+  fields: [
+    {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: Rule => Rule.required(),
+      group: 'content'
+    },
+    {
+      title: 'URL Slug',
+      name: 'slug',
+      type: 'slug',
+      description: '(required)',
+      options: {
+        source: 'title',
+        maxLength: 96
+      },
+      validation: Rule => Rule.required(),
+      group: 'content'
+    },
+    {
+      title: 'SEO / Share Settings',
+      name: 'seo',
+      type: 'seo',
+      group: 'settings'
+    }
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      slug: 'slug'
+    },
+    prepare({ title = 'Untitled', slug = {} }) {
+      const path = `/{{documentSlug}}/${slug.current}`
+      return {
+        title,
+        subtitle: slug.current ? path : '/{{documentSlug}}/...',
+        media: <MdInsertDriveFile size='24px' />
+      }
+    }
+  }
+}

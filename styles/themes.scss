@@ -1,0 +1,75 @@
+:root {
+  /* Grid */
+	--site-gutters: 20px;
+	--site-margins: 20px;
+	--vertical-spacing: 80px;
+  --vertical-spacing-small: 40px;
+	/* Brand Colors */
+	--dark-color: #000;
+	--light-color: #fff;
+  /* Base Colors */
+  --bg-color: #fff;
+  --text-color: #000;
+  --main-color: blue;
+  --light-text-color: rgba(0, 0, 0, .5);
+	--light-grey: #f2f2f2;
+  --hr-color: rgba(0, 0, 0, .15);
+	--error: red;
+	--success: green;
+	--notify: yellow;
+  /* Typography */
+	--main-font: 'brown', sans-serif;
+	--secondary-font: 'Souvenir', serif;
+	--mono-font: monospace;
+	--normal: normal;
+	--light: 300;
+	--medium: 600;
+	--bold: 700;
+	/* Transition Speeds */
+	--md-speed: .3s;
+	--fast-speed: .15s;
+	--slow-speed: .6s;
+	--stagger-time: .05s;
+	/* UI Sizes */
+	--vh: 1vh;
+	--site-max-width: 100%;
+	--narrow-width: 800px;
+	--screen-height: calc(var(--1vh) * 100);
+	--button-height: 42px;
+	--base-border-radius: 10px;
+	--button-border-radius: var(--base-border-radius);
+	--header-banner-height: 0px;
+	--header-height: 60px;
+	--header-height-expanded: 60px;
+	--full-header-height: calc(var(--header-height) + var(--header-banner-height));
+	--sticky-top: calc(var(--site-gutters) + var(--header-height));
+}
+
+@media screen and (max-width: 800px) {
+	:root {
+		--site-margins: 16px;
+		--site-gutters: 16px;
+		--vertical-spacing: 60px;
+		--vertical-spacing-small: 30px;
+	}
+}
+
+/* COLOR THEMES */
+*[class*="theme-"] {
+  color: var(--text-color);
+	background: var(--bg-color);
+}
+
+.theme-default {
+  /* color: var(--text-color);
+  background: var(--bg-color); */
+}
+
+.theme-light-grey {
+  --bg-color: var(--light-grey);
+}
+
+.theme-dark {
+	--bg-color: var(--dark-color);
+  --text-color: var(--light-color);
+}

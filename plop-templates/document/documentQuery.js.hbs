@@ -1,0 +1,20 @@
+export const {{camelCase documentName}}Fragment = `
+  ...,
+  title,
+  "slug": slug.current,
+  seo {
+    ...,
+  }
+`
+
+export const all{{documentName}}s = `
+  *[_type == "{{camelCase documentName}}" && defined(slug.current)] | order(publishedAt desc) {
+    ${ {{camelCase documentName}}Fragment }
+  }
+`
+
+export default `
+  *[_type == "{{camelCase documentName}}" && slug.current == $slug] | order(_updatedAt desc)[0]{
+    ${ {{camelCase documentName}}Fragment }
+  }
+`

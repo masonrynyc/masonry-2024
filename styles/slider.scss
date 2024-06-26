@@ -1,0 +1,67 @@
+ // Styled to work with Embla Carousel
+ .slider {
+  --slide-gap: var(--site-gutters);
+  overflow: hidden;
+  &.loop {
+    // padding-right: 0;
+    .slider-container {
+      grid-column-gap: 0;
+      .slider-slide {
+        padding-right: var(--slide-gap);
+      }
+    }
+  }
+}
+
+.slider-container {
+  display: flex;
+  grid-column-gap: var(--slide-gap);
+}
+
+.slider-slide {
+  &:not(.auto-width) {
+    --slides-to-show: var(--slides-xs, 4);
+    // --slide-width: calc(100% / var(--slides-to-show) + var(--slide-gap) / var(--slides-to-show));
+    --slide-width: calc((100% - (var(--slide-gap) * -1)) / var(--slides-to-show));
+    flex: 0 0 calc((100% / var(--slides-to-show)) - var(--slide-gap) * (var(--slides-to-show) - 1) / var(--slides-to-show));
+    flex: 0 0 var(--slide-width);
+  }
+  &.auto-width {
+    flex-shrink: 0;
+  }
+  
+  min-width: 0;
+  @media only screen and (min-width: 640px) {
+    --slides-to-show: var(--slides-sm, 4);
+  }
+  @media only screen and (min-width: 1024px) {
+    --slides-to-show: var(--slides-md, 3);
+  }
+  @media only screen and (min-width: 1280px) {
+    --slides-to-show: var(--slides-lg, 4);
+  }
+  img, video {
+    min-width: 100%;
+  }
+}
+
+@keyframes progress {
+  0% { width: 0 }
+  100% { width: 100% }
+}
+
+@keyframes progress-end {
+  0% { width: 100% }
+  100% { width: 0% }
+}
+
+.slide-progress {
+  transition: width 500ms ease-in-out;
+  &.animating {
+    animation: progress var(--timeout, 4000ms) linear;
+  }
+  &.ended {
+    float: right;
+    animation: progress-end var(--timeout, 300ms) ease-in;
+  }
+}

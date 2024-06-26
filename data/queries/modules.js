@@ -1,0 +1,18 @@
+// plopImportModules
+import moduleTwoColumnText from '@queries/moduleTwoColumnText'
+import moduleColumns from '@queries/moduleColumns'
+import moduleTextSection from '@queries/moduleTextSection'
+import moduleBlogPosts from '@queries/moduleBlogPosts'
+import moduleFiftyFifty from '@queries/moduleFiftyFifty'
+import moduleWideMedia from '@queries/moduleWideMedia'
+
+export default `
+  // plopAddModules
+	_type == "twoColumnText" => { ${moduleTwoColumnText} },
+	_type == "columns" => { ${moduleColumns} },
+	_type == "textSection" => { ${moduleTextSection} },
+	_type == "blogPosts" => { ${moduleBlogPosts} },
+	_type == "wideMedia" => { ${moduleWideMedia} },
+  _type == "fiftyFifty" => { ${moduleFiftyFifty} },
+  _type == "reference" => { ... }
+`

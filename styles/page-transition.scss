@@ -1,0 +1,108 @@
+/* Transition Overlay */
+
+/* Fade Transition */
+.page-transition-overlay {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  background: black;
+}
+
+.page-transition-overlay.fade {
+  transition: opacity var(--speed) ease-in-out;
+  opacity: 0;
+}
+
+.page-transition-overlay.fade[data-transition-status = 'entered'] {
+  opacity: 1;
+}
+
+/* Wipe Up Transition */
+.page-transition-overlay.wipeUp {
+  transition: transform var(--speed) cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  transform-origin: 50% 0%;
+  transform: scaleY(0);
+}
+
+.page-transition-overlay.wipeUp[data-transition-status = 'entered'] {
+  transform: scaleY(1);
+  transform-origin: 50% 100%;
+}
+
+/* Wipe Down Transition */
+.page-transition-overlay.wipeDown {
+  transition: transform var(--speed) cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  transform-origin: 50% 100%;
+  transform: scaleY(0);
+}
+
+.page-transition-overlay.wipeDown[data-transition-status = 'entered'] {
+  transform: scaleY(1);
+  transform-origin: 50% 0%;
+}
+
+/* Wipe Right Transition */
+.page-transition-overlay.wipeRight {
+  transition: transform var(--speed) cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+}
+
+.page-transition-overlay.wipeRight[data-transition-status = 'entered'] {
+  transform: scaleX(1);
+  transform-origin: 0% 50%;
+}
+
+/* Wipe Left Transition */
+.page-transition-overlay.wipeLeft {
+  transition: transform var(--speed) cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+}
+
+.page-transition-overlay.wipeLeft[data-transition-status = 'entered'] {
+  transform: scaleX(1);
+  transform-origin: 100% 50%;
+}
+
+
+/* Transition Content */
+/* Delays movement of page content during overlay */
+.page-transition-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-transition-content[data-transition-status = 'entering'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.page-transition-content[data-transition-status = 'entered'] {
+  opacity: 1;
+}
+
+.page-transition-content[data-transition-status = 'exiting'] {
+  opacity: 0;
+  opacity: 1;
+}
+
+.page-transition-content[data-transition-status = 'exited'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 1;
+}

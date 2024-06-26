@@ -1,0 +1,52 @@
+import React from 'react'
+import { MdExtension } from 'react-icons/md'
+import SectionIcon from '@studio/components/SectionIcon'
+
+export default {
+  title: '{{constantCase componentName}}',
+  name: '{{camelCase componentName}}',
+  icon: () => <MdExtension size='18px' />,
+  type: 'object',
+  groups: [
+    { title: 'Main', name: 'main', default: true },
+    { name: 'settings', title: 'Settings' }
+  ],
+  fields: [
+    {
+      name: 'internalName',
+      title: 'Internal Name',
+      type: 'string',
+      group: 'main',
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'theme',
+      title: 'Theme',
+      type: 'theme',
+      group: 'main'
+    },
+    // More Fields
+    {
+      name: 'hidden',
+      title: 'Hidden',
+      initialValue: false,
+      type: 'boolean',
+      group: 'settings'
+    },
+  ],
+  preview: {
+    select: {
+      title: 'internalName',
+      media: 'media.image',
+      hidden: 'hidden',
+      theme: 'theme'
+    },
+    prepare (selection) {
+      const { subtitle, media, hidden, theme } = selection
+      return Object.assign({}, selection, {
+        subtitle: hidden ? 'Hidden' : subtitle || '{{constantCase componentName}}',
+        media: media || <SectionIcon hidden={hidden} theme={theme}><MdExtension size='24px'/></SectionIcon>
+      })
+    }
+  }
+}

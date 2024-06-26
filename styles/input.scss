@@ -1,0 +1,220 @@
+#Layout {
+  .input-component {
+    --input-border-width: 1px;
+    --input-height: calc(var(--button-height) - var(--input-border-width) * 2);
+    --input-bg: transparent;
+    --input-color: var(--text-color);
+    --input-border: var(--text-color);
+    --input-border-radius: var(--base-border-radius);
+    /* Hover */
+    --input-hover-bg: transparent;
+    --input-hover-color: var(--text-color);
+    --input-hover-border: var(--text-color);
+    /* Focus */
+    --input-focus-bg: transparent;
+    --input-focus-color: var(--text-color);
+    --input-focus-border: var(--text-color);
+  
+    .input,
+    textarea {
+      appearance: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+      outline: none;
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+      background: var(--input-bg);
+      border: var(--input-border-width) solid var(--input-border);
+      height: var(--input-height);
+      line-height: 1em;
+      text-transform: inherit;
+      letter-spacing: 0;
+      border-radius: var(--input-border-radius);
+      color: inherit;
+      font-style: inherit;
+      font-size: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      text-align: left;
+      box-shadow: none;
+      padding: 0 calc(var(--input-height) * 0.3) 0;
+    }
+  }
+  
+  /* Input Sizes */
+  .input-component.large {
+    --input-height: 70px;
+  }
+  
+  .input-component .input.disabled,
+  .input-component .input[disabled],
+  .input-component textarea.disabled,
+  .input-component textarea[disabled] {
+    opacity: .3;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+  }
+  
+  .input-component:hover .input,
+  .input-component:hover textarea {
+    --input-bg: var(--input-hover-bg);
+    --input-color: var(--input-hover-color);
+    --input-border: var(--input-hover-border);
+  }
+  
+  .input-component[data-focused=true] .input,
+  .input-component[data-focused=true] textarea {
+    --input-bg: var(--input-hover-bg);
+    --input-color: var(--input-hover-color);
+    --input-border: var(--input-hover-border);
+  }
+  
+  .input-component.has-label .input,
+  .input-component.has-label textarea {
+    padding-top: 16px;
+  }
+  
+  .input-component .input::placeholder,
+  .input-component textarea::placeholder {
+    color: var(--text-color)
+  }
+  
+  .input-component .input:not([class*="transition"]),
+  .input-component textarea:not([class*="transition"]) {
+    transition: background var(--md-speed) ease-in-out,
+                color var(--md-speed) ease-in-out,
+                border var(--md-speed) ease-in-out,
+                box-shadow var(--md-speed) ease-in-out,
+                transform var(--md-speed) ease-in-out,
+                opacity var(--md-speed) ease-in-out;
+  }
+  
+  .input-component.solid {
+    --input-bg: var(--white);
+    --input-color: var(--text-color);
+    --input-border: var(--white);
+    /* Hover */
+    --input-hover-bg: var(--white);
+    --input-hover-color: var(--text-color);
+    --input-hover-border: var(--white);
+    /* Focus */
+    --input-focus-bg: var(--bg-grey);
+    --input-focus-color: var(--text-color);
+    --input-focus-border: var(--text-color);
+  }
+  
+  /* Input Themes */
+  .input-component.transparent {
+    --input-bg: transparent;
+    --input-color: var(--light-text-color);
+    --input-border: transparent;
+    /* Hover */
+    --input-hover-bg: transparent;
+    --input-hover-color: var(--text-color);
+    --input-hover-border: transparent;
+    /* Focus */
+    --input-focus-bg: transparent;
+    --input-focus-color: var(--text-color);
+    --input-focus-border: var(--text-color);
+  }
+  
+  /* Input Icon */
+  .input-component .input-icon {
+  
+  }
+  
+  /* Input Label */
+  .input-component .input-label {
+    position: absolute;
+    font-style: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    top: 0;
+    left: var(--input-border-width);
+    margin: 0 calc(var(--input-height) * 0.3);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    color: var(--input-color);
+    height: var(--input-height);
+    transition: transform var(--md-speed) cubic-bezier(0.44, 0.24, 0.16, 1.00),
+                color var(--md-speed) cubic-bezier(0.44, 0.24, 0.16, 1.00);
+    transform-origin: 0% 50%;
+  }
+  
+  .input-component[data-focused=true] .input-label {
+    transform: translate3d(0, -10px, 0) scale(.8);
+  }
+  
+  .input-component.icon-left .input-label {
+    margin-left: var(--input-size);
+  }
+  
+  .input-component.icon-right .input-label {
+    margin-right: var(--input-size);
+  }
+  
+  .input-component[data-focused=true] .input-label,
+  .input-component.has-value .input-label,
+  .input-component.has-placeholder .input-label {
+  }
+  
+  /* States */
+  .input-component.error .input-icon,
+  .input-component.error .input-label {
+    color: var(--error);
+  }
+  .input-component.error .input {
+    border-color: var(--error);
+  }
+  
+  .input-component.success .input-icon,
+  .input-component.success .input-label {
+    color: var(--success);
+  }
+  .input-component.success .input {
+    border-color: var(--success);
+  }
+  
+  /* Textarea */
+  .input-component textarea {
+    min-height: var(--input-height);
+    height: auto;
+    line-height: 1.3em;
+    padding: calc(var(--input-height) * 0.33) calc(var(--input-height) * 0.3);
+    resize: none;
+  }
+  
+  /* Underlined */
+  .input-component.underlined,
+  .input-component.underlined input,
+  .input-component.underlined .input-label {
+    --input-color: var(--text-color);
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  .input-component.underlined .input::placeholder,
+  .input-component.underlined textarea::placeholder {
+    color: var(--input-color)
+  }
+  
+  /* Large Text */
+  .input-component.large-text,
+  .input-component.large-text .input-label {
+    font-size: clamp(24px, calc(30vw / 1440 * 100), 34px);
+  }
+  
+  .input-component.large-text[data-focused=true] .input-label {
+    transform: translate3d(0, -26px, 0) scale(.6);
+  }
+}

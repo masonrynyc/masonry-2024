@@ -1,0 +1,37 @@
+.video-wrapper {
+  width: 100%;
+  min-width: 100% !important;
+  position: relative;
+  > div {
+    width: 100% !important;
+    height: auto !important;
+  }
+  &.cover {
+    height: 100% !important;
+    min-height: 100% !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    > div {
+      width: 100% !important;
+      height: 100% !important;
+    }
+    &.landscape {
+      > div {
+        aspect-ratio: var(--ratio);
+        width: 100% !important;
+        height: unset !important;
+      }
+    }
+    &.portrait {
+      > div {
+        aspect-ratio: var(--ratio);
+        height: 100% !important;
+        width: unset !important;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@data": [
+        "data/index"
+      ],
+      "@state/*": [
+        "state/*"
+      ],
+      "@queries/*": [
+        "data/queries/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@studio/*": [
+        "studio/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
+    }
+  }
+}

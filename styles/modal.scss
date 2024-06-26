@@ -1,0 +1,69 @@
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModal__Content {
+  position: relative;
+  z-index: 2;
+  &:not(.drawer) {
+    opacity: 0;
+
+    &.ReactModal__Content--after-open {
+      opacity: 1;
+    }
+
+    &.ReactModal__Content--before-close {
+      opacity: 0;
+    }
+  }
+  
+  &.drawer {
+    transform: translate3d(101%, 0, 0);
+    &.ReactModal__Content--after-open {
+      transform: none;
+    }
+
+    &.ReactModal__Content--before-close {
+      transform: translate3d(101%, 0, 0);
+    }
+
+    &.drawer-left {
+      &.ReactModal__Content--after-open {
+        transform: none;
+      }
+      transform: translate3d(-101%, 0, 0);
+      &.ReactModal__Content--before-close {
+        transform: translate3d(-101%, 0, 0);
+      }
+    }
+  }
+}
+
+.ReactModal__Overlay {
+  background: transparent !important;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: opacity var(--speed) cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &.ReactModal__Overlay--after-open {
+    &:after {
+      opacity: .5;
+    }
+  }
+
+  &.ReactModal__Overlay--before-close {
+    &:after {
+      opacity: 0;
+    }
+  }
+}

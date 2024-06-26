@@ -1,0 +1,3 @@
+@mixin responsiveType($important: false) {
+	font-size: clamp(calc(var(--mobile-font-size) * 1px), calc((var(--desktop-font-size) * 1vw) / 1440 * 100), calc(var(--xl-font-size) * 1px)) #{if($important, '!important', '')};
+}

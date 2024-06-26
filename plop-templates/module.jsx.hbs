@@ -1,0 +1,26 @@
+import React from 'react'
+import Section from '@components/Section'
+
+const {{componentName}} = ({
+	className = '',
+	theme = 'default',
+	prevTheme,
+	nextTheme,
+	isFirstSection,
+	id
+}) => {
+	return (
+		<Section
+			className={className}
+			setTheme={theme}
+			prevTheme={prevTheme}
+			nextTheme={nextTheme}
+			isFirstSection={isFirstSection}
+			id={id}
+		>
+			<h3>{{componentName}}</h3>
+		</Section>
+	)
+}
+
+export default {{componentName}}

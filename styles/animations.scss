@@ -1,0 +1,25 @@
+.animate-underline {
+  display: inline !important;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size var(--slow-speed);
+
+
+  &.underlined {
+    background: linear-gradient(currentColor, currentColor) 100% 100%/0% 1px no-repeat,
+                linear-gradient(var(--hr-color), var(--hr-color)) 0% 100%/100% 1px no-repeat;
+  }
+}
+
+.animate-underline:hover,
+.group:hover .animate-underline {
+  background-size: 100% 1px;
+  background-position: 0% 100%;
+  &.underlined {
+    background: linear-gradient(currentColor, currentColor) 0% 100%/100% 1px no-repeat,
+                linear-gradient(var(--hr-color), var(--hr-color)) 0% 100%/100% 1px no-repeat;
+  }
+}
