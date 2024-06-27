@@ -31,7 +31,7 @@ const TeamGrid = ({
 						<div className='md:col-span-2 lg:col-span-7 grid sm:grid-cols-2 gap-x-gutter gap-y-v-space-sm'>
 							{members.map(member => {
 								return (
-									<div>
+									<div key={member._key}>
 										<div className='rounded bg-true-black'>
 											<Image
 												className='rounded'
