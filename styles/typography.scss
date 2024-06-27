@@ -9,12 +9,12 @@
 	/* Typography */
 	h1, .h1, .h1 p {
 		--mobile-font-size: 31;
-		--desktop-font-size: 24;
-		--xl-font-size: calc(var(--desktop-font-size) * 1.25);
+		--desktop-font-size: 48;
+		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();
 		font-family: var(--tertiary-font);
 		line-height: 1.104em;
-		letter-spacing: .1em;
+		letter-spacing: .01em;
 		font-weight: normal;
 		font-style: normal;
 		text-transform: none;
@@ -23,7 +23,7 @@
 	h2, .h2, .h2 p {
 		--mobile-font-size: 16;
 		--desktop-font-size: 20;
-		--xl-font-size: calc(var(--desktop-font-size) * 1.25);
+		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();
 		font-family: var(--main-font);
 		line-height: 1.104em;
@@ -36,7 +36,7 @@
 	h3, .h3, .h3 p {
 		--mobile-font-size: 31;
 		--desktop-font-size: 31;
-		--xl-font-size: calc(var(--desktop-font-size) * 1.25);
+		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();
 		font-family: var(--main-font);
 		line-height: 1.104em;
@@ -52,7 +52,7 @@
 	h4, .h4, .h4 p {
 		--mobile-font-size: 35;
 		--desktop-font-size: 35;
-		--xl-font-size: calc(var(--desktop-font-size) * 1.25);
+		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();
 		font-family: var(--tertiary-font);
 		line-height: 1.104em;
@@ -65,11 +65,11 @@
 	h5, .h5, .h5 p {
 		--mobile-font-size: 14;
 		--desktop-font-size: 14;
-		--xl-font-size: calc(var(--desktop-font-size) * 1.25);
+		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();
 		font-family: var(--secondary-font);
 		line-height: 1em;
-		letter-spacing: 1em;
+		letter-spacing: .1em;
 		font-weight: normal;
 		font-style: normal;
 		text-transform: uppercase;
@@ -78,11 +78,11 @@
 	h6, .h6, .h6 p, .caption, figcaption, .eyebrow {
 		--mobile-font-size: 12;
 		--desktop-font-size: 12;
-		--xl-font-size: calc(var(--desktop-font-size) * 1.25);
+		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();
 		font-family: var(--secondary-font);
 		line-height: 1em;
-		letter-spacing: 1.5em;
+		letter-spacing: .15em;
 		font-weight: normal;
 		font-style: normal;
 		text-transform: uppercase;
@@ -92,7 +92,7 @@
 		font-family: var(--main-font);
 		font-size: 16px;
 		line-height: 1.375em;
-		letter-spacing: -.1em;
+		letter-spacing: -.01em;
 		font-weight: normal;
 		font-style: normal;
 	}

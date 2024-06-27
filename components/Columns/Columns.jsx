@@ -13,6 +13,7 @@ const Columns = ({
 	columnItems,
 	imageSize,
 	alignmentHorizontal,
+	borders = true,
 	id
 }) => {
 	const imageClassnames = {
@@ -38,24 +39,26 @@ const Columns = ({
 						'--col-w-sm': '100%'
 					}}
 				>
-					<ScrollEntrance className={`flex flex-wrap -mx-half-gutter gap-y-v-space-sm ${alignmentHorizontal === 'center' ? 'justify-center text-center' : ''}`}>
+					<ScrollEntrance className={`flex flex-wrap -mx-half-gutter gap-y-12 ${alignmentHorizontal === 'center' ? 'justify-center text-center' : ''}`}>
 						{columnItems?.map(column => {
 							return (
 								<div
 									key={column._key}
 									className={`flex flex-col shrink-0 gap-gutter px-half-gutter w-[var(--col-w-sm)] md:w-[var(--col-w-md)] lg:w-[var(--col-w-lg)] lg:max-w-1/2 ${alignmentHorizontal === 'center' ? 'items-center' : ''}`}
 								>
-									{column.image && (
-										<div className={imageClassnames[imageSize]}>
-											<Image image={column.image} alt={column?.image?.alt || column?.title}/>
-										</div>
-									)}
-									{column?.title && (
-										<div className="h4">{column.title}</div>
-									)}
-									{column?.text && (
-										<RichText text={column.text} className='max-w-[450px] body-small'/>
-									)}
+									<div className={`flex flex-col shrink-0 gap-gutter ${borders ? 'border-t pt-3' : ''}`}>
+										{column.image && (
+											<div className={imageClassnames[imageSize]}>
+												<Image image={column.image} alt={column?.image?.alt || column?.title}/>
+											</div>
+										)}
+										{column?.title && (
+											<div className="h2">{column.title}</div>
+										)}
+										{column?.text && (
+											<RichText text={column.text} className='max-w-[450px] body-small'/>
+										)}
+									</div>
 								</div>		
 							)
 						})}

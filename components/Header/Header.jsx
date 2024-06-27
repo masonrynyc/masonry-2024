@@ -110,7 +110,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 			{topBanner?.bannerLink?.title && (
 				<div className="relative z-10 px-margin theme-dark text-center h-[var(--header-banner-height)]">
 					<Link
-						className="body-small text-center flex items-center justify-center h-full"
+						className="h5 text-center flex items-center justify-center h-full"
 						{...getLinkProps(topBanner.bannerLink)}
 					>{topBanner.bannerLink.title}
 					</Link>
@@ -131,7 +131,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 						/>
 						{(navItems && navItems?.length) > 0 && (
 							<nav className='hidden md:block'>
-								<ul className='flex gap-gutter'>
+								<ul className='flex gap-[calc(var(--site-gutters)*2)]'>
 									{navItems.map((item, index) => {
 										const { link, sublinks } = item
 										let active = false
@@ -147,14 +147,14 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 													<div
 														className={active ? 'inline-flex border-b border-current' : 'inline-flex border-b border-transparent'}
 													>
-														<span className="body-small">{link.title}</span>
+														<span className="h5">{link.title}</span>
 													</div>
 												) : (
 													<Link
 														className={active ? 'inline-flex border-b border-current' : 'inline-flex border-b border-transparent'}
 														{...getLinkProps(link)}
 													>
-														<span className="body-small">{link.title}</span>
+														<span className="h5">{link.title}</span>
 													</Link>
 												)}
 												{sublinks?.length > 0 && 
@@ -173,7 +173,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 																		className={active ? 'border-b border-text-color' : 'border-b border-transparent'}
 																		{...getLinkProps(sublink)}
 																	>
-																		<span className="body-small">{sublink.title}</span>
+																		<span className="h5">{sublink.title}</span>
 																	</Link>
 																</li>
 															)

@@ -9,14 +9,14 @@ const Footer = ({ className = '', menus }) => {
 
 	return (
 		<footer className={className}>
-			<div className='px-margin py-margin grid grid-cols-3'>
-				<div className='w-[80px]'>
-					<Logo />
+			<div className='px-margin py-margin flex justify-between'>
+				<div className='w-[80px] h5 flex items-center justify-start gap-x-[.4em]'>
+					© <Logo /> {new Date().getFullYear()}
 				</div>
 
 				<div>
 					{(navItems && navItems?.length) > 0 && (
-						<ul>
+						<ul className='flex gap-x-[calc(var(--site-gutters)*2)]'>
 							{navItems.map((item, index) => {
 								const { link, sublinks } = item
 								// TODO: Sublinks
@@ -28,7 +28,7 @@ const Footer = ({ className = '', menus }) => {
 										<Link
 											{...getLinkProps(link)}
 										>
-											<span className="body-small">{link.title}</span>
+											<span className="h5">{link.title}</span>
 										</Link>
 									</li>
 								)

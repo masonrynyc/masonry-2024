@@ -2,6 +2,7 @@ import React from 'react'
 import Section from '@components/Section'
 import Media from '@components/Media'
 import TextLockup from '@components/TextLockup'
+import ScrollEntrance from '@components/ScrollEntrance'
 
 const hPlacementClass = {
 	left: 'lg:col-span-6',
@@ -54,6 +55,11 @@ const WideMedia = ({
 		height = 'autoVideo'
 	}
 
+	let WrapperComponent = 'div'
+	if (!fullWidth) {
+		WrapperComponent = ScrollEntrance
+	}
+
 	return (
 		<Section
 			className={className}
@@ -66,30 +72,32 @@ const WideMedia = ({
 			paddingTop={paddingTop}
 			id={id}
 		>
-			<div className={fullWidth ? "relative" : "mx-margin relative bg-true-black"}>
-				<div>
-					<div className={'relative z-1 overflow-hidden ' + (hClass[height] || 'h-screen-height')}>
+			<WrapperComponent>
+				<div className={fullWidth ? "relative" : "mx-margin relative bg-true-black"}>
+					<div>
+						<div className={'relative z-1 overflow-hidden ' + (hClass[height] || 'h-screen-height')}>
+							{hasText && (
+								<div style={{ opacity: overlayOpacity / 100 }} className="absolute top-0 left-0 w-full h-full bg-true-black z-2"/>
+							)}
+							<Media media={media} cover={height !== 'auto'} className='w-full rounded' />
+						</div>
 						{hasText && (
-							<div style={{ opacity: overlayOpacity / 100 }} className="absolute top-0 left-0 w-full h-full bg-true-black z-2"/>
-						)}
-						<Media media={media} cover={height !== 'auto'} className='w-full' />
-					</div>
-					{hasText && (
-						<div className={`flex absolute z-2 top-0 left-0 w-full h-full p-margin ${vPlacementClass[placementValues[1]]} ${textColor === 'dark' ? 'text-true-black' : '-text-white'}`}>
-							<div className={fullWidth ? "pt-header-height w-full" : "w-full"}>
-								<div className="grid lg:grid-cols-12 gap-x-gutter">
-									<div className={hPlacementClass[placementValues[0]]}>
-										<TextLockup
-											lockup={text}
-											alignment={alignment}
-										/>
+							<div className={`flex absolute z-2 top-0 left-0 w-full h-full p-margin ${vPlacementClass[placementValues[1]]} ${textColor === 'dark' ? 'text-true-black' : '-text-white'}`}>
+								<div className={fullWidth ? "pt-header-height w-full" : "w-full"}>
+									<div className="grid lg:grid-cols-12 gap-x-gutter">
+										<div className={hPlacementClass[placementValues[0]]}>
+											<TextLockup
+												lockup={text}
+												alignment={alignment}
+											/>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					)}
+						)}
+					</div>
 				</div>
-			</div>
+			</WrapperComponent>
 		</Section>
 	)
 }
