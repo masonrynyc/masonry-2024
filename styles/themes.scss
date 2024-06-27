@@ -3,14 +3,14 @@
 	--site-gutters: 20px;
 	--site-margins: 20px;
 	--vertical-spacing: 80px;
-  --vertical-spacing-small: 40px;
+  --vertical-spacing-small: 120px;
 	/* Brand Colors */
-	--dark-color: #000;
+	--dark-color: #1b1b1b;
 	--light-color: #fff;
   /* Base Colors */
-  --bg-color: #fff;
-  --text-color: #000;
-  --main-color: blue;
+  --bg-color: #1b1b1b;
+  --text-color: #fff;
+  --main-color: fff;
   --light-text-color: rgba(0, 0, 0, .5);
 	--light-grey: #f2f2f2;
   --hr-color: rgba(0, 0, 0, .15);
@@ -18,8 +18,9 @@
 	--success: green;
 	--notify: yellow;
   /* Typography */
-	--main-font: 'brown', sans-serif;
-	--secondary-font: 'Souvenir', serif;
+	--main-font: 'Basis Grotesque', sans-serif;
+	--secondary-font: 'Sweet Sans', sans-serif;
+	--tertiary-font: 'Freight', serif;
 	--mono-font: monospace;
 	--normal: normal;
 	--light: 300;

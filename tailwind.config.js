@@ -20,8 +20,9 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Souvenir', 'sans-serif'],
-      serif: ['Souvenir', 'serif']
+      sans: ['Basis Grotesque', 'sans-serif'],
+      'sans-2': ['Sweet Sans', 'sans-serif'],
+      serif: ['Freight', 'serif']
     },
     colors: {
       'current': 'currentColor',

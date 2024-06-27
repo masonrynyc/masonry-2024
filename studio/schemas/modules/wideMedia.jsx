@@ -22,12 +22,13 @@ export const wideMedia = (requirements, name) => {
           hidden: requirements,
           validation: Rule => Rule.required()
         },
-        media({ hasDisplayOptions: false }),
+        media({ hasDisplayOptions: true }),
         {
           name: 'hasOverlayText',
           description: 'Text to be shown over image or video',
           initialValue: false,
-          type: 'boolean'
+          type: 'boolean',
+          hidden: true
         },
         {
           name: 'text',
@@ -97,7 +98,8 @@ export const wideMedia = (requirements, name) => {
           name: 'width',
           title: 'Width',
           type: 'string',
-          initialValue: 'fullWidth',
+          initialValue: 'margins',
+          hidden: true,
           validation: Rule => Rule.required(),
           options: {
             list: [
@@ -111,7 +113,8 @@ export const wideMedia = (requirements, name) => {
           name: 'theme',
           title: 'Theme',
           type: 'theme',
-          hidden: ({ parent }) => parent?.width === 'fullWidth'
+          hidden: true,
+          // hidden: ({ parent }) => parent?.width === 'fullWidth'
         },
         {
           name: "hidden",
@@ -129,10 +132,12 @@ export const wideMedia = (requirements, name) => {
           hidden: 'hidden'
         },
         prepare (selection) {
-          const { subtitle, media, hidden } = selection
-          let subtitleText = 'Margins'
-          if (subtitle === 'fullWidth') {
-            subtitleText = 'Full Width'
+          const { media, hidden } = selection
+          let subtitleText = false
+          if (media?.mediaType === 'image') {
+            subtitleText = media?.photo?.alt
+          } else if (media?.mediaType === 'video') {
+            subtitleText = media?.video?.title
           }
 
           return Object.assign({}, selection, {

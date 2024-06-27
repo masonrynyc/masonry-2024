@@ -14,7 +14,8 @@ export default {
     {
       name: 'eyebrow',
       title: 'Eyebrow',
-      type: 'string'
+      type: 'string',
+      hidden: true,
     },
     {
       name: 'headline',

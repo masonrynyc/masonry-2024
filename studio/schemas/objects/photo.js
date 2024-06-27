@@ -2,13 +2,14 @@ import IconUI from '@studio/components/IconUI'
 import ratios from '@studio/schemas/objects/ratios'
 
 export default ({
-  hasDisplayOptions = true,
+  hasDisplayOptions,
   hidden = false,
   useAltText = true,
   required = false,
   title = 'Photo',
   name = 'photo',
   description = false,
+  options = {},
   ...props
 } = {}) => {
   return {
@@ -20,7 +21,8 @@ export default ({
     options: {
       hotspot: true,
       accept: '.png, .jpg, .jpeg, .gif',
-      collapsible: false
+      collapsible: false,
+      ...options
     },
     validation: Rule => {
       if (required) {

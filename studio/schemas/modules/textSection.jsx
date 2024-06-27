@@ -25,12 +25,13 @@ export default {
       name: 'theme',
       title: 'Theme',
       type: 'theme',
-      group: 'main'
+      group: 'main',
+      hidden: true,
     },
     alignmentHorizontal({
       showRight: false,
       group: 'main',
-      initial: 'center',
+      initial: 'left',
       name: 'alignment'
     }),
     {

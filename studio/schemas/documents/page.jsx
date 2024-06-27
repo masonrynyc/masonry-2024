@@ -73,7 +73,7 @@ export default {
     {
       name: 'textColor',
       title: 'Text Color',
-      type: 'number',
+      type: 'string',
       initialValue: 'light',
       hidden: ({ parent }) => !parent?.hasOverlayText,
       options: {
@@ -99,7 +99,7 @@ export default {
     },
     {
       title: 'This is your blog listing page',
-      description: "Because this page's slug is /blog, this page will show a list of blog posts before any of the page content.",
+      description: <>Because this page's slug is <code>blog</code>, this page will show a list of blog posts before any of the page content.</>,
       name: 'blogPageNote',
       type: 'note',
       group: 'content',
@@ -110,15 +110,6 @@ export default {
         icon: () => <MdRssFeed size={20} style={{ marginRight: 6 }} />
       }
     },
-    // {
-    //   title: 'Overlay header with transparency?',
-    //   name: 'hasTransparentHeader',
-    //   type: 'boolean',
-    //   description:
-    //     'When activated the header will overlay the first content module with a transparent background and white text until scrolling is engaged.',
-    //   initialValue: false,
-    //   group: 'settings'
-    // },
     modules('modules', 'Page Content', 'content', true),
     {
       title: 'SEO / Share Settings',

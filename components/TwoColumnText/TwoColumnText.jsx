@@ -9,6 +9,7 @@ const TwoColumnText = ({
 	nextTheme,
 	isFirstSection,
 	leftColumn,
+	leftColumnString,
 	rightColumn,
 	id
 }) => {
@@ -23,9 +24,9 @@ const TwoColumnText = ({
 		>
 			<div className="px-margin">
 				<div className="mx-auto max-w-site-max-w">
-					<div className="grid gap-x-gutter gap-y-v-space-sm md:grid-cols-2">
-						<div><RichText text={leftColumn}/></div>
-						<div><RichText text={rightColumn}/></div>
+					<div className="grid gap-x-gutter gap-y-v-space-sm md:grid-cols-3 lg:grid-cols-12">
+						<div className='lg:col-span-5'>{leftColumnString ? <h3 className='h5'>{leftColumnString}</h3> : <RichText text={leftColumn}/>}</div>
+						<div className='md:col-span-2 lg:col-span-7'><RichText text={rightColumn}/></div>
 					</div>
 				</div>
 			</div>
