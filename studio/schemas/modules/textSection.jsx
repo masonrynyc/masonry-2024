@@ -32,7 +32,8 @@ export default {
       showRight: false,
       group: 'main',
       initial: 'left',
-      name: 'alignment'
+      name: 'alignment',
+      hidden: true
     }),
     {
       name: 'text',

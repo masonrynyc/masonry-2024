@@ -15,6 +15,7 @@ export default {
       name: 'sublinks',
       title: 'Dropdown Links',
       type: 'array',
+      hidden: true,
       options: {
         modal: {
           type: 'dialog'

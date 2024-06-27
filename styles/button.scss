@@ -2,8 +2,8 @@
   --button-height: 40px;
   --button-border-width: 1px;
   --button-bg: transparent;
-  --button-color: var(--text-color);
-  --button-border: var(--text-color);
+  --button-color: currentcolor;
+  --button-border: currentcolor;
   --button-hover-bg: var(--text-color);
   --button-hover-color: var(--bg-color);
   --button-hover-border: var(--button-hover-bg);

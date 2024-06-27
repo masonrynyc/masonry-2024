@@ -9,14 +9,14 @@ const Footer = ({ className = '', menus }) => {
 
 	return (
 		<footer className={className}>
-			<div className='px-margin py-margin flex justify-between'>
+			<div className='mx-margin py-margin flex items-center justify-between border-t pt-3'>
 				<div className='w-[80px] h5 flex items-center justify-start gap-x-[.4em]'>
 					© <Logo /> {new Date().getFullYear()}
 				</div>
 
 				<div>
 					{(navItems && navItems?.length) > 0 && (
-						<ul className='flex gap-x-[calc(var(--site-gutters)*2)]'>
+						<ul className='flex gap-x-[calc(var(--site-gutters)*2)] leading-none'>
 							{navItems.map((item, index) => {
 								const { link, sublinks } = item
 								// TODO: Sublinks
@@ -27,6 +27,7 @@ const Footer = ({ className = '', menus }) => {
 									<li key={item._key}>
 										<Link
 											{...getLinkProps(link)}
+											className='inline-block align-top'
 										>
 											<span className="h5">{link.title}</span>
 										</Link>

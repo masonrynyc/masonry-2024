@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdInsertDriveFile, MdMail, MdLocationOn, MdHome, MdVideocam, MdRssFeed, MdLock, MdMergeType, MdGroup, MdSchool, MdAssignmentTurnedIn } from 'react-icons/md'
+import { MdInsertDriveFile, MdMail, MdLocationOn, MdHome, MdVideocam, MdRssFeed, MdLock, MdMergeType, MdGroup, MdSchool, MdAssignmentTurnedIn, MdDashboard } from 'react-icons/md'
 import { FaSchool, FaNewspaper, FaInstagram } from 'react-icons/fa'
 import { IoMdHeart } from 'react-icons/io'
 import modules from '../objects/modules'
@@ -10,6 +10,8 @@ const getPreviewIcon = slug => {
     return <MdInsertDriveFile size={iconSize} />
   } else if (slug === 'home' || slug === '/') {
     return <MdHome size={iconSize} />
+  } else if (slug === 'work') {
+    return <MdDashboard size={iconSize} style={{ transform: 'rotate(-90deg)' }} />
   } else if (slug.includes('-school')) {
     return <MdSchool size={iconSize} />
   } else if (slug.includes('school')) {

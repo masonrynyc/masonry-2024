@@ -10,7 +10,6 @@ import section from './documents/section'
 
 // Object Imports
 import seo from './objects/seo'
-import divider from './objects/divider'
 import textLockup from './objects/textLockup'
 import link from './objects/link' // Used for Button also
 import navLink from './objects/navLink'
@@ -31,6 +30,8 @@ import alignmentVertical from './objects/alignmentVertical'
 // Module Imports
 import wideMedia from './modules/wideMedia'
 // plopImportModules
+import divider from './modules/divider'
+import teamGrid from './modules/teamGrid'
 import twoColumnText from './modules/twoColumnText'
 import columns from './modules/columns'
 import textSection from './modules/textSection'
@@ -49,7 +50,6 @@ export const schemaTypes = [
   section, // Reusable Section
   // Objects
   seo,
-  divider, // Used for Sanity UI
   textLockup,
   link(),
   link({
@@ -74,6 +74,8 @@ export const schemaTypes = [
   modules(),
   // Modules
   // plopAddModules
+	divider,
+	teamGrid,
 	twoColumnText,
 	columns,
 	textSection,

@@ -1,5 +1,7 @@
 import React from 'react'
 // plopImportModules
+import Divider from '@components/Divider'
+import TeamGrid from '@components/TeamGrid'
 import TwoColumnText from '@components/TwoColumnText'
 import Columns from '@components/Columns'
 import TextSection from '@components/TextSection'
@@ -10,6 +12,8 @@ import { slugify } from '@utils/helpers'
 
 const moduleMap = {
   // plopAddModules
+	divider: Divider,
+	teamGrid: TeamGrid,
 	twoColumnText: TwoColumnText,
 	columns: Columns,
 	textSection: TextSection,

@@ -35,6 +35,8 @@ export const modules = (name, title, group = '', reusable = false) => {
       of: [
         { type: 'wideMedia' },
         // plopAddModules
+				{ type: 'divider' },
+				{ type: 'teamGrid' },
 				{ type: 'twoColumnText' },
 				{ type: 'columns' },
 				{ type: 'textSection' },

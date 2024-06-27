@@ -1,4 +1,6 @@
 // plopImportModules
+import moduleDivider from '@queries/moduleDivider'
+import moduleTeamGrid from '@queries/moduleTeamGrid'
 import moduleTwoColumnText from '@queries/moduleTwoColumnText'
 import moduleColumns from '@queries/moduleColumns'
 import moduleTextSection from '@queries/moduleTextSection'
@@ -8,6 +10,8 @@ import moduleWideMedia from '@queries/moduleWideMedia'
 
 export default `
   // plopAddModules
+	_type == "divider" => { ${moduleDivider} },
+	_type == "teamGrid" => { ${moduleTeamGrid} },
 	_type == "twoColumnText" => { ${moduleTwoColumnText} },
 	_type == "columns" => { ${moduleColumns} },
 	_type == "textSection" => { ${moduleTextSection} },
