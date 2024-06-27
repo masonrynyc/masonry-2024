@@ -2,7 +2,7 @@ import React from 'react'
 import { MdInsertDriveFile, MdMail, MdLocationOn, MdHome, MdVideocam, MdRssFeed, MdLock, MdMergeType, MdGroup, MdSchool, MdAssignmentTurnedIn, MdDashboard } from 'react-icons/md'
 import { FaSchool, FaNewspaper, FaInstagram } from 'react-icons/fa'
 import { IoMdHeart } from 'react-icons/io'
-import modules from '../objects/modules'
+import modules from '@studio/schemas/objects/modules'
 
 const getPreviewIcon = slug => {
   const iconSize = '24px'

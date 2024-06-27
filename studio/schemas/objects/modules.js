@@ -48,4 +48,45 @@ export const modules = (name, title, group = '', reusable = false) => {
   )
 }
 
+export const projectModules = (name, title, group = '') => {
+  return (
+    {
+      title: title || 'Modules',
+      name: name || 'projectModules',
+      type: 'array',
+      group: group,
+      options: {
+        insertMenu: {
+          filter: 'auto',
+          showIcons: true,
+          views: [
+            { name: 'grid', previewImageUrl: (schemaTypeName) => `/cms-previews/${schemaTypeName}.png` },
+            // { name: 'list' }
+          ],
+          // groups: [
+          //   {
+          //     name: 'storytelling',
+          //     title: 'Stroytelling',
+          //     of: [
+          //       'wideMedia'
+          //     ]
+          //   }
+          // ]
+        }
+      },
+      of: [
+        { type: 'wideMedia' },
+        // plopAddModules
+				{ type: 'divider' },
+				{ type: 'teamGrid' },
+				{ type: 'twoColumnText' },
+				{ type: 'columns' },
+				{ type: 'textSection' },
+		    { type: 'blogPosts' },
+        { type: 'fiftyFifty' },
+      ],
+    }
+  )
+}
+
 export default modules

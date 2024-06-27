@@ -9,6 +9,7 @@ import StudioLogo from '@studio/components/StudioLogo'
 import saveAction from '@studio/components/saveAction'
 
 // plopImportMenuItem
+import projectMenuItem from '@studio/src/projectMenuItem'
 import pageMenuItem from '@studio/src/pageMenuItem'
 import blogMenuItem from '@studio/src/blogMenuItem'
 import settingsMenuItem from '@studio/src/settingsMenuItem'
@@ -31,6 +32,7 @@ export default defineConfig({
           .items([
             pageMenuItem(S),
             // plopAddMenuItem
+            projectMenuItem(S),
             blogMenuItem(S),
             S.divider(),
             settingsMenuItem(S)

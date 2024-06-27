@@ -94,6 +94,7 @@ export const getSlugLink = (link, prefix, hash = '', urlParams = '') => {
 export const getRoute = {
 	page: false,
 	// plopAddDocumentType
+	project: 'projects',
 	post: 'blog',
 	category: 'blog/category',
 	author: 'blog/author',

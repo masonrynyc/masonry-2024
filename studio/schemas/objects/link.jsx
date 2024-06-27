@@ -59,6 +59,7 @@ const link = ({name = 'link', title = 'Link', needTitle = true} = {}) => {
           to: [
             { type: 'page' },
             // plopAddDocumentLink
+            { type: 'project' },
             { type: 'post' },
           ]
         },

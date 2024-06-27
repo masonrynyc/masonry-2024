@@ -2,12 +2,15 @@ import IconUI from '@studio/components/IconUI'
 import VideoThumbnail from '@components/VideoThumbnail'
 import { MdPlayArrow } from 'react-icons/md'
 import SectionIcon from '@studio/components/SectionIcon'
+import VideoInput from '@studio/components/VideoInput'
 
 export default ({
   playerSettings = false,
   hidden = false,
   title = 'Video',
   name = 'video',
+  useTitle = true,
+  group,
   ...props
 } = {}) => {
   return {
@@ -15,15 +18,17 @@ export default ({
     name: name,
     type: 'object',
     hidden: hidden,
+    group: group,
     options: {
       collapsible: false
     },
     fields: [
       {
-        title: 'Video',
+        title: 'Vimeo ID',
         name: 'id',
         type: 'string',
-        description: 'Enter a vimeo ID. ie. https://vimeo.com/{{ID}}'
+        components: { input: VideoInput },
+        description: <>Enter only the ID of the video, not the whole video URL.<br/>ie. https://vimeo.com/<code>{'{{ID}}'}</code></>
       },
       {
         title: 'Video',
@@ -35,12 +40,14 @@ export default ({
         },
         description: 'Upload an .mp4 file. Be mindful of file size.'
       },
-      {
-        title: 'Video Title',
-        name: 'title',
-        type: 'string',
-        description: 'Short title/description of the video'
-      },
+      ...(useTitle ? [
+        {
+          title: 'Video Title',
+          name: 'title',
+          type: 'string',
+          description: 'Short title/description of the video'
+        },
+      ] : []),
       ...(playerSettings ? [
         {
           title: 'Player Settings',

@@ -7,6 +7,7 @@ import category from './documents/category'
 import author from './documents/author'
 import section from './documents/section'
 // plopImportDocuments
+import project from './documents/project'
 
 // Object Imports
 import seo from './objects/seo'
@@ -47,6 +48,7 @@ export const schemaTypes = [
   category,
   author,
   // plopAddDocuments
+  project,
   section, // Reusable Section
   // Objects
   seo,

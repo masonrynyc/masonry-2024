@@ -10,6 +10,7 @@ export default ({
   name = 'photo',
   description = false,
   options = {},
+  group,
   ...props
 } = {}) => {
   return {
@@ -18,6 +19,7 @@ export default ({
     description: description,
     type: 'image',
     hidden: hidden,
+    group: group,
     options: {
       hotspot: true,
       accept: '.png, .jpg, .jpeg, .gif',
