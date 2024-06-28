@@ -21,7 +21,7 @@ const hClass = {
 	autoVideo: 'h-[56.25vw]',
 	fullHeight: 'h-screen-height',
 	mediumHeight: 'h-[75vh]',
-	shortHeight: 'h-[60vh]'
+	shortHeight: 'h-[60vh] max-h-[calc(100vw-var(--site-margins)*2)]'
 }
 
 const WideMedia = ({

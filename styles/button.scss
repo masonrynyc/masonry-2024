@@ -7,9 +7,10 @@
   --button-hover-bg: var(--text-color);
   --button-hover-color: var(--bg-color);
   --button-hover-border: var(--button-hover-bg);
+  --button-h-padding: calc(var(--button-height) / 2);
   @extend .h6;
   height: var(--button-height);
-  padding: 0 calc(var(--button-height) / 2);
+  padding: 0 var(--button-h-padding);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -70,6 +71,9 @@
   &.circle {
     width: var(--button-height);
     padding: 0;
+    &.unpadd {
+      margin: -12px;
+    }
   }
 
   &.circle {
@@ -82,7 +86,11 @@
   }
 
   &.unpadd {
-    margin: -12px;
+    margin: 0 calc(var(--button-h-padding) * -1);
+    &.transparent {
+      margin: unset;
+      --button-h-padding: 0;
+    }
   }
 
 }

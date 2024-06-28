@@ -1,6 +1,9 @@
 import React from 'react'
 import Section from '@components/Section'
 import ProjectCard from '@components/ProjectCard'
+import Button from '@components/Button'
+import { getLinkProps } from '@utils/helpers'
+import ScrollEntrance from '@components/ScrollEntrance'
 
 const ProjectGrid = ({
 	className = '',
@@ -9,6 +12,7 @@ const ProjectGrid = ({
 	nextTheme,
 	isFirstSection,
 	projects,
+	actions,
 	id
 }) => {
 	return (
@@ -43,7 +47,7 @@ const ProjectGrid = ({
 						}
 
 						return (
-							<div
+							<ScrollEntrance
 								key={item?._key}
 								className={`px-half-gutter ${cardClassname[item?.size] || cardClassname.medium}`}
 								// className={`${!item.featured ? 'w-full md:w-1/3 md:grow md:max-w-1/2' : 'w-full md:w-[66.666%]'} px-half-gutter`}
@@ -53,10 +57,29 @@ const ProjectGrid = ({
 									className='h-full'
 									imageWrapperClassname={`aspect-video md:aspect-auto md:h-[20vw] w-full`}
 								/>
-							</div>
+							</ScrollEntrance>
 						)
 					})}
 				</div>
+
+				{actions?.length && (
+					<div className={'flex flex-wrap gap-gutter pt-v-space-sm items-center justify-start'}>
+						{actions.map((action, index) => {
+							if (!action.title || !getLinkProps(action)?.to) {
+								return false
+							}
+							return (
+								<Button
+									key={action._key}
+									className='!mb-0'
+									{...getLinkProps(action)}
+								>
+									{action.title}
+								</Button>
+							)
+						})}
+					</div>
+				)}
 			</div>
 		</Section>
 	)

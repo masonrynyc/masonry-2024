@@ -12,7 +12,7 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  background: black;
+  background: var(--bg-color);
 }
 
 .page-transition-overlay.fade {

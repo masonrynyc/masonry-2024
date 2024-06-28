@@ -67,6 +67,9 @@ const link = ({name = 'link', title = 'Link', needTitle = true} = {}) => {
           name: 'linkSection',
           title: 'Page Section',
           description: 'Optional',
+          options: {
+            collapsable: true
+          },
           components: {
             input: ClientAsyncSelect
           },

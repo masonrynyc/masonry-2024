@@ -6,9 +6,8 @@ import Link from '@components/Link'
 import Button from '@components/Button'
 import MenuPanel from '@components/MenuPanel'
 import { getLinkProps, isBrowser } from '@utils/helpers'
-import { MdMenu, MdClose } from 'react-icons/md'
 
-const showHideEffect = true
+const showHideEffect = false
 
 const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 	const [menuPanel, setMenuPanel] = useState(false)
@@ -116,19 +115,17 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 					</Link>
 				</div>
 			)}
-			<header className={headerClassname}>
+			<header className={headerClassname + ' overflow-hidden'}>
 				<div className="px-margin flex justify-between items-center h-full">
 					<div className='w-[80px]'>
 						<Link to='/' title='Go to homepage'><Logo role="presentation" /></Link>
 					</div>
 					<div>
 						<Button
-							icon={menuPanel ? <MdClose size={24} role="presentation" /> : <MdMenu size={24} role="presentation" />}
 							title={menuPanel ? 'Close Menu' : 'Open Menu'}
 							onClick={() => setMenuPanel(!menuPanel)}
-							shape='circle'
 							className='transparent md:hidden unpadd transition-none align-middle'
-						/>
+						><span className="h5">Menu</span></Button>
 						{(navItems && navItems?.length) > 0 && (
 							<nav className='hidden md:block'>
 								<ul className='flex gap-[calc(var(--site-gutters)*2)]'>

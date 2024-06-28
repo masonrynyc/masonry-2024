@@ -67,6 +67,11 @@ export default {
       ]
     },
     {
+      name: 'actions',
+      title: 'Actions',
+      type: 'actions'
+    },
+    {
       name: 'theme',
       title: 'Theme',
       type: 'theme',

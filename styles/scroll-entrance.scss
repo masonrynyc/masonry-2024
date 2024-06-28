@@ -15,7 +15,7 @@
   transform: none;
   opacity: 1;
   @for $i from 1 through 50 {
-    &:nth-child(3n + #{$i}) {
+    &:nth-child(#{$i}) {
       transition-delay: calc((var(--delay) * ($i - 1)) + var(--added-delay));
     }
   }

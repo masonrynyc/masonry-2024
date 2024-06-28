@@ -56,7 +56,7 @@ const TextLockup = ({
 			)}
 
 			{(actions && actions?.length) > 0 && (
-				<div className={'flex flex-wrap gap-gutter mt-8 items-center ' + alignmentClass}>
+				<div className={'flex flex-wrap gap-gutter mt-7 items-center ' + alignmentClass}>
 					{actions.map((action, index) => {
 						if (!action.title) {
 							return false
@@ -65,7 +65,7 @@ const TextLockup = ({
 							return (
 								<Button
 									key={action._key}
-									className='!mb-0'
+									className='!m-0'
 									{...getLinkProps(action)}
 								>
 									{action.title}

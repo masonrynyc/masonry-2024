@@ -9,9 +9,9 @@ const Footer = ({ className = '', menus }) => {
 
 	return (
 		<footer className={className}>
-			<div className='mx-margin py-margin flex items-center justify-between border-t pt-3'>
+			<div className='mx-margin py-margin flex items-baseline justify-between border-t pt-3'>
 				<div className='w-[80px] h5 flex items-center justify-start gap-x-[.4em]'>
-					© <Logo /> {new Date().getFullYear()}
+					<span className='h5'>©</span> <Logo /> <span>{new Date().getFullYear()}</span>
 				</div>
 
 				<div>
@@ -24,7 +24,7 @@ const Footer = ({ className = '', menus }) => {
 									return false
 								}
 								return (
-									<li key={item._key}>
+									<li key={item._key} className='hidden md:block'>
 										<Link
 											{...getLinkProps(link)}
 											className='inline-block align-top'
@@ -34,6 +34,14 @@ const Footer = ({ className = '', menus }) => {
 									</li>
 								)
 							})}
+							<li className='md:hidden'>
+								<Link
+									to='/contact'
+									className='inline-block align-top'
+								>
+									<span className="h5">Contact</span>
+								</Link>
+							</li>
 						</ul>
 					)}
 				</div>
