@@ -142,13 +142,13 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 											<li key={item._key} className='group relative cursor-pointer'>
 												{sublinks?.length > 0 ? (
 													<div
-														className={active ? 'inline-flex border-b border-current' : 'inline-flex border-b border-transparent'}
+														className={`inline-flex animate-underline ${active ? 'active' : ''}`}
 													>
 														<span className="h5">{link.title}</span>
 													</div>
 												) : (
 													<Link
-														className={active ? 'inline-flex border-b border-current' : 'inline-flex border-b border-transparent'}
+														className={`inline-flex animate-underline ${active ? 'active' : ''}`}
 														{...getLinkProps(link)}
 													>
 														<span className="h5">{link.title}</span>

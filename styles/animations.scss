@@ -15,6 +15,7 @@
 }
 
 .animate-underline:hover,
+.animate-underline.active,
 .group:hover .animate-underline {
   background-size: 100% 1px;
   background-position: 0% 100%;
