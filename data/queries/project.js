@@ -1,4 +1,9 @@
 import image from '@queries/image'
+import moduleWideMedia from '@queries/moduleWideMedia'
+import moduleFiftyFifty from '@queries/moduleFiftyFifty'
+import moduleTextSection from '@queries/moduleTextSection'
+import moduleColumns from '@queries/moduleColumns'
+import moduleTwoColumnText from '@queries/moduleTwoColumnText'
 
 export const projectFragmentMin = `
   ...,
@@ -16,7 +21,12 @@ export const projectFragment = `
   ...,
   ${projectFragmentMin},
   "modules": projectModules[]{
-    ...
+    ...,
+    _type == "fiftyFifty" => { ${moduleFiftyFifty} },
+    _type == "wideMedia" => { ${moduleWideMedia} },
+    _type == "textSection" => { ${moduleTextSection} },
+    _type == "columns" => { ${moduleColumns} },
+    _type == "twoColumnText" => { ${moduleTwoColumnText} },
   }
 `
 
