@@ -1,5 +1,6 @@
 import image from '@queries/image'
 import richText from '@queries/richText'
+import link from '@queries/link'
 
 export default `
 	...,
@@ -11,5 +12,8 @@ export default `
 		text[] {
 			${richText}
 		}
+	},
+	actions[] {
+		${link}
 	}
 `

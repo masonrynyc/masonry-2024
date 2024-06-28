@@ -5,7 +5,7 @@ import video from '@studio/schemas/objects/video'
 import { projectModules } from '@studio/schemas/objects/modules'
 
 export default {
-  title: 'PROJECT',
+  title: 'Project',
   name: 'project',
   type: 'document',
   icon: () => <MdImage size='24px' />,

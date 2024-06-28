@@ -1,4 +1,5 @@
 // plopImportModules
+import moduleProjectGrid from '@queries/moduleProjectGrid'
 import moduleDivider from '@queries/moduleDivider'
 import moduleTeamGrid from '@queries/moduleTeamGrid'
 import moduleTwoColumnText from '@queries/moduleTwoColumnText'
@@ -10,6 +11,7 @@ import moduleWideMedia from '@queries/moduleWideMedia'
 
 export default `
   // plopAddModules
+	_type == "projectGrid" => { ${moduleProjectGrid} },
 	_type == "divider" => { ${moduleDivider} },
 	_type == "teamGrid" => { ${moduleTeamGrid} },
 	_type == "twoColumnText" => { ${moduleTwoColumnText} },
@@ -19,4 +21,8 @@ export default `
 	_type == "wideMedia" => { ${moduleWideMedia} },
   _type == "fiftyFifty" => { ${moduleFiftyFifty} },
   _type == "reference" => { ... }
+`
+
+export const projectModules = `
+	...
 `

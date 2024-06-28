@@ -3,7 +3,7 @@ export default {
   name: 'actions',
   type: 'array',
   of: [
-    { type: 'link' },
+    // { type: 'link' },
     { type: 'button' }
   ]
 }

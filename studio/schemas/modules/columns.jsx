@@ -56,6 +56,12 @@ export default {
       validation: Rule => Rule.required().min(1)
     },
     {
+      name: 'actions',
+      title: 'Actions',
+      type: 'actions',
+      group: 'main'
+    },
+    {
       name: 'imageSize',
       title: 'Image Size',
       type: 'string',
