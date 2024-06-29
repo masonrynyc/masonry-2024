@@ -4,6 +4,7 @@ import moduleFiftyFifty from '@queries/moduleFiftyFifty'
 import moduleTextSection from '@queries/moduleTextSection'
 import moduleColumns from '@queries/moduleColumns'
 import moduleTwoColumnText from '@queries/moduleTwoColumnText'
+import richText from '@queries/richText'
 
 export const projectFragmentMin = `
   ...,
@@ -20,6 +21,9 @@ export const projectFragmentMin = `
 export const projectFragment = `
   ...,
   ${projectFragmentMin},
+  body[] {
+    ${ richText }
+  },
   "modules": projectModules[]{
     ...,
     _type == "fiftyFifty" => { ${moduleFiftyFifty} },

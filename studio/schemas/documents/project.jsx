@@ -49,6 +49,50 @@ export default {
       required: true
     }),
     video({ name: 'featuredVideo', title: 'Featured Video', group: 'content', useTitle: false }),
+    {
+      name: 'pageTitle',
+      title: 'Headline',
+      description: 'To be show on the case study page',
+      type: 'string',
+      group: 'content'
+    },
+    {
+      name: 'projectMeta',
+      title: 'Project Info',
+      type: 'object',
+      group: 'content',
+      options: {
+        columns: 2
+      },
+      fields: [
+        {
+          name: 'client',
+          title: 'Client',
+          type: 'string'
+        },
+        {
+          name: 'project',
+          title: 'Project Title',
+          type: 'string'
+        },
+      ]
+    },
+    {
+      name: 'services',
+      title: 'Services',
+      type: 'array',
+      group: 'content',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags'
+      }
+    },
+    {
+      name: 'body',
+      title: 'Project Description',
+      type: 'blockText',
+      group: 'content'
+    },
     projectModules('projectModules', 'Sections', 'content'),
     {
       title: 'SEO / Share Settings',
