@@ -44,6 +44,7 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
         nextTheme='default'
         isFirstSection={true}
       >
+        <div className="px-margin py-v-space max-w-site-max-w mx-auto md:hidden"><h1 className='h5 border-t pt-3'>{project.title}</h1></div>
         <div className="px-margin">
           <div className="text-center h3 rounded bg-[#777] px-margin py-v-space">
             Intro Media
@@ -55,7 +56,6 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
         prevTheme='default'
         nextTheme='default'
       >
-        <div className="px-margin py-v-space max-w-site-max-w mx-auto md:hidden"><h1 className='h5 border-t pt-3'>{project.title}</h1></div>
         <div className='px-margin grid gap-v-space'>
           <div>
             <h2 className='h1'>{project.pageTitle}</h2>
