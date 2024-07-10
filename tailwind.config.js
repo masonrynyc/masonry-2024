@@ -81,7 +81,8 @@ module.exports = {
         'top': 'top',
         'color': 'color',
         'opacity': 'opacity',
-        'background': 'background'
+        'background': 'background',
+        'border': 'border'
       },
       zIndex: {
         '1': '1',

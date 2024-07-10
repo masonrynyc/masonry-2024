@@ -27,7 +27,7 @@ const TextSection = ({
 			id={id}
 		>
 			<div className="px-margin">
-				<div className="w-full max-w-site-max-w mx-auto">
+				<div className="w-full max-w-site-max-w mx-auto py-v-space">
 					<div className="grid md:grid-cols-12 gap-x-gutter">
 						<div className={alignmentClassnames[alignment]}>
 							<TextLockup lockup={text} alignment={alignment} className='max-w-[750px]'/>

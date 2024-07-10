@@ -5,11 +5,17 @@ import moduleTextSection from '@queries/moduleTextSection'
 import moduleColumns from '@queries/moduleColumns'
 import moduleTwoColumnText from '@queries/moduleTwoColumnText'
 import richText from '@queries/richText'
+import { categoryFragment } from '@queries/category'
 
 export const projectFragmentMin = `
   ...,
   title,
   "slug": slug.current,
+  categories[] {
+    "category": category -> {
+      ${ categoryFragment }
+    }
+  },
   featuredImage {
     ${ image }
   },

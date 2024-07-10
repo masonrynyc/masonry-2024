@@ -17,6 +17,8 @@ export default {
       name: 'internalName',
       title: 'Internal Name',
       type: 'string',
+      hidden: true,
+      initialValue: 'Project Grid',
       validation: Rule => Rule.required()
     },
     {
@@ -70,6 +72,12 @@ export default {
       name: 'actions',
       title: 'Actions',
       type: 'actions'
+    },
+    {
+      name: 'showFilters',
+      title: 'Show Filters',
+      type: 'boolean',
+      initialValue: false
     },
     {
       name: 'theme',

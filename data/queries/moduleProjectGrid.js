@@ -1,4 +1,5 @@
 import { projectFragment } from '@queries/project'
+import link from '@queries/link'
 
 export default `
 	...,
@@ -8,5 +9,8 @@ export default `
       ...,
       ${projectFragment}
     }
+  },
+  actions[] {
+    ${link}
   }
 `

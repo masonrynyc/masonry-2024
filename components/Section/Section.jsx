@@ -23,7 +23,7 @@ const Section = ({
 	}
 
 	if (isFirstSection) {
-		paddingClassTop = 'pt-[calc(var(--full-header-height)+var(--vertical-spacing))] -mt-full-header-height'
+		paddingClassTop = 'pt-[calc(var(--full-header-height)+var(--vertical-spacing)-20px)] -mt-full-header-height'
 	}
 
 	let paddingClass = paddingClassTop + ' ' + paddingClassBottom

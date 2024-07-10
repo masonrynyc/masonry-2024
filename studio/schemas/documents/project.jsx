@@ -57,6 +57,22 @@ export default {
       group: 'content'
     },
     {
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      group: 'content',
+      of: [
+        {
+          name: 'category',
+          title: 'Category',
+          type: 'reference',
+          to: [
+            { type: 'category' }
+          ]
+        }
+      ]
+    },
+    {
       name: 'projectMeta',
       title: 'Project Info',
       type: 'object',

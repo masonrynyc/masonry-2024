@@ -58,7 +58,7 @@ export const getShareTags = (host, page, settings) => {
 
 	return {
 		host: host,
-		siteTitle: settings?.title,
+		siteTitle: settings?.title || process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE,
 		title: page?.title,
 		pagePath: page?.slug,
 		metaTitle: page?.seo?.metaTitle || page?.title,

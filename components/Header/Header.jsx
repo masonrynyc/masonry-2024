@@ -6,8 +6,9 @@ import Link from '@components/Link'
 import Button from '@components/Button'
 import MenuPanel from '@components/MenuPanel'
 import { getLinkProps, isBrowser } from '@utils/helpers'
+import ScrollEntrance from '@components/ScrollEntrance'
 
-const showHideEffect = false
+const showHideEffect = true
 
 const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 	const [menuPanel, setMenuPanel] = useState(false)
@@ -116,7 +117,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 				</div>
 			)}
 			<header className={headerClassname + ' overflow-hidden'}>
-				<div className="px-margin flex justify-between items-center h-full">
+				<ScrollEntrance className={`mx-margin flex justify-between items-center h-full border-b transition-border ${!atTop ? 'border-current' : 'border-transparent'}`}>
 					<div className='w-[80px]'>
 						<Link to='/' title='Go to homepage'><Logo role="presentation" /></Link>
 					</div>
@@ -185,7 +186,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 							</nav>
 						)}
 					</div>
-				</div>
+				</ScrollEntrance>
 			</header>
 			<MenuPanel
 				visible={menuPanel}
