@@ -11,10 +11,8 @@ export const projectFragmentMin = `
   ...,
   title,
   "slug": slug.current,
-  categories[] {
-    "category": category -> {
-      ${ categoryFragment }
-    }
+  categories[] -> {
+    ${categoryFragment}
   },
   featuredImage {
     ${ image }

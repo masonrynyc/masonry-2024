@@ -1,5 +1,3 @@
-import image from '@queries/image'
-
 export const categoryFragment = `
   ...,
   "slug": slug.current,

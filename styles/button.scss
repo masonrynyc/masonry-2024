@@ -8,6 +8,7 @@
   --button-hover-color: var(--bg-color);
   --button-hover-border: var(--button-hover-bg);
   --button-h-padding: calc(var(--button-height) / 2);
+
   @extend .h6;
   height: var(--button-height);
   padding: 0 var(--button-h-padding);
@@ -58,7 +59,23 @@
     --button-border: transparent;
     --button-hover-bg: transparent;
     --button-hover-color: currentcolor;
-    --button-hover-border: transparent;
+    --button-hover-border: var(--hr-color);
+  }
+
+  &.solid {
+    --button-bg: var(--text-color);
+    --button-color: var(--bg-color);
+    --button-border: var(--text-color);
+    --button-hover-bg: transparent;
+    --button-hover-color: currentcolor;
+    --button-hover-border: var(--text-color);
+  }
+
+  &.no-hover {
+    --button-hover-bg: var(--button-bg);
+    --button-hover-color: var(--button-color);
+    --button-hover-border: var(--button-border);
+    cursor: unset;
   }
 
   /* Button Sizes */
