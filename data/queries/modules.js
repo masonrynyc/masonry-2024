@@ -1,4 +1,5 @@
 // plopImportModules
+import moduleContactSection from '@queries/moduleContactSection'
 import moduleProjectGrid from '@queries/moduleProjectGrid'
 import moduleDivider from '@queries/moduleDivider'
 import moduleTeamGrid from '@queries/moduleTeamGrid'
@@ -11,6 +12,7 @@ import moduleWideMedia from '@queries/moduleWideMedia'
 
 export default `
   // plopAddModules
+	_type == "contactSection" => { ${moduleContactSection} },
 	_type == "projectGrid" => { ${moduleProjectGrid} },
 	_type == "divider" => { ${moduleDivider} },
 	_type == "teamGrid" => { ${moduleTeamGrid} },

@@ -95,6 +95,11 @@ export const wideMedia = (requirements, name) => {
           }
         },
         {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+        },
+        {
           name: 'width',
           title: 'Width',
           type: 'string',

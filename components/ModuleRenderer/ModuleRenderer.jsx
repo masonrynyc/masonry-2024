@@ -1,5 +1,6 @@
 import React from 'react'
 // plopImportModules
+import ContactSection from '@components/ContactSection'
 import ProjectGrid from '@components/ProjectGrid'
 import Divider from '@components/Divider'
 import TeamGrid from '@components/TeamGrid'
@@ -13,6 +14,7 @@ import { slugify } from '@utils/helpers'
 
 const moduleMap = {
   // plopAddModules
+	contactSection: ContactSection,
 	projectGrid: ProjectGrid,
 	divider: Divider,
 	teamGrid: TeamGrid,

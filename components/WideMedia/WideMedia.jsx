@@ -41,6 +41,7 @@ const WideMedia = ({
 	textColor = 'light',
 	paddingBottom,
 	paddingTop,
+	caption,
 	id
 }) => {
 	const fullWidth = width === 'fullWidth'
@@ -98,6 +99,11 @@ const WideMedia = ({
 					</div>
 				</div>
 			</WrapperComponent>
+			{caption && (
+				<div className="px-margin pt-gutter lg:pt-8">
+					<ScrollEntrance><p className='body'>{caption}</p></ScrollEntrance>
+				</div>
+			)}
 		</Section>
 	)
 }

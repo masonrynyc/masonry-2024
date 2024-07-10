@@ -27,7 +27,7 @@ const Footer = ({ className = '', menus }) => {
 									<li key={item._key} className='hidden md:block'>
 										<Link
 											{...getLinkProps(link)}
-											className='inline-block align-top'
+											className='inline-block align-top animate-underline'
 										>
 											<span className="h5">{link.title}</span>
 										</Link>
@@ -37,7 +37,7 @@ const Footer = ({ className = '', menus }) => {
 							<li className='md:hidden'>
 								<Link
 									to='/contact'
-									className='inline-block align-top'
+									className='inline-block align-top animate-underline'
 								>
 									<span className="h5">Contact</span>
 								</Link>

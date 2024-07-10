@@ -116,7 +116,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 					</Link>
 				</div>
 			)}
-			<header className={headerClassname + ' overflow-hidden'}>
+			<header className={headerClassname}>
 				<ScrollEntrance className={`mx-margin flex justify-between items-center h-full border-b transition-border ${!atTop ? 'border-current' : 'border-transparent'}`}>
 					<div className='w-[80px]'>
 						<Link to='/' title='Go to homepage'><Logo role="presentation" /></Link>

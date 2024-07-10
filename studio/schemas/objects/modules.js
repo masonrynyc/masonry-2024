@@ -35,6 +35,7 @@ export const modules = (name, title, group = '', reusable = false) => {
       of: [
         { type: 'wideMedia' },
         // plopAddModules
+				{ type: 'contactSection' },
 				{ type: 'projectGrid' },
 				{ type: 'divider' },
 				{ type: 'teamGrid' },
@@ -78,6 +79,7 @@ export const projectModules = (name, title, group = '') => {
       of: [
         { type: 'wideMedia' },
         // plopAddModules
+				{ type: 'contactSection' },
 				{ type: 'projectGrid' },
 				{ type: 'divider' },
 				{ type: 'teamGrid' },
