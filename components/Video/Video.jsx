@@ -18,6 +18,7 @@ const Video = ({
 	videoDuration,
 	onProgress = () => {},
 	onEnd = () => {},
+	setRatioFn = () => {}
 }) => {
 	if (clickToPlay) {
 		playing = false
@@ -60,9 +61,10 @@ const Video = ({
 	const getAspectRatio = () => {
 		const containerW = videoWrapper?.current?.offsetWidth
 		const containerH = videoWrapper?.current?.offsetHeight
-		const calculatedRatio = containerW / containerH
-		if (calculatedRatio !== Infinity) {
+		const ratio = containerW / containerH
+		if (ratio !== aspectRatio && ratio !== Infinity) {
 			setAspectRatio(containerW / containerH)
+			setRatioFn(ratio)
 		}
 	}
 

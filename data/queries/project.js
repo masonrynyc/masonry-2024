@@ -1,9 +1,5 @@
 import image from '@queries/image'
-import moduleWideMedia from '@queries/moduleWideMedia'
-import moduleFiftyFifty from '@queries/moduleFiftyFifty'
-import moduleTextSection from '@queries/moduleTextSection'
-import moduleColumns from '@queries/moduleColumns'
-import moduleTwoColumnText from '@queries/moduleTwoColumnText'
+import moduleMediaCollage from '@queries/moduleMediaCollage'
 import richText from '@queries/richText'
 import { categoryFragment } from '@queries/category'
 
@@ -28,13 +24,8 @@ export const projectFragment = `
   body[] {
     ${ richText }
   },
-  "modules": projectModules[]{
-    ...,
-    _type == "fiftyFifty" => { ${moduleFiftyFifty} },
-    _type == "wideMedia" => { ${moduleWideMedia} },
-    _type == "textSection" => { ${moduleTextSection} },
-    _type == "columns" => { ${moduleColumns} },
-    _type == "twoColumnText" => { ${moduleTwoColumnText} },
+  projectModules[]{
+    _type == "mediaCollage" => { ${moduleMediaCollage} }
   }
 `
 
@@ -46,6 +37,6 @@ export const allProjects = `
 
 export default `
   *[_type == "project" && slug.current == $slug] | order(_updatedAt desc)[0]{
-    ${ projectFragmentMin }
+    ${ projectFragment }
   }
 `

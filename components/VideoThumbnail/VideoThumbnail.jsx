@@ -4,11 +4,11 @@ import Image from 'next/image'
 
 const VideoThumbnail = ({ video, className = '', sizes = '600px', alt }) => {
 	// Thumbnail render for vimeo videos
-	if (!video?.id) {
+	if (!video?.id && !video) {
 		return false
 	}
 
-	const imageUrl = 'https://vumbnail.com/' + video.id + '.jpg'
+	const imageUrl = 'https://vumbnail.com/' + (video?.id || video) + '.jpg'
 
 	return (
 		<div className={'video-thumbnail relative ' + className}>

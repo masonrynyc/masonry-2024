@@ -12,6 +12,7 @@ const Media = ({
   debug,
   cover,
   stretch,
+  setRatioFn,
   ...props
 }) => {
 
@@ -47,6 +48,7 @@ const Media = ({
           ratio={ratio}
           cover={ratio || cover}
           clickToPlay={media?.video?.clickToPlay}
+          setRatioFn={setRatioFn}
         />
       </div>
     )

@@ -4,7 +4,6 @@ import { getClient } from '@lib/sanity'
 import groq from 'groq'
 import Layout from '@components/Layout'
 import PreviewWrapper from '@components/PreviewWrapper'
-import ModuleRenderer from '@components/ModuleRenderer'
 import projectQuery, { allProjects } from '@queries/project'
 // Global Site Data
 import settingsQuery from '@queries/settings'
@@ -31,8 +30,7 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
     return false
   }
 
-  const modules = project?.modules
-  const refModules = project?.moduleRefs
+  const modules = project?.projectModules
 
   let wrapperClassname = `md:block grid grid-rows-[0fr] transition-[grid-template-rows] duration-[var(--speed)] delay-[var(--delay-out)]`
 	let innerClassname = `min-h-[var(--start-height)] invisible md:visible opacity-[var(--content-opacity)] md:opacity-100 transition-[visibility,opacity] duration-[var(--speed)] delay-[var(--delay-out)]`
@@ -40,6 +38,8 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
 		wrapperClassname = `md:block grid grid-rows-[1fr] transition-[grid-template-rows] duration-[var(--speed)] delay-[var(--delay-in)]`
 		innerClassname = 'min-h-max visible opacity-[var(--content-opacity)] md:opacity-100 transition-[visibility,opacity] duration-[var(--speed)] delay-[var(--delay-in)]'
 	}
+
+  console.log(modules)
 
   return (
     <Layout
@@ -138,7 +138,7 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
           </div>
         </Section>
       </ScrollEntrance>
-      <Modules modules={modules} moduleRefs={refModules} />
+      <Modules modules={modules} />
     </Layout>
   )
 }

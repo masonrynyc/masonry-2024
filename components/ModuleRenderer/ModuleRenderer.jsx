@@ -1,5 +1,6 @@
 import React from 'react'
 // plopImportModules
+import MediaCollage from '@components/MediaCollage'
 import ContactSection from '@components/ContactSection'
 import ProjectGrid from '@components/ProjectGrid'
 import Divider from '@components/Divider'
@@ -14,6 +15,7 @@ import { slugify } from '@utils/helpers'
 
 const moduleMap = {
   // plopAddModules
+	mediaCollage: MediaCollage,
 	contactSection: ContactSection,
 	projectGrid: ProjectGrid,
 	divider: Divider,

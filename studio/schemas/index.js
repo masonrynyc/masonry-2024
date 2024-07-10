@@ -31,6 +31,7 @@ import alignmentVertical from './objects/alignmentVertical'
 // Module Imports
 import wideMedia from './modules/wideMedia'
 // plopImportModules
+import mediaCollage from './modules/mediaCollage'
 import contactSection from './modules/contactSection'
 import projectGrid from './modules/projectGrid'
 import divider from './modules/divider'
@@ -78,6 +79,7 @@ export const schemaTypes = [
   modules(),
   // Modules
   // plopAddModules
+	mediaCollage,
 	contactSection,
 	projectGrid,
 	divider,

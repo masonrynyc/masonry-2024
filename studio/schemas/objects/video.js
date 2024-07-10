@@ -1,5 +1,5 @@
 import IconUI from '@studio/components/IconUI'
-import VideoThumbnail from '@components/VideoThumbnail'
+import MediaThumbnail from '@studio/components/MediaThumbnail'
 import { MdPlayArrow } from 'react-icons/md'
 import SectionIcon from '@studio/components/SectionIcon'
 import VideoInput from '@studio/components/VideoInput'
@@ -78,7 +78,10 @@ export default ({
         let subtitle = videoTitle ? 'Video' : false
         let videoIcon = <SectionIcon><MdPlayArrow size='24px'/></SectionIcon>
         if (video) {
-          videoIcon = <VideoThumbnail vimeoId={video} />
+          videoIcon = <MediaThumbnail media={{
+            mediaType: 'video',
+            video: { id: video }
+          }} />
         }
         return Object.assign({}, selection, {
           title: title,
