@@ -14,7 +14,9 @@ import ScrollEntrance from '@components/ScrollEntrance'
 import Modules from '@components/Modules'
 import RichText from '@components/RichText'
 import Button from '@components/Button'
-import { ProjectGridSmall } from '@components/ProjectGrid'
+import ProjectGridSmall from '@components/ProjectGrid/ProjectGridSmall'
+import Divider from '@components/Divider'
+import TextSection from '@components/TextSection'
 
 export const ProjectContent = ({ data, settings, menus, preview = false }) => {
   const router = useRouter()
@@ -38,8 +40,6 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
 		wrapperClassname = `md:block grid grid-rows-[1fr] transition-[grid-template-rows] duration-[var(--speed)] delay-[var(--delay-in)]`
 		innerClassname = 'min-h-max visible opacity-[var(--content-opacity)] md:opacity-100 transition-[visibility,opacity] duration-[var(--speed)] delay-[var(--delay-in)]'
 	}
-
-  console.log(modules)
 
   return (
     <Layout
@@ -138,7 +138,18 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
           </div>
         </Section>
       </ScrollEntrance>
-      <Modules modules={modules} />
+      <Modules modules={modules} nextSection={{ theme: 'default' }} />
+      <Divider
+        setTheme='default'
+        prevTheme='default'
+        nextTheme='default'
+      />
+      <ProjectGridSmall
+        headline='Related Work.'
+        setTheme='default'
+        prevTheme='default'
+        nextTheme={false}
+      />
     </Layout>
   )
 }

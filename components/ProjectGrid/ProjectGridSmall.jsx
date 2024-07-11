@@ -1,20 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Section from '@components/Section'
 import ProjectCard from '@components/ProjectCard'
 import Button from '@components/Button'
 import { getLinkProps } from '@utils/helpers'
 import ScrollEntrance from '@components/ScrollEntrance'
+import { allProjects } from '@queries/project'
+import { getClient } from '@lib/sanity'
 
-const ProjectGrid = ({
+const ProjectGridSmall = ({
 	className = '',
 	theme = 'default',
 	prevTheme,
 	nextTheme,
 	isFirstSection,
-	projects,
+	projects = false,
 	actions,
+	headline,
 	id
 }) => {
+	const [projectList, setProjectList] = useState(projects)
+
+	useEffect(() => {
+		if (!projectList) {
+			let query = allProjects
+
+			getClient().fetch(query, {}).then((res) => { setProjectList(res) })
+		}
+	}, [])
+
+	console.log(projectList)
+
+	if (!projectList) {
+		return false
+	}
+
 	return (
 		<Section
 			className={className ? className + ' overflow-hidden' : 'overflow-hidden'}
@@ -24,32 +43,30 @@ const ProjectGrid = ({
 			isFirstSection={isFirstSection}
 			id={id}
 		>
-			<div className="px-margin">
+			<ScrollEntrance className="px-margin">
+				{headline && (
+					<div className='pb-v-space'>
+						<h3 className="h1">{headline}</h3>
+					</div>
+				)}
 				<div className="flex gap-y-gutter justify-start flex-wrap -mx-half-gutter">
-					{projects?.map((item, index) => {
-						const { project } = item
-						if (!project.featuredImage) {
+					{projectList?.slice(0, 3)?.map((project, index) => {
+						if (!project?.featuredImage) {
 							return false
 						}
-						let prevProject = projects[index - 1]
-						let nextProject = projects[index + 1]
-						if (index + 1 === projects.length) {
-							nextProject = projects[0]
+						let prevProject = projectList[index - 1]
+						let nextProject = projectList[index + 1]
+						if (index + 1 === projectList.length) {
+							nextProject = projectList[0]
 						}
 						if (index === 0) {
-							prevProject = projects[projects.length - 1]
-						}
-
-						let cardClassname = {
-							small: 'w-full md:w-[41.666%] md:max-w-1/2',
-							medium: 'w-full md:w-1/2 md:grow md:max-w-full',
-							large: 'w-full md:grow md:w-full'
+							prevProject = projectList[projectList.length - 1]
 						}
 
 						return (
-							<ScrollEntrance
-								key={item?._key}
-								className={`px-half-gutter ${cardClassname[item?.size] || cardClassname.medium}`}
+							<div
+								key={project?._key}
+								className={`px-half-gutter w-full md:w-1/3`}
 								// className={`${!item.featured ? 'w-full md:w-1/3 md:grow md:max-w-1/2' : 'w-full md:w-[66.666%]'} px-half-gutter`}
 							>
 								<ProjectCard
@@ -57,7 +74,7 @@ const ProjectGrid = ({
 									className='h-full'
 									imageWrapperClassname={`aspect-video md:aspect-auto md:h-[20vw] w-full`}
 								/>
-							</ScrollEntrance>
+							</div>
 						)
 					})}
 				</div>
@@ -80,9 +97,9 @@ const ProjectGrid = ({
 						})}
 					</div>
 				)}
-			</div>
+			</ScrollEntrance>
 		</Section>
 	)
 }
 
-export default ProjectGrid
+export default ProjectGridSmall
