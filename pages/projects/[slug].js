@@ -88,10 +88,10 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
           <div className='px-margin grid'>
             <div className='grid md:grid-cols-12 gap-x-gutter'>
               <div className="md:col-span-6 md:pb-v-space">
-                <h2 className='h1'>{project.pageTitle}</h2>
+                <h2 className='h1'>{project?.pageTitle}</h2>
               </div>
               <div className='hidden md:col-span-6 md:flex gap-[15px] md:justify-end items-start flex-wrap'>
-                {project.categories.map(cat => {
+                {project?.categories?.map(cat => {
                   return (
                     <div className='button no-hover' key={cat.slug}>{cat.title}</div>
                   )
@@ -113,7 +113,7 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
                 <div className='grid md:grid-cols-12 gap-x-gutter gap-y-v-space-sm pt-7 md:pt-0'>
 
                   <div className='md:hidden flex gap-[15px] md:justify-end items-start flex-wrap'>
-                    {project.categories.map(cat => {
+                    {project?.categories?.map(cat => {
                       return (
                         <div className='button no-hover' key={cat.slug}>{cat.title}</div>
                       )
