@@ -4,6 +4,7 @@ import { MdPlayArrow, MdImage } from 'react-icons/md'
 import SectionIcon from '@studio/components/SectionIcon'
 import MediaStackIcon from '@studio/components/MediaStackIcon'
 import photo from '@studio/schemas/objects/photo'
+import video from '@studio/schemas/objects/video'
 
 const MediaRow = {
   name: 'items',
@@ -24,11 +25,9 @@ const MediaRow = {
             collapsible: false
           }
         }),
-        {
-          title: 'Video',
-          name: 'video',
-          type: 'video',
-        }
+        video({
+          playerSettings: true
+        })
       ]
     }
   ],

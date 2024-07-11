@@ -47,7 +47,7 @@ const Media = ({
           vimeoId={vimeoId}
           ratio={ratio}
           cover={ratio || cover}
-          clickToPlay={media?.video?.clickToPlay}
+          clickToPlay={media?.video?.videoPlaySetting === 'clickToPlay'}
           setRatioFn={setRatioFn}
         />
       </div>

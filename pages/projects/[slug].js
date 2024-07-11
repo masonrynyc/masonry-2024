@@ -10,15 +10,16 @@ import settingsQuery from '@queries/settings'
 import menusQuery from '@queries/menus'
 import NotFoundPage from '@pages/404'
 import Section from '@components/Section'
+import Media from '@components/Media'
 import ScrollEntrance from '@components/ScrollEntrance'
 import Modules from '@components/Modules'
 import RichText from '@components/RichText'
 import Button from '@components/Button'
-import ProjectGridSmall from '@components/ProjectGrid/ProjectGridSmall'
+import ProjectGrid from '@components/ProjectGrid'
 import Divider from '@components/Divider'
 import TextSection from '@components/TextSection'
 
-export const ProjectContent = ({ data, settings, menus, preview = false }) => {
+export const ProjectContent = ({ data, settings, menus, projects, preview = false }) => {
   const router = useRouter()
   const [infoVisible, setInfoVisible] = useState(false)
 
@@ -41,6 +42,12 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
 		innerClassname = 'min-h-max visible opacity-[var(--content-opacity)] md:opacity-100 transition-[visibility,opacity] duration-[var(--speed)] delay-[var(--delay-in)]'
 	}
 
+  let projectCats = []
+  project?.categories?.forEach(cat => projectCats?.push(cat?.slug))
+
+
+  // console.log(projectCats)
+
   return (
     <Layout
       page={project}
@@ -57,8 +64,19 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
         >
           <div className="px-margin py-v-space max-w-site-max-w mx-auto md:hidden"><h1 className='h5 border-t pt-3'>{project.title}</h1></div>
           <div className="px-margin">
-            <div className="text-center h3 rounded bg-[#777] px-margin py-v-space">
-              Intro Media
+            <div
+              style={{ '--bg-color': project?.featuredImage?.palette?.darkVibrant?.background || '#000' }}
+              className="text-center h3 bg-[var(--bg-color)] rounded"
+            >
+              <Media
+                className='rounded w-full'
+                ratio={2}
+                media={{
+                  image: project?.featuredImage,
+                  video: project?.featuredVideo,
+                  mediaType: project?.featuredVideo ? 'video' : 'image'
+                }}
+              />
             </div>
           </div>
         </Section>
@@ -144,11 +162,16 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
         prevTheme='default'
         nextTheme='default'
       />
-      <ProjectGridSmall
+      <ProjectGrid
         headline='Related Work.'
         setTheme='default'
         prevTheme='default'
         nextTheme={false}
+        filterCats={projectCats}
+        gridSize='small'
+        projects={projects}
+        exclude={project}
+        limit={3}
       />
     </Layout>
   )
@@ -156,21 +179,25 @@ export const ProjectContent = ({ data, settings, menus, preview = false }) => {
 
 const Project = ({
   data,
+  projects,
   settings,
   menus,
   preview,
   queryParams
 }) => {
+
+  console.log(projects)
+
   if (preview) {
     return (
       <PreviewWrapper query={projectQuery} queryParams={queryParams} initialData={data}>
-        <ProjectContent data={data} settings={settings} menus={menus} preview />
+        <ProjectContent data={data} projects={projects} settings={settings} menus={menus} preview />
       </PreviewWrapper>
     )
   }
 
   return (
-    <ProjectContent data={data} settings={settings} menus={menus} />
+    <ProjectContent data={data} projects={projects} settings={settings} menus={menus} />
   )
 }
 
@@ -193,8 +220,9 @@ export async function getStaticProps(context) {
   const preview = context?.draftMode ? previewToken : false;
   const sanityClient = getClient(preview)
 
-  const [data, settings, menus] = await Promise.all([
+  const [data, projects, settings, menus] = await Promise.all([
     sanityClient.fetch(projectQuery, queryParams),
+    sanityClient.fetch(allProjects),
     sanityClient.fetch(settingsQuery),
     sanityClient.fetch(menusQuery)
   ])
@@ -202,6 +230,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       data: data,
+      projects: projects,
       settings: settings,
       menus: menus,
       preview: preview,

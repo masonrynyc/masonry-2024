@@ -14,15 +14,18 @@ const Video = ({
 	autoplay = true,
 	controls = false,
 	clickToPlay = false,
+	videoPlaySetting,
 	setVideoDuration = () => {},
 	videoDuration,
 	onProgress = () => {},
 	onEnd = () => {},
 	setRatioFn = () => {}
 }) => {
+
 	if (clickToPlay) {
 		playing = false
 	}
+
 	const [loaded, setLoaded] = useState(false)
 	const [isPlaying, setIsPlaying] = useState(playing)
 	const [hasWindow, setHasWindow] = useState(false)
@@ -115,7 +118,7 @@ const Video = ({
 				ref={videoWrapper}
 				style={{ '--ratio': playerRatio }}
 			>
-				{(clickToPlay && isPlaying) && (
+				{/* {(clickToPlay && isPlaying) && (
 					<Button
 						onClick={handleStop}
 						shape='circle'
@@ -123,7 +126,7 @@ const Video = ({
 						title='Stop Video'
 						className='transparent absolute top-gutter right-gutter z-2'
 					/>
-				)}
+				)} */}
 				{hasWindow && (
 					<ReactPlayer
 						ref={videoPlayer}
@@ -148,11 +151,12 @@ const Video = ({
 								</div>
 							</div>
 						}
-						light={clickToPlay}
+						// light={clickToPlay}
 						config={{
 							vimeo: {
 								playerOptions: {
 									responsive: true,
+									controls: clickToPlay,
 									colors: ['000000', 'ffffff', 'ffffff', '000000'] //[Primary, Accent, Text/Icon, Background]
 								}
 							}

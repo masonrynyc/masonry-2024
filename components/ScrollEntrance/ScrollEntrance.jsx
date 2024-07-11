@@ -30,7 +30,7 @@ const ScrollEntrance = ({
 		<motion.div
 			className={'scroll-entrance ' + className}
 			ref={transitionIn ? ref : null}
-			delay={delay + 3}
+			delay={delay + 5}
 			data-in-view={inView}
 			transform={transform}
 			style={{ '--delay-value': delay + 3 }}

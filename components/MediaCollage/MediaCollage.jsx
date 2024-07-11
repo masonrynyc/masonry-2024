@@ -77,7 +77,7 @@ const MediaCollage = ({
 										style={{
 											boxSizing: 'border-box',
 											flex: widths[index],
-											'--image-bg': mediaItem?.palette?.darkVibrant?.background || 'var(--light-grey)'
+											'--image-bg': mediaItem?.palette?.darkVibrant?.background || '#000'
 										}}
 									>
 										<ScrollEntrance>

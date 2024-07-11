@@ -16,13 +16,18 @@ const ProjectGrid = ({
 	isFirstSection,
 	projects,
 	actions,
+	headline,
 	showFilters,
+	limit = 1000,
+	gridSize,
+	filterCats = [],
+	exclude = false,
 	id
 }) => {
 	const [categories, setCategories] = useState([])
 	const [projectList, setProjectList] = useState(projects)
 	const [view, setView] = useState('large')
-	const [filters, setFilters] = useState([])
+	const [filters, setFilters] = useState(filterCats)
 
 	useEffect(() => {
 		if (showFilters) {
@@ -46,12 +51,20 @@ const ProjectGrid = ({
 	}
 
 	useEffect(() => {
+		let filteredProjects = []
 		if (filters.length < 1) {
-			setProjectList(projects)
+			filteredProjects = projects
 		} else {
-			const filteredProjects = []
 			projects.forEach(projectItem => {
-				const { project } = projectItem
+				let project = projectItem
+				if (projectItem?.project) {
+					project = projectItem.project
+				}
+
+				if (project._id === exclude._id) {
+					return false
+				}
+
 				let projectCats = []
 				project?.categories?.forEach(cat => projectCats.push(cat.slug))
 
@@ -60,10 +73,38 @@ const ProjectGrid = ({
 					filteredProjects.push(projectItem)
 				}
 			})
-			setProjectList(filteredProjects)
 		}
 
-	}, [filters, projects])
+		setProjectList(filteredProjects)
+
+	}, [filters])
+
+	console.log(projectList)
+
+	// Grid sizing classnames
+	let cardClassname = {
+		small: 'w-full md:w-[41.666%] md:max-w-1/2',
+		medium: 'w-full md:w-1/2 md:grow md:max-w-full',
+		large: 'w-full md:grow md:w-full'
+	}
+
+	if (view === 'small') {
+		cardClassname = {
+			small: 'w-full md:w-[20%] md:max-w-[20%]',
+			medium: 'w-full md:w-1/3 md:grow md:max-w-1/2',
+			large: 'w-full md:grow md:w-1/3 md:max-w-1/2'
+		}
+	}
+
+	if (gridSize === 'small') {
+		cardClassname = {
+			small: 'w-full md:w-1/3',
+			medium: 'w-full md:w-1/3',
+			large: 'w-full md:w-1/3'
+		}
+	}
+
+	const filtersSlug = (filters.join('-'))
 
 	return (
 		<Section
@@ -74,6 +115,13 @@ const ProjectGrid = ({
 			isFirstSection={isFirstSection}
 			id={id}
 		>
+			{headline && (
+				<ScrollEntrance>
+					<div className='pb-v-space px-margin'>
+						<h3 className="h1">{headline}</h3>
+					</div>
+				</ScrollEntrance>
+			)}
 			{showFilters && (
 				<ScrollEntrance className='px-margin pb-gutter'>
 					<div className="max-w-site-max-w mx-auto w-full flex justify-between items-center">
@@ -92,63 +140,48 @@ const ProjectGrid = ({
 							})}
 						</div>
 
-						<div className="flex flex-wrap gap-[15px] pb-gutter">
-							<Button
-								onClick={() => setView('large')}
-								title='Large View'
-								icon={
-									<svg width="16" height="16" viewBox="0 0 16 16" >
-										<path fillRule="evenodd" clipRule="evenodd" d="M16 0H0V2H16V0ZM16 14H0V16H16V14Z"/>
-									</svg>
-								}
-								className={`square ${view === 'large' ? 'no-hover' : 'transparent'}`}
-							/>
-							<Button
-								onClick={() => setView('small')}
-								title='Small View'
-								icon={
-									<svg width="16" height="16" viewBox="0 0 16 16" >
-										<path fillRule="evenodd" clipRule="evenodd" d="M4 0H0V4H4V0ZM16 0H12V4H16V0ZM12 12H16V16H12V12ZM4 12H0V16H4V12Z"/>
-									</svg>
-								}
-								className={`square ${view === 'small' ? 'no-hover' : 'transparent'}`}
-							/>
-						</div>
+						{gridSize !== 'small' && (
+							<div className="flex flex-wrap gap-[15px] pb-gutter">
+								<Button
+									onClick={() => setView('large')}
+									title='Large View'
+									icon={
+										<svg width="16" height="16" viewBox="0 0 16 16" >
+											<path fillRule="evenodd" clipRule="evenodd" d="M16 0H0V2H16V0ZM16 14H0V16H16V14Z"/>
+										</svg>
+									}
+									className={`square ${view === 'large' ? 'no-hover' : 'transparent'}`}
+								/>
+								<Button
+									onClick={() => setView('small')}
+									title='Small View'
+									icon={
+										<svg width="16" height="16" viewBox="0 0 16 16" >
+											<path fillRule="evenodd" clipRule="evenodd" d="M4 0H0V4H4V0ZM16 0H12V4H16V0ZM12 12H16V16H12V12ZM4 12H0V16H4V12Z"/>
+										</svg>
+									}
+									className={`square ${view === 'small' ? 'no-hover' : 'transparent'}`}
+								/>
+							</div>
+						)}
 					</div>
 				</ScrollEntrance>
 			)}
 			<div className="px-margin">
-				<div className="flex gap-y-gutter justify-start flex-wrap -mx-half-gutter">
-					{projectList?.map((item, index) => {
-						const { project } = item
+				<div
+					className="flex gap-y-gutter justify-start flex-wrap -mx-half-gutter"
+					key={filtersSlug}
+				>
+					{projectList?.slice(0, limit)?.map((item, index) => {
+						let project = item
+
+						if (item?.project) {
+							project = item.project
+						}
+
 						if (!project?.featuredImage) {
 							return false
 						}
-						let prevProject = projectList[index - 1]
-						let nextProject = projectList[index + 1]
-						if (index + 1 === projectList.length) {
-							nextProject = projectList[0]
-						}
-						if (index === 0) {
-							prevProject = projectList[projectList.length - 1]
-						}
-
-						let cardClassname = {
-							small: 'w-full md:w-[41.666%] md:max-w-1/2',
-							medium: 'w-full md:w-1/2 md:grow md:max-w-full',
-							large: 'w-full md:grow md:w-full'
-						}
-
-						if (view === 'small') {
-							cardClassname = {
-								small: 'w-full md:w-[20%] md:max-w-[20%]',
-								medium: 'w-full md:w-1/3 md:grow md:max-w-1/2',
-								large: 'w-full md:grow md:w-1/3 md:max-w-1/2'
-							}
-						}
-
-						const filtersSlug = (filters.join('-'))
-						console.log(filtersSlug)
 
 						return (
 							<ScrollEntrance
