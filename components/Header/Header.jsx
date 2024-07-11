@@ -125,7 +125,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 						<Button
 							title={menuPanel ? 'Close Menu' : 'Open Menu'}
 							onClick={() => setMenuPanel(!menuPanel)}
-							className='transparent md:hidden unpadd transition-none align-middle'
+							className={`transparent md:hidden unpadd align-middle no-hover ${menuPanel ? '-translate-y-4' : ''}`}
 						><span className="h5">Menu</span></Button>
 						{(navItems && navItems?.length) > 0 && (
 							<nav className='hidden md:block'>
@@ -189,6 +189,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 				</ScrollEntrance>
 			</header>
 			<MenuPanel
+				menus={menus}
 				visible={menuPanel}
 				navItems={navItems}
 				setMenuPanel={setMenuPanel}

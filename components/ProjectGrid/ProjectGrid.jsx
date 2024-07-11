@@ -141,7 +141,7 @@ const ProjectGrid = ({
 						</div>
 
 						{gridSize !== 'small' && (
-							<div className="flex flex-wrap gap-[15px] pb-gutter">
+							<div className="hidden md:flex flex-wrap gap-[15px] pb-gutter">
 								<Button
 									onClick={() => setView('large')}
 									title='Large View'

@@ -104,7 +104,7 @@
 
   &.unpadd {
     margin: 0 calc(var(--button-h-padding) * -1);
-    &.transparent {
+    &.transparent:not(.circle):not(.square) {
       margin: unset;
       --button-h-padding: 0;
     }
