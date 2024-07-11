@@ -1,5 +1,4 @@
 // plopImportModules
-import moduleMediaCollage from '@queries/moduleMediaCollage'
 import moduleContactSection from '@queries/moduleContactSection'
 import moduleProjectGrid from '@queries/moduleProjectGrid'
 import moduleDivider from '@queries/moduleDivider'

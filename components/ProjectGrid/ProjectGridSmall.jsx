@@ -26,9 +26,7 @@ const ProjectGridSmall = ({
 
 			getClient().fetch(query, {}).then((res) => { setProjectList(res) })
 		}
-	}, [])
-
-	console.log(projectList)
+	}, [projectList])
 
 	if (!projectList) {
 		return false

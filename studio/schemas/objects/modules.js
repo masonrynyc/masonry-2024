@@ -35,7 +35,6 @@ export const modules = (name, title, group = '', reusable = false) => {
       of: [
         { type: 'wideMedia' },
         // plopAddModules
-				{ type: 'mediaCollage' },
 				{ type: 'contactSection' },
 				{ type: 'projectGrid' },
 				{ type: 'divider' },
@@ -46,7 +45,7 @@ export const modules = (name, title, group = '', reusable = false) => {
 		    { type: 'blogPosts' },
         { type: 'fiftyFifty' },
         ...(reusable ? reusableModuleType : []),
-      ],
+      ]
     }
   )
 }
@@ -63,8 +62,8 @@ export const projectModules = (name, title, group = '') => {
           filter: 'auto',
           showIcons: true,
           views: [
-            { name: 'grid', previewImageUrl: (schemaTypeName) => `/cms-previews/${schemaTypeName}.png` },
-            // { name: 'list' }
+            // { name: 'grid', previewImageUrl: (schemaTypeName) => `/cms-previews/${schemaTypeName}.png` },
+            { name: 'list' }
           ],
           // groups: [
           //   {
@@ -78,18 +77,9 @@ export const projectModules = (name, title, group = '') => {
         }
       },
       of: [
-        { type: 'wideMedia' },
         // plopAddModules
-				{ type: 'mediaCollage' },
-				{ type: 'contactSection' },
-				{ type: 'projectGrid' },
-				{ type: 'divider' },
-				{ type: 'teamGrid' },
-				{ type: 'twoColumnText' },
-				{ type: 'columns' },
-				{ type: 'textSection' },
-		    { type: 'blogPosts' },
-        { type: 'fiftyFifty' },
+				{ type: 'projectText' },
+				{ type: 'mediaCollage' }
       ],
     }
   )

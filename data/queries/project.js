@@ -1,4 +1,5 @@
 import image from '@queries/image'
+import moduleProjectText from '@queries/moduleProjectText'
 import moduleMediaCollage from '@queries/moduleMediaCollage'
 import richText from '@queries/richText'
 import { categoryFragment } from '@queries/category'
@@ -25,7 +26,8 @@ export const projectFragment = `
     ${ richText }
   },
   projectModules[]{
-    _type == "mediaCollage" => { ${moduleMediaCollage} }
+    _type == "mediaCollage" => { ${moduleMediaCollage} },
+    _type == "projectText" => { ${moduleProjectText} },
   }
 `
 

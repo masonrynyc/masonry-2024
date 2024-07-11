@@ -31,7 +31,7 @@ const ProjectGrid = ({
 				setCategories(res)
 			})
 		}
-	}, [])
+	}, [showFilters])
 
 	const setFilterItems = id => {
 		if (!id) {
@@ -63,7 +63,7 @@ const ProjectGrid = ({
 			setProjectList(filteredProjects)
 		}
 
-	}, [filters])
+	}, [filters, projects])
 
 	return (
 		<Section

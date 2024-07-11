@@ -36,7 +36,7 @@ const ContactSection = ({
 										<ul>
 											{section?.links?.map(link => {
 												return (
-													<li>
+													<li key={link._key}>
 														<Link
 															{...getLinkProps(link)}
 															className='animate-underline'
