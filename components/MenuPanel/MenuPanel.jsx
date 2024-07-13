@@ -4,9 +4,8 @@ import { useRouter } from 'next/router'
 import Link from '@components/Link'
 import Collapsable from '@components/Collapsable'
 import Logo from '@components/Logo'
-import Footer from '@components/Footer'
 import { getLinkProps } from '@utils/helpers'
-import { MdClose, MdKeyboardArrowDown } from 'react-icons/md'
+import { MdKeyboardArrowDown } from 'react-icons/md'
 
 const MenuPanel = ({
 	className = '',
@@ -41,7 +40,7 @@ const MenuPanel = ({
 					opacity: visible ? 1 : 0,
 					visibility: visible ? 'visible' : 'hidden'
 				}}
-				className={`flex flex-col transition-all duration-slow ease-[cubic-bezier(0.44,0.24,0.16,1.00)] menu-panel fixed top-0 bottom-0 right-0 max-w-[600px] w-full bg-bg z-20 ` + className}
+				className={`flex md:hidden flex-col transition-all duration-slow ease-[cubic-bezier(0.44,0.24,0.16,1.00)] menu-panel fixed top-0 bottom-0 right-0 w-full bg-bg z-20 ` + className}
 			>
 				<div className="grow-0 shrink-0 flex justify-between items-center h-header-height px-margin">
 					<Link to='/' title='Go to homepage'><Logo role="presentation" /></Link>
@@ -50,10 +49,14 @@ const MenuPanel = ({
 						onClick={() => setMenuPanel(false)}
 					><span className="h5">Close</span></Button>
 				</div>
-				<div className="grow w-full">
+				<div className="grow w-full flex items-center pb-header-height">
 					{(navItems && navItems?.length) > 0 && (
-						<nav>
-							<ul className='flex flex-col gap-margin p-margin'>
+						<nav className='w-full'>
+							<ul
+								className='flex flex-col p-margin scroll-entrance'
+								data-in-view={visible}
+								style={{ '--delay-value': 8 }}
+							>
 								{navItems.map((item, index) => {
 									const { link, sublinks } = item
 									// TODO: Sublinks
@@ -65,7 +68,7 @@ const MenuPanel = ({
 										active = true
 									}
 									return (
-										<li key={item._key}>
+										<li key={item._key} className='border-t'>
 											{sublinks?.length > 0 ? (
 												<button
 													className='cursor-pointer'
@@ -74,7 +77,7 @@ const MenuPanel = ({
 													aria-haspopup='true'
 													aria-expanded={expanded === item._key ? 'true' : 'false'}
 												>
-													<span className="h1 flex items-center gap-x-[.2em]">
+													<span className="h5 flex items-center gap-x-[.2em]">
 														{link.title}
 														<MdKeyboardArrowDown
 															className='transition-transform'
@@ -86,8 +89,8 @@ const MenuPanel = ({
 													</span>
 												</button>
 											) : (
-												<Link {...getLinkProps(link)}>
-													<span className="h1">{link.title}</span>
+												<Link {...getLinkProps(link)} className='block pb-6 pt-1'>
+													<span className="h5">{link.title}</span>
 												</Link>
 											)}
 											{sublinks?.length > 0 && 
@@ -107,7 +110,7 @@ const MenuPanel = ({
 																		className={active ? 'border-b border-text-color' : 'border-b border-transparent'}
 																		{...getLinkProps(sublink)}
 																	>
-																		<span className="h1">{sublink.title}</span>
+																		<span className="h5">{sublink.title}</span>
 																	</Link>
 																</li>
 															)
@@ -121,9 +124,6 @@ const MenuPanel = ({
 							</ul>
 						</nav>
 					)}
-				</div>
-				<div className="grow-0 shrink-0">
-					<Footer menus={menus}/>
 				</div>
 			</div>
 		</>
