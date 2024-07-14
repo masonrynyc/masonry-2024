@@ -40,22 +40,15 @@ const MenuPanel = ({
 					opacity: visible ? 1 : 0,
 					visibility: visible ? 'visible' : 'hidden'
 				}}
-				className={`flex md:hidden flex-col transition-all duration-slow ease-[cubic-bezier(0.44,0.24,0.16,1.00)] menu-panel fixed top-0 bottom-0 right-0 w-full bg-bg z-20 ` + className}
+				className={`flex md:hidden flex-col transition-all duration-slow menu-panel fixed top-0 pt-header-height bottom-0 right-0 w-full bg-bg z-1 ` + className}
 			>
-				<div className="grow-0 shrink-0 flex justify-between items-center h-header-height px-margin">
-					<Link to='/' title='Go to homepage'><Logo role="presentation" /></Link>
-					<Button
-						className={`transparent unpadd no-hover ${visible ? '' : 'translate-y-4'}`}
-						onClick={() => setMenuPanel(false)}
-					><span className="h5">Close</span></Button>
-				</div>
 				<div className="grow w-full flex items-center pb-header-height">
 					{(navItems && navItems?.length) > 0 && (
 						<nav className='w-full'>
 							<ul
 								className='flex flex-col p-margin scroll-entrance'
 								data-in-view={visible}
-								style={{ '--delay-value': 8 }}
+								style={{ '--delay-value': 6 }}
 							>
 								{navItems.map((item, index) => {
 									const { link, sublinks } = item

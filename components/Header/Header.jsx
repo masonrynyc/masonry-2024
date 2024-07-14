@@ -10,7 +10,7 @@ import ScrollEntrance from '@components/ScrollEntrance'
 
 const showHideEffect = true
 
-const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
+const Header = ({ className = '', menus, settings, hasAtf, firstTheme, hideMobileMenuButton, closeFn }) => {
 	const [menuPanel, setMenuPanel] = useState(false)
 	const navigation = menus?.filter(menu => menu.location === 'main-navigation')[0]
 	const navItems = navigation?.items
@@ -72,7 +72,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 		headerClassname = 'main-header h-header-height sticky top-0 bg-bg transition-all z-10'
 		headerHeight = ''
 		// For show/hide effect on scroll up/down
-		if (showHideEffect) {
+		if (showHideEffect && !hideMobileMenuButton) {
 			if (direction === 'down') {
 				headerClassname = headerClassname + ' -translate-y-full'
 				if (isBrowser) {
@@ -118,15 +118,26 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme }) => {
 			)}
 			<header className={headerClassname}>
 				<ScrollEntrance className={`mx-margin flex justify-between items-center h-full border-b transition-border border-transparent`}>
-					<div className='w-[80px]'>
-						<Link to='/' title='Go to homepage'><Logo role="presentation" /></Link>
+					<div>
+						<Link to='/' title='Go to homepage' className='block'><Logo role="presentation" /></Link>
 					</div>
 					<div>
 						<Button
-							title={menuPanel ? 'Close Menu' : 'Open Menu'}
-							onClick={() => setMenuPanel(!menuPanel)}
-							className={`transparent md:hidden unpadd align-middle no-hover ${menuPanel ? '-translate-y-4' : ''}`}
-						><span className="h5">Menu</span></Button>
+							title={menuPanel || hideMobileMenuButton ? 'Close' : 'Open Menu'}
+							onClick={() => {
+								if (closeFn) {
+									closeFn()
+								} else {
+									setMenuPanel(!menuPanel)
+								}
+							}}
+							className={`transparent md:hidden unpadd align-middle no-hover`}
+						>
+							<div className="relative">
+								<span className={`transition duration-slow h5 block pt-[1px] ${menuPanel || hideMobileMenuButton ? '-translate-y-4 opacity-0' : ''}`}>Menu</span>
+								<span className={`transition duration-slow h5 block pt-[1px] absolute top-4 right-0 ${menuPanel || hideMobileMenuButton ? '-translate-y-4' : 'opacity-0'}`}>Close</span>
+							</div>
+						</Button>
 						{(navItems && navItems?.length) > 0 && (
 							<nav className='hidden md:block'>
 								<ul className='flex gap-[calc(var(--site-gutters)*2)]'>

@@ -8,7 +8,7 @@ import AppProvider from '@state/AppState'
 import { useWindowSize } from '@uidotdev/usehooks'
 import { isMobileSafari, isBrowser } from '@utils/helpers'
 
-const Layout = ({ children, page, settings, menus }) => {
+const Layout = ({ children, page, settings, menus, hideMobileMenuButton, closeFn }) => {
   const router = useRouter()
 
   // set window height var (w/ safari/iOS hack)
@@ -47,7 +47,14 @@ const Layout = ({ children, page, settings, menus }) => {
       />
       <Link to="#content" className='hidden'>Skip to content</Link>
       <div id="Layout">
-        <Header menus={menus} settings={settings} hasAtf={hasAtf} firstTheme={firstTheme} />
+        <Header
+          menus={menus}
+          settings={settings}
+          hasAtf={hasAtf}
+          firstTheme={firstTheme}
+          hideMobileMenuButton={hideMobileMenuButton}
+          closeFn={closeFn}
+        />
         <main id="content">{children}</main>
         <Footer menus={menus} />
       </div>

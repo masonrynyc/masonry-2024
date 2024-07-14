@@ -134,7 +134,7 @@ const ProjectGrid = ({
 									<Button
 										key={cat.slug}
 										onClick={() => setFilterItems(cat.slug)}
-										className={filters.includes(cat.slug) ? 'solid no-hover' : ''}
+										className={filters.includes(cat.slug) ? 'solid no-hover' : 'no-hover'}
 									>{cat.title}</Button>
 								)
 							})}

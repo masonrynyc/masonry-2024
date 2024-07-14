@@ -32,7 +32,7 @@ const MediaCollage = ({
 			<div className="flex px-margin flex-col gap-gutter">
 				{rows?.map((row, index) => {
 					return (
-						<div key={row._key} className="-mx-half-gutter flex">
+						<div key={row._key} className="-mx-half-gutter grid gap-y-gutter md:flex">
 							{row?.item?.map((mediaItem, index) => {
 								let aspect1 = row?.item[0]?.customRatio || row?.item[0]?.aspectRatio
 								let aspect2 = row?.item[1]?.customRatio || row?.item[1]?.aspectRatio
