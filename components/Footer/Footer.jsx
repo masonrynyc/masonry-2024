@@ -9,9 +9,9 @@ const Footer = ({ className = '', menus }) => {
 
 	return (
 		<footer className={className}>
-			<div className='mx-margin py-margin flex items-baseline justify-between border-t pt-3'>
-				<div className='w-[80px] h5 flex items-center justify-start gap-x-[.4em]'>
-					<span className='h5'>©</span> <Logo /> <span>{new Date().getFullYear()}</span>
+			<div className='mx-margin pb-[45px] flex items-baseline justify-between border-t pt-3'>
+				<div className='w-[80px] h6 flex items-center justify-start gap-x-[.4em]'>
+					<span className='h6'>©</span> <Logo /> <span className='!text-[1.135em]'>{new Date().getFullYear()}</span>
 				</div>
 
 				<div>
@@ -29,7 +29,7 @@ const Footer = ({ className = '', menus }) => {
 											{...getLinkProps(link)}
 											className='inline-block align-top animate-underline'
 										>
-											<span className="h5">{link.title}</span>
+											<span className="h6">{link.title}</span>
 										</Link>
 									</li>
 								)
@@ -39,7 +39,7 @@ const Footer = ({ className = '', menus }) => {
 									to='/contact'
 									className='inline-block align-top animate-underline'
 								>
-									<span className="h5">Contact</span>
+									<span className="h6">Contact</span>
 								</Link>
 							</li>
 						</ul>

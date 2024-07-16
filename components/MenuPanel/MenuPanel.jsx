@@ -32,7 +32,7 @@ const MenuPanel = ({
 					opacity: visible ? '0' : '0',
 					visibility: visible ? 'visible' : 'hidden'
 				}}
-				className="md:hidden transition-all panel-overlay fixed top-0 left-0 w-full h-full bg-text-color opacity-10 z-10"
+				className="md:hidden transition-all panel-overlay fixed top-0 left-0 w-full h-full bg-text-color opacity-10 z-1"
 				onClick={() => setMenuPanel(false)}
 			/>
 			<div
@@ -40,7 +40,7 @@ const MenuPanel = ({
 					opacity: visible ? 1 : 0,
 					visibility: visible ? 'visible' : 'hidden'
 				}}
-				className={`flex md:hidden flex-col transition-all duration-slow menu-panel fixed top-0 pt-header-height bottom-0 right-0 w-full bg-bg z-1 ` + className}
+				className={`flex md:hidden flex-col transition-all duration-slow menu-panel fixed top-0 pt-header-height bottom-0 right-0 w-full bg-bg z-2 ` + className}
 			>
 				<div className="grow w-full flex items-center pb-header-height">
 					{(navItems && navItems?.length) > 0 && (
@@ -61,7 +61,7 @@ const MenuPanel = ({
 										active = true
 									}
 									return (
-										<li key={item._key} className='border-t'>
+										<li key={item._key} className={index === navItems.length - 1 ? 'border-t border-b' : 'border-t'}>
 											{sublinks?.length > 0 ? (
 												<button
 													className='cursor-pointer'
@@ -82,8 +82,8 @@ const MenuPanel = ({
 													</span>
 												</button>
 											) : (
-												<Link {...getLinkProps(link)} className='block pb-6 pt-1'>
-													<span className="h5">{link.title}</span>
+												<Link {...getLinkProps(link)} className='block pb-8 pt-3'>
+													<span className="h5 block">{link.title}</span>
 												</Link>
 											)}
 											{sublinks?.length > 0 && 

@@ -51,10 +51,10 @@ const Columns = ({
 							</div>
 						</ScrollEntrance>
 					)}
-					<ScrollEntrance delay={1} className={`flex flex-wrap md:-mx-half-gutter gap-y-gutter md:gap-y-12 ${alignmentHorizontal === 'center' ? 'justify-center text-center' : ''}`}>
+					<div delay={1} className={`flex flex-wrap md:-mx-half-gutter gap-y-gutter md:gap-y-12 ${alignmentHorizontal === 'center' ? 'justify-center text-center' : ''}`}>
 						{columnItems?.map(column => {
 							return (
-								<div
+								<ScrollEntrance
 									key={column._key}
 									className={`flex flex-col shrink-0 gap-gutter md:px-half-gutter w-[var(--col-w-xs)] sm:w-[var(--col-w-sm)] md:w-[var(--col-w-md)] lg:w-[var(--col-w-lg)] lg:max-w-1/2 ${alignmentHorizontal === 'center' ? 'items-center' : ''}`}
 								>
@@ -71,7 +71,7 @@ const Columns = ({
 											<RichText text={column.text} className='max-w-[450px] body-small'/>
 										)}
 									</div>
-								</div>		
+								</ScrollEntrance>		
 							)
 						})}
 
@@ -93,7 +93,7 @@ const Columns = ({
 								})}
 							</div>
 						)}
-					</ScrollEntrance>
+					</div>
 				</div>
 			</div>
 		</Section>

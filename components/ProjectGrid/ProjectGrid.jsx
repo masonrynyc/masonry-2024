@@ -128,13 +128,14 @@ const ProjectGrid = ({
 						<div className="flex flex-wrap gap-[15px] pb-gutter">
 							<Button
 								onClick={() => setFilterItems(false)}
+								className={filters?.length ? 'transparent' : 'no-hover'}
 							>View All</Button>
 							{categories.map(cat => {
 								return (
 									<Button
 										key={cat.slug}
 										onClick={() => setFilterItems(cat.slug)}
-										className={filters.includes(cat.slug) ? 'solid no-hover' : 'no-hover'}
+										className={filters.includes(cat.slug) ? 'no-hover' : (filters?.length ? 'transparent' : 'no-hover')}
 									>{cat.title}</Button>
 								)
 							})}
@@ -150,7 +151,7 @@ const ProjectGrid = ({
 											<path fillRule="evenodd" clipRule="evenodd" d="M16 0H0V2H16V0ZM16 14H0V16H16V14Z"/>
 										</svg>
 									}
-									className={`square ${view === 'large' ? 'no-hover' : 'transparent'}`}
+									className={`large square ${view === 'large' ? 'no-hover' : 'transparent'}`}
 								/>
 								<Button
 									onClick={() => setView('small')}
@@ -160,7 +161,7 @@ const ProjectGrid = ({
 											<path fillRule="evenodd" clipRule="evenodd" d="M4 0H0V4H4V0ZM16 0H12V4H16V0ZM12 12H16V16H12V12ZM4 12H0V16H4V12Z"/>
 										</svg>
 									}
-									className={`square ${view === 'small' ? 'no-hover' : 'transparent'}`}
+									className={`large square ${view === 'small' ? 'no-hover' : 'transparent'}`}
 								/>
 							</div>
 						)}

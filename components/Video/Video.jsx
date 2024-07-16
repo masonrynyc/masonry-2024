@@ -77,6 +77,10 @@ const Video = ({
     }
 		getAspectRatio()
 
+		if (clickToPlay) {
+			setIsMuted(false)
+		}
+
 		window.addEventListener("resize", getAspectRatio); // add event listener
 		return () => {
 			window.removeEventListener("resize", getAspectRatio); // clean up

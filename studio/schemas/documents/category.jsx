@@ -23,6 +23,12 @@ export default {
       }
     },
     {
+      name: 'order',
+      title: 'Order',
+      description: 'The number will be used to order the filters on the project grid. For example, 1 will come before (to the left of) 3',
+      type: 'number'
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'blockText'

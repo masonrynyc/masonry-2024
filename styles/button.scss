@@ -4,10 +4,15 @@
   --button-bg: transparent;
   --button-color: currentcolor;
   --button-border: currentcolor;
-  --button-hover-bg: var(--text-color);
-  --button-hover-color: var(--bg-color);
-  --button-hover-border: var(--button-hover-bg);
-  --button-h-padding: calc(var(--button-height) / 2);
+  // --button-hover-bg: var(--text-color);
+  // --button-hover-color: var(--bg-color);
+  // --button-hover-border: var(--button-hover-bg);
+
+  --button-hover-bg: transparent;
+  --button-hover-color: currentcolor;
+  --button-hover-border: currentcolor;
+  
+  --button-h-padding: 25px; // calc(var(--button-height) / 2);
 
   @extend .h6;
   height: var(--button-height);
@@ -80,7 +85,7 @@
 
   /* Button Sizes */
   &.large {
-    --button-height: 70px;
+    --button-height: 45px;
   }
 
   /* Button Shapes */

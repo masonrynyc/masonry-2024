@@ -60,7 +60,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme, hideMobil
 
 	let headerHeight = ''
 
-	let headerClassname = `main-header h-header-height sticky top-0 !bg-transparent transition-all z-10 ${firstTheme ? 'theme-' + firstTheme : ''}`
+	let headerClassname = `main-header h-header-height-expanded sticky top-0 !bg-transparent transition-all z-10 ${firstTheme ? 'theme-' + firstTheme : ''}`
 
 	if (atTop && hasAtf) {
 		// Inverted header style
@@ -154,13 +154,13 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme, hideMobil
 											<li key={item._key} className='group relative cursor-pointer'>
 												{sublinks?.length > 0 ? (
 													<div
-														className={`inline-flex animate-underline ${active ? 'active' : ''}`}
+														className={`inline-flex animate-underline ${active ? '' : ''}`}
 													>
 														<span className="h5">{link.title}</span>
 													</div>
 												) : (
 													<Link
-														className={`inline-flex animate-underline ${active ? 'active' : ''}`}
+														className={`inline-flex animate-underline ${active ? '' : ''}`}
 														{...getLinkProps(link)}
 													>
 														<span className="h5">{link.title}</span>

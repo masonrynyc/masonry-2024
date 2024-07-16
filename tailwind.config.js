@@ -59,6 +59,7 @@ module.exports = {
         'half-margin': 'calc(var(--site-margins) / 2)',
         'half-v-space': 'calc(var(--vertical-spacing) / 2)',
         'header-height': 'var(--header-height)',
+        'header-height-expanded': 'var(--header-height-expanded)',
         'sticky-top': 'var(--sticky-top)',
         'full-header-height': 'var(--full-header-height)',
         'screen-height': 'calc(100 * var(--vh))'

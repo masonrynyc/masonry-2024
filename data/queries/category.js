@@ -12,7 +12,7 @@ export default `
 `
 
 export const allCategories = `
-  *[_type == "category"] | order(publishedAt desc) {
+  *[_type == "category"] | order(order asc) {
     ${ categoryFragment }
   }
 `
