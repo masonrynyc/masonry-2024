@@ -30,7 +30,8 @@ export default {
     prepare({ name, content }) {
       return {
         title: name,
-        media: <SectionIcon><MdOutlineViewDay size='24px'/></SectionIcon>
+        media: <SectionIcon><MdOutlineViewDay size='24px'/></SectionIcon>,
+        subtitle: 'Reusable Section'
         // subtitle: getModuleName(content._type) TODO: better way?
       }
     }

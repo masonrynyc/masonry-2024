@@ -26,6 +26,7 @@ export default {
       description: 'Optional',
       type: 'object',
       group: 'main',
+      hidden: true,
       fields: [
         {
           name: 'bannerLink',
@@ -51,7 +52,8 @@ export default {
       name: 'social',
       title: 'Social',
       type: 'social',
-      group: 'main'
+      group: 'main',
+      hidden: true
     },
     {
       name: 'favicon',

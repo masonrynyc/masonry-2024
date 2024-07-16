@@ -54,6 +54,9 @@ const ProjectInfo = ({ project, className = '', ...rest }) => {
 
       <div className='md:hidden flex gap-[15px] md:justify-end items-start flex-wrap'>
         {project?.categories?.map(cat => {
+          if (!cat?.title) {
+            return false
+          }
           return (
             <div className='button no-hover' key={cat.slug}>{cat.title}</div>
           )

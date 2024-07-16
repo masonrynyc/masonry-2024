@@ -2,8 +2,8 @@
   /* Grid */
 	--site-gutters: 22px;
 	--site-margins: 22px;
-  --vertical-spacing: clamp(calc(70 * 1px), calc((120 * 1vw) / 1440 * 100), calc(140 * 1px));
-	--vertical-spacing-small: clamp(calc(40 * 1px), calc((50 * 1vw) / 1440 * 100), calc(60 * 1px));
+  --vertical-spacing: clamp(calc(70 * 1px), calc((120 * 1vw) / 1366 * 100), calc(140 * 1px));
+	--vertical-spacing-small: clamp(calc(40 * 1px), calc((50 * 1vw) / 1366 * 100), calc(60 * 1px));
 	/* Brand Colors */
 	--dark-color: #1b1b1b;
 	--light-color: #fff;

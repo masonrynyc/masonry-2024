@@ -29,7 +29,7 @@ const TwoColumnText = ({
 					<ScrollEntrance className="grid gap-x-gutter gap-y-4 md:grid-cols-3 lg:grid-cols-12 items-top">
 						{border && (<div className="z-1 col-span-full border-t"/>)}
 						<div className='lg:col-span-5 mb-5 md:mb-0'>
-							{leftColumnString ? <h3 className='h5 md:sticky md:top-sticky-top transition-top'>{leftColumnString}</h3> : <RichText text={leftColumn}/>}
+							{leftColumnString ? <h3 className='h5'>{leftColumnString}</h3> : <RichText text={leftColumn}/>}
 						</div>
 						<div className='md:col-span-2 lg:col-span-7'><RichText className="md:-mt-1" text={rightColumn}/></div>
 					</ScrollEntrance>

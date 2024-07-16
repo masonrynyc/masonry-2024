@@ -19,7 +19,8 @@ const ProjectCard = ({
 				<Link
 					className='group w-full h-full flex flex-col text-left relative'
 					{...getDocumentLink(project)}
-					title={'View ' + projectTitle + ' Project'}
+					// title={'View ' + projectTitle + ' Project'}
+					title={false}
 				>
 					<div
 						style={{ '--bg-color': project?.featuredImage?.palette?.darkVibrant?.background || '#000' }}
@@ -39,11 +40,13 @@ const ProjectCard = ({
 							/>
 						)}
 					</div>
-					<div className='group-hover:opacity-100 transition-opacity duration-slow opacity-25 z-3 p-gutter lg:p-6 grow-0 shrink-0 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[rgba(0,0,0,.5)] rounded'>
+					<div className='transition-opacity duration-slow group-hover:opacity-100 opacity-0 z-3 p-gutter lg:p-6 grow-0 shrink-0 absolute top-0 left-0 w-full h-full'>
 						<div>
-							<h3 className='h3 flex gap-x-[.25em]'><span className='block group-hover:opacity-100 opacity-0 group-hover:translate-y-0 translate-y-3 transition duration-slow'>{project?.title}</span> {project?.subtitle && <span className='block h4 group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-3 transition-all duration-slow group-hover:delay-[.07s]'>{project.subtitle}</span>}</h3>
+							<h3 className='h3 flex gap-x-[.25em]'><span className='block group-hover:translate-y-0 translate-y-3 transition duration-slow'>{project?.title}</span> {project?.subtitle && <span className='block h4 group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-3 transition-all duration-slow group-hover:delay-[.07s]'>{project.subtitle}</span>}</h3>
 						</div>
 					</div>
+					{/* Move gradient out to own div */}
+					<div className="z-2 opacity-75 rounded absolute bottom-0 left-0 w-full h-1/2 bg-true-black bg-gradient-to-t from-[rgba(0,0,0,.5)] rounded"/>
 					<div className="group-hover:opacity-40 transition-opacity duration-slow opacity-0 z-2 rounded absolute top-0 left-0 w-full h-full bg-true-black"/>
 				</Link>
 			</div>

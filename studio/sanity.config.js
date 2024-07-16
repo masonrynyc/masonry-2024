@@ -33,7 +33,6 @@ export default defineConfig({
             pageMenuItem(S),
             // plopAddMenuItem
             projectMenuItem(S),
-            blogMenuItem(S),
             S.divider(),
             settingsMenuItem(S)
           ])

@@ -34,7 +34,7 @@
 	}
 
 	h3, .h3, .h3 p {
-		--mobile-font-size: 31;
+		--mobile-font-size: 21;
 		--desktop-font-size: 31;
 		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();
@@ -50,7 +50,7 @@
 	}
 
 	h4, .h4, .h4 p {
-		--mobile-font-size: 35;
+		--mobile-font-size: 24;
 		--desktop-font-size: 35;
 		--xl-font-size: calc(var(--desktop-font-size) * 1);
 		@include responsiveType();

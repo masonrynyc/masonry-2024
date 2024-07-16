@@ -67,6 +67,7 @@ const link = ({name = 'link', title = 'Link', needTitle = true} = {}) => {
           name: 'linkSection',
           title: 'Page Section',
           description: 'Optional',
+          hidden: true,
           options: {
             collapsable: true
           },

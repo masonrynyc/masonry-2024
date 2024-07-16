@@ -211,7 +211,7 @@
   /* Large Text */
   .input-component.large-text,
   .input-component.large-text .input-label {
-    font-size: clamp(24px, calc(30vw / 1440 * 100), 34px);
+    font-size: clamp(24px, calc(30vw / 1366 * 100), 34px);
   }
   
   .input-component.large-text[data-focused=true] .input-label {
