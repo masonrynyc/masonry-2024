@@ -24,7 +24,7 @@ const TwoColumnText = ({
 			isFirstSection={isFirstSection}
 			id={id}
 		>
-			<div className="px-margin">
+			<div className={isFirstSection ? "px-margin pt-v-space md:pt-v-space-md" : "px-margin md:-mt-8"}>
 				<div className="mx-auto max-w-site-max-w">
 					<ScrollEntrance className="grid gap-x-gutter gap-y-4 md:grid-cols-3 lg:grid-cols-12 items-top">
 						{border && (<div className="z-1 col-span-full border-t"/>)}

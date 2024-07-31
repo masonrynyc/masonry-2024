@@ -46,12 +46,12 @@ const Columns = ({
 				>	
 					{title && (
 						<ScrollEntrance>
-							<div className='w-full pb-v-space-sm'>
+							<div className='w-full pb-v-space-md -mb-1'>
 								<h3 className="h1">{title}</h3>
 							</div>
 						</ScrollEntrance>
 					)}
-					<div delay={1} className={`flex flex-wrap md:-mx-half-gutter gap-y-gutter md:gap-y-12 ${alignmentHorizontal === 'center' ? 'justify-center text-center' : ''}`}>
+					<div delay={1} className={`flex flex-wrap md:-mx-half-gutter gap-y-4 md:gap-y-10 ${alignmentHorizontal === 'center' ? 'justify-center text-center' : ''}`}>
 						{columnItems?.map(column => {
 							return (
 								<ScrollEntrance
@@ -75,8 +75,10 @@ const Columns = ({
 							)
 						})}
 
+						<div className="w-full md:hidden"><div className="border-b"></div></div>
+
 						{actions?.length && (
-							<div className={'flex flex-wrap gap-gutter pt-6 md:pt-3 items-center justify-start md:px-half-gutter'}>
+							<div className={'flex flex-wrap gap-gutter pt-8 md:pt-7 items-center justify-start md:px-half-gutter'}>
 								{actions.map((action, index) => {
 									if (!action.title || !getLinkProps(action)?.to) {
 										return false

@@ -7,11 +7,12 @@ import photo from '@studio/schemas/objects/photo'
 import video from '@studio/schemas/objects/video'
 import ratios from '@studio/schemas/objects/ratios'
 
-export default ({ hasDisplayOptions = true, ...props } = {}) => {
+export default ({ hasDisplayOptions = true, videoFile = false, useAltText, ...props } = {}) => {
   return {
     title: 'Media',
     name: 'media',
     type: 'object',
+    ...props,
     fields: [
       {
         name: 'mediaType',
@@ -30,13 +31,16 @@ export default ({ hasDisplayOptions = true, ...props } = {}) => {
       photo({
         hasDisplayOptions: false,
         hidden: ({ parent }) => parent?.mediaType !== 'image',
+        useAltText: useAltText,
         options: {
           collapsible: false
         }
       }),
       video({
         hidden: ({ parent }) => parent?.mediaType !== 'video',
-        playerSettings: false
+        file: videoFile,
+        playerSettings: false,
+        useTitle: false
       }),
       ...(hasDisplayOptions
         ? [

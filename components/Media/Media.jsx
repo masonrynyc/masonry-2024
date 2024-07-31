@@ -17,7 +17,7 @@ const Media = ({
 }) => {
 
   const image = media?.image
-  const video = media?.video?.asset
+  const video = media?.video?.videoFile
   const vimeoId = media?.video?.id
   if (media?.customRatio) {
     ratio = media?.customRatio
@@ -36,7 +36,7 @@ const Media = ({
     videoWrapperClassname = 'h-full relative'
   }
 
-  if (media.mediaType === 'video' && vimeoId) {
+  if (media.mediaType === 'video' && (vimeoId || video?.url)) {
     return (
       <div
         style={ratio ? { '--ratio': ratio || 'unset' } : {}}
@@ -45,6 +45,7 @@ const Media = ({
         <Video
           className={className}
           vimeoId={vimeoId}
+          videoFile={video}
           ratio={ratio}
           cover={ratio || cover}
           clickToPlay={media?.video?.videoPlaySetting === 'clickToPlay'}

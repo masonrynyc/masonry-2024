@@ -22,6 +22,9 @@ const ProjectGrid = ({
 	gridSize,
 	filterCats = [],
 	exclude = false,
+	imageAspectSm,
+	imageAspectLg,
+	imageWrapperClassname,
 	id
 }) => {
 	const [categories, setCategories] = useState([])
@@ -79,8 +82,6 @@ const ProjectGrid = ({
 
 	}, [filters])
 
-	console.log(projectList)
-
 	// Grid sizing classnames
 	let cardClassname = {
 		small: 'w-full md:w-[41.666%] md:max-w-1/2',
@@ -115,112 +116,118 @@ const ProjectGrid = ({
 			isFirstSection={isFirstSection}
 			id={id}
 		>
-			{headline && (
-				<ScrollEntrance>
-					<div className='pb-v-space px-margin'>
-						<h3 className="h1">{headline}</h3>
-					</div>
-				</ScrollEntrance>
-			)}
-			{showFilters && (
-				<ScrollEntrance className='px-margin pb-gutter'>
-					<div className="max-w-site-max-w mx-auto w-full flex justify-between items-center">
-						<div className="flex flex-wrap gap-[15px] pb-gutter">
-							<Button
-								onClick={() => setFilterItems(false)}
-								className={filters?.length ? 'transparent' : 'no-hover'}
-							>View All</Button>
-							{categories.map(cat => {
-								return (
-									<Button
-										key={cat.slug}
-										onClick={() => setFilterItems(cat.slug)}
-										className={filters.includes(cat.slug) ? 'no-hover' : (filters?.length ? 'transparent' : 'no-hover')}
-									>{cat.title}</Button>
-								)
-							})}
-						</div>
-
-						{gridSize !== 'small' && (
-							<div className="hidden md:flex flex-wrap gap-[15px] pb-gutter">
-								<Button
-									onClick={() => setView('large')}
-									title='Large View'
-									icon={
-										<svg width="16" height="16" viewBox="0 0 16 16" >
-											<path fillRule="evenodd" clipRule="evenodd" d="M16 0H0V2H16V0ZM16 14H0V16H16V14Z"/>
-										</svg>
-									}
-									className={`large square ${view === 'large' ? 'no-hover' : 'transparent'}`}
-								/>
-								<Button
-									onClick={() => setView('small')}
-									title='Small View'
-									icon={
-										<svg width="16" height="16" viewBox="0 0 16 16" >
-											<path fillRule="evenodd" clipRule="evenodd" d="M4 0H0V4H4V0ZM16 0H12V4H16V0ZM12 12H16V16H12V12ZM4 12H0V16H4V12Z"/>
-										</svg>
-									}
-									className={`large square ${view === 'small' ? 'no-hover' : 'transparent'}`}
-								/>
-							</div>
-						)}
-					</div>
-				</ScrollEntrance>
-			)}
-			<div className="px-margin">
-				<div
-					className="flex gap-y-gutter justify-start flex-wrap -mx-half-gutter"
-					key={filtersSlug}
-				>
-					{projectList?.slice(0, limit)?.map((item, index) => {
-						let project = item
-
-						if (item?.project) {
-							project = item.project
-						}
-
-						if (!project?.featuredImage) {
-							return false
-						}
-
-						return (
-							<ScrollEntrance
-								delay={showFilters ? 1 : 0}
-								key={item?._key + filtersSlug}
-								className={`px-half-gutter ${cardClassname[item?.size] || cardClassname.medium}`}
-								// className={`${!item.featured ? 'w-full md:w-1/3 md:grow md:max-w-1/2' : 'w-full md:w-[66.666%]'} px-half-gutter`}
-							>
-								<ProjectCard
-									project={project}
-									className='h-full'
-									imageWrapperClassname={`aspect-video md:aspect-auto md:h-[20vw] w-full`}
-								/>
-							</ScrollEntrance>
-						)
-					})}
-				</div>
-
-				{actions?.length && (
+			<div className={isFirstSection ? "pt-v-space md:pt-v-space-md pb-v-space-sm md:pb-0" : ""}>
+				{headline && (
 					<ScrollEntrance>
-						<div className={'flex flex-wrap gap-gutter pt-v-space-sm items-center justify-start'}>
-							{actions.map((action, index) => {
-								if (!action.title || !getLinkProps(action)?.to) {
-									return false
-								}
-								return (
-									<Button
-										key={action._key}
-										className='!mb-0'
-										{...getLinkProps(action)}
-									>
-										{action.title}
-									</Button>
-								)
-							})}
+						<div className='py-v-space-md -mb-1 mx-margin border-t'>
+							<h3 className="h1">{headline}</h3>
 						</div>
 					</ScrollEntrance>
 				)}
+				{showFilters && (
+					<ScrollEntrance className='px-margin pb-3'>
+						<div className="max-w-site-max-w mx-auto w-full flex justify-between items-center">
+							<div className="flex flex-wrap gap-[15px] pb-gutter">
+								<Button
+									onClick={() => setFilterItems(false)}
+									className={filters?.length ? 'transparent' : 'no-hover'}
+								>View All</Button>
+								{categories.map(cat => {
+									return (
+										<Button
+											key={cat.slug}
+											onClick={() => setFilterItems(cat.slug)}
+											className={filters.includes(cat.slug) ? 'no-hover' : (filters?.length ? 'transparent' : 'no-hover')}
+										>{cat.title}</Button>
+									)
+								})}
+							</div>
+
+							{gridSize !== 'small' && (
+								<div className="hidden md:flex flex-wrap gap-[15px] pb-gutter">
+									<Button
+										onClick={() => setView('large')}
+										title='Large View'
+										icon={
+											<svg width="16" height="16" viewBox="0 0 16 16" >
+												<path fillRule="evenodd" clipRule="evenodd" d="M16 0H0V2H16V0ZM16 14H0V16H16V14Z"/>
+											</svg>
+										}
+										className={`large square ${view === 'large' ? 'no-hover' : 'transparent'}`}
+									/>
+									<Button
+										onClick={() => setView('small')}
+										title='Small View'
+										icon={
+											<svg width="16" height="16" viewBox="0 0 16 16" >
+												<path fillRule="evenodd" clipRule="evenodd" d="M4 0H0V4H4V0ZM16 0H12V4H16V0ZM12 12H16V16H12V12ZM4 12H0V16H4V12Z"/>
+											</svg>
+										}
+										className={`large square ${view === 'small' ? 'no-hover' : 'transparent'}`}
+									/>
+								</div>
+							)}
+						</div>
+					</ScrollEntrance>
+				)}
+				<div className="px-margin">
+					<div
+						className="flex gap-y-gutter justify-start flex-wrap -mx-half-gutter"
+						key={filtersSlug}
+					>
+						{projectList?.slice(0, limit)?.map((item, index) => {
+							let project = item
+
+							if (item?.project) {
+								project = item.project
+							}
+
+							if (!project?.featuredImage) {
+								return false
+							}
+
+							return (
+								<ScrollEntrance
+									delay={showFilters ? 1 : 0}
+									key={item?._key + filtersSlug}
+									className={`px-half-gutter ${cardClassname[item?.size] || cardClassname.medium}`}
+									// className={`${!item.featured ? 'w-full md:w-1/3 md:grow md:max-w-1/2' : 'w-full md:w-[66.666%]'} px-half-gutter`}
+								>
+									<ProjectCard
+										project={project}
+										className='h-full'
+										style={{
+											'--aspect-sm': imageAspectSm || '2.25',
+											'--aspect-lg': imageAspectLg || 'unset'
+										}}
+										imageWrapperClassname={`${imageWrapperClassname} aspect-[var(--aspect-sm)] md:aspect-[var(--aspect-lg)] md:h-[24.5vw] w-full`}
+									/>
+								</ScrollEntrance>
+							)
+						})}
+					</div>
+
+					{actions?.length && (
+						<ScrollEntrance>
+							<div className={'flex flex-wrap gap-gutter pt-v-space-sm items-center justify-start'}>
+								{actions.map((action, index) => {
+									if (!action.title || !getLinkProps(action)?.to) {
+										return false
+									}
+									return (
+										<Button
+											key={action._key}
+											className='!mb-0'
+											{...getLinkProps(action)}
+										>
+											{action.title}
+										</Button>
+									)
+								})}
+							</div>
+						</ScrollEntrance>
+					)}
+				</div>
 			</div>
 		</Section>
 	)

@@ -85,9 +85,6 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
   let projectCats = []
   project?.categories?.forEach(cat => projectCats?.push(cat?.slug))
 
-
-  // console.log(projectCats)
-
   return (
     <>
       <Layout
@@ -99,37 +96,35 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
         closeFn={infoVisible ? () => setInfoVisible(false) : false}
       >
         <ScrollEntrance delay={6}>
-          <Section
-            setTheme='default'
-            prevTheme={false}
-            nextTheme='default'
-            isFirstSection={true}
-          >
-            <div className="px-margin py-v-space max-w-site-max-w mx-auto md:hidden"><h1 className='h5 border-t pt-3'>{project.title}</h1></div>
-            <div className="px-margin">
-              <div
-                style={{ '--bg-color': project?.featuredImage?.palette?.darkVibrant?.background || '#000' }}
-                className="text-center h3 bg-[var(--bg-color)] rounded"
-              >
-                <Media
-                  className='rounded w-full'
-                  ratio={2}
-                  media={{
-                    image: project?.featuredImage,
-                    video: project?.featuredVideo,
-                    mediaType: project?.featuredVideo ? 'video' : 'image'
-                  }}
-                />
+          <div className="px-margin pb-v-space-md max-w-site-max-w mx-auto md:hidden"><h1 className='h5 border-t pt-3'>{project.title}</h1></div>
+          {project?.introMedia?.image || project?.introMedia?.video && (
+            <Section
+              setTheme='default'
+              prevTheme={false}
+              nextTheme='default'
+              isFirstSection={true}
+            >
+              <div className="px-margin -mb-4 md:mb-0 md:-mt-[calc(var(--vertical-spacing-small)+10px)]">
+                <div
+                  style={{ '--bg-color': project?.introMedia.image?.palette?.darkVibrant?.background || '#000' }}
+                  className="text-center h3 bg-[var(--bg-color)] relative rounded aspect-[1.135] md:aspect-video xl:aspect-[2.356]"
+                >
+                  <Media
+                    className='rounded w-full absolute top-0 left-0 w-full h-full'
+                    cover
+                    media={project?.introMedia}
+                  />
+                </div>
               </div>
-            </div>
-          </Section>
+            </Section>
+          )}
           <Section
             setTheme='default'
             prevTheme='default'
             nextTheme='default'
           >
-            <div className='px-margin grid'>
-              <div className='grid md:grid-cols-12 gap-x-gutter'>
+            <div className='px-margin grid pb-2 md:pb-0'>
+              <div className='grid md:grid-cols-12 gap-x-gutter md:-my-8'>
                 <div className="md:col-span-6 md:pb-v-space">
                   <h2 className='h1'>{project?.pageTitle}</h2>
                 </div>
@@ -151,22 +146,19 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
             </div>
           </Section>
         </ScrollEntrance>
+
         <Modules modules={modules} nextSection={{ theme: 'default' }} />
-        <Divider
-          setTheme='default'
-          prevTheme='default'
-          nextTheme='default'
-        />
+
         <ProjectGrid
           headline='Related Work.'
           setTheme='default'
           prevTheme='default'
           nextTheme={false}
-          filterCats={projectCats}
           gridSize='small'
-          projects={projects}
-          exclude={project}
-          limit={3}
+          projects={project.relatedProjects}
+          // exclude={project}
+          imageAspectLg='2.25'
+          imageWrapperClassname='!h-auto'
         />
       </Layout>
       <div

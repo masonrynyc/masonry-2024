@@ -6,6 +6,7 @@ import { MdClose, MdPlayArrow } from 'react-icons/md'
 const Video = ({
 	className = '',
 	vimeoId,
+	videoFile,
 	cover = true,
 	ratio = 16/9,
 	playing = true,
@@ -36,7 +37,14 @@ const Video = ({
 	const videoWrapper = useRef(null)
 	const videoPlayer = useRef(null)
 
-	const videoUrl = 'https://vimeo.com/' + vimeoId
+	let videoUrl = false
+	if (vimeoId) {
+		videoUrl = 'https://vimeo.com/' + vimeoId
+	}
+
+	if (videoFile) {
+		videoUrl = videoFile.url
+	}
 
 	const setDuration = () => {
 		if (!videoDuration) {
@@ -87,7 +95,7 @@ const Video = ({
 		}
 	}, [])
 
-	if (!vimeoId) {
+	if (!videoUrl) {
 		return false
 	}
 
@@ -118,7 +126,7 @@ const Video = ({
 	return (
 		<>
 			<div
-				className={`video-wrapper ${cover ? 'cover' : ''} ${aspectRatio < playerRatio ? 'portrait' : 'landscape'} ${className}`}
+				className={`${videoFile ? 'mp4' : 'vimeo'} video-wrapper ${cover ? 'cover' : ''} ${aspectRatio < playerRatio ? 'portrait' : 'landscape'} ${className}`}
 				ref={videoWrapper}
 				style={{ '--ratio': playerRatio }}
 			>

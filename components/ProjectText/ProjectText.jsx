@@ -21,7 +21,7 @@ const ProjectText = ({
 			isFirstSection={isFirstSection}
 			id={id}
 		>
-			<div className="px-margin">
+			<div className="px-margin py-6 md:py-3">
 				<div className="mx-auto max-w-site-max-w">
 					<ScrollEntrance className="grid gap-x-gutter gap-y-4 md:grid-cols-3 lg:grid-cols-12 items-top">
 						<div className='md:col-span-2 lg:col-span-7 md:col-start-2 lg:col-start-6'><RichText className="md:-mt-1" text={text}/></div>

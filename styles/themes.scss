@@ -2,8 +2,9 @@
   /* Grid */
 	--site-gutters: 22px;
 	--site-margins: 22px;
-  --vertical-spacing: clamp(calc(70 * 1px), calc((120 * 1vw) / 1366 * 100), calc(140 * 1px));
-	--vertical-spacing-small: clamp(calc(40 * 1px), calc((50 * 1vw) / 1366 * 100), calc(60 * 1px));
+  --vertical-spacing: clamp(calc(66 * 1px), calc((120 * 1vw) / 1366 * 100), calc(120 * 1px));
+	--vertical-spacing-medium: clamp(calc(40 * 1px), calc((90 * 1vw) / 1366 * 100), calc(90 * 1px));
+	--vertical-spacing-small: clamp(calc(30 * 1px), calc((50 * 1vw) / 1366 * 100), calc(50 * 1px));
 	/* Brand Colors */
 	--dark-color: #1b1b1b;
 	--light-color: #fff;
@@ -41,7 +42,7 @@
 	--button-border-radius: var(--base-border-radius);
 	--header-banner-height: 0px;
 	--header-height: 60px;
-	--header-height-expanded: 110px;
+	--header-height-expanded: 120px;
 	--full-header-height: calc(var(--header-height-expanded) + var(--header-banner-height));
 	--sticky-top: calc(var(--site-gutters) + var(--header-height));
 }

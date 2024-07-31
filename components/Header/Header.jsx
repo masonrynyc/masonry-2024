@@ -140,7 +140,7 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme, hideMobil
 						</Button>
 						{(navItems && navItems?.length) > 0 && (
 							<nav className='hidden md:block'>
-								<ul className='flex gap-[calc(var(--site-gutters)*2)]'>
+								<ul className='flex gap-[38px]'>
 									{navItems.map((item, index) => {
 										const { link, sublinks } = item
 										let active = false

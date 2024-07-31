@@ -10,6 +10,7 @@ export default ({
   title = 'Video',
   name = 'video',
   useTitle = true,
+  file = false,
   group,
   ...props
 } = {}) => {
@@ -23,23 +24,26 @@ export default ({
       collapsible: false
     },
     fields: [
-      {
-        title: 'Vimeo ID',
-        name: 'id',
-        type: 'string',
-        components: { input: VideoInput },
-        description: <>Enter only the ID of the video, not the whole video URL.<br/>ie. https://vimeo.com/<code>{'{{ID}}'}</code></>
-      },
-      {
-        title: 'Video',
-        name: 'videoFile',
-        type: 'file',
-        hidden: true, // Only show if using html videos
-        options: {
-          accept: '.mp4'
+      ...(!file ? [
+        {
+          title: 'Vimeo ID',
+          name: 'id',
+          type: 'string',
+          components: { input: VideoInput },
+          description: <>Enter only the ID of the video, not the whole video URL.<br/>ie. https://vimeo.com/<code>{'{{ID}}'}</code></>
         },
-        description: 'Upload an .mp4 file. Be mindful of file size.'
-      },
+      ] : []),
+      ...(file ? [
+        {
+          title: 'Video',
+          name: 'videoFile',
+          type: 'file',
+          options: {
+            accept: '.mp4'
+          },
+          description: 'Upload an .mp4 file. Be mindful of file size.'
+        },
+      ] : []),
       ...(useTitle ? [
         {
           title: 'Video Title',

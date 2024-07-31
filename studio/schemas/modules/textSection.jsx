@@ -41,6 +41,12 @@ export default {
       type: 'textLockup',
       group: 'main'
     },
+    {
+      name: 'extraSpacing',
+      title: 'Extra Spacing',
+      type: 'boolean',
+      group: 'main'
+    },
     // More Fields
     {
       name: 'hidden',

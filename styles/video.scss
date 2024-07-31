@@ -17,15 +17,20 @@
     > div {
       width: 100% !important;
       height: 100% !important;
+      video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+      }
     }
-    &.landscape {
+    &.landscape:not(.mp4) {
       > div {
         aspect-ratio: var(--ratio);
         width: 100% !important;
         height: unset !important;
       }
     }
-    &.portrait {
+    &.portrait:not(.mp4) {
       > div {
         aspect-ratio: var(--ratio);
         height: 100% !important;

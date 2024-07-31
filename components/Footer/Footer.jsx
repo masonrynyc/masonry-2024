@@ -9,7 +9,7 @@ const Footer = ({ className = '', menus }) => {
 
 	return (
 		<footer className={className}>
-			<div className='mx-margin pb-[45px] flex items-baseline justify-between border-t pt-3'>
+			<div className='mx-margin pb-[45px] flex items-baseline justify-between border-t pt-7'>
 				<div className='w-[80px] h6 flex items-center justify-start gap-x-[.4em]'>
 					<span className='h6'>©</span> <Logo /> <span className='!text-[1.135em]'>{new Date().getFullYear()}</span>
 				</div>

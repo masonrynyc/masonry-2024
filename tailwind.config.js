@@ -54,6 +54,7 @@ module.exports = {
         'gutter': 'var(--site-gutters)',
         'margin': 'var(--site-margins)',
         'v-space': 'var(--vertical-spacing)',
+        'v-space-md': 'var(--vertical-spacing-medium)',
         'v-space-sm': 'var(--vertical-spacing-small)',
         'half-gutter': 'calc(var(--site-gutters) / 2)',
         'half-margin': 'calc(var(--site-margins) / 2)',

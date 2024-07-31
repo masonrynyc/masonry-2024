@@ -2,6 +2,7 @@ import image from '@queries/image'
 import moduleProjectText from '@queries/moduleProjectText'
 import moduleMediaCollage from '@queries/moduleMediaCollage'
 import richText from '@queries/richText'
+import media from '@queries/media'
 import { categoryFragment } from '@queries/category'
 
 export const projectFragmentMin = `
@@ -14,6 +15,10 @@ export const projectFragmentMin = `
   featuredImage {
     ${ image }
   },
+  featuredVideo {
+    ...,
+    "url": asset->url
+  },
   seo {
     ...
   }
@@ -22,12 +27,18 @@ export const projectFragmentMin = `
 export const projectFragment = `
   ...,
   ${projectFragmentMin},
+  introMedia {
+    ${media}
+  },
   body[] {
     ${ richText }
   },
-  projectModules[]{
+  projectModules[] {
     _type == "mediaCollage" => { ${moduleMediaCollage} },
     _type == "projectText" => { ${moduleProjectText} },
+  },
+  relatedProjects[] -> {
+    ${projectFragmentMin}
   }
 `
 

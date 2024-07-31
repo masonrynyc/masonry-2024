@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdImage } from 'react-icons/md'
 import photo from '@studio/schemas/objects/photo'
-import video from '@studio/schemas/objects/video'
+import media from '@studio/schemas/objects/media'
 import { projectModules } from '@studio/schemas/objects/modules'
 
 export default {
@@ -48,7 +48,25 @@ export default {
       useAltText: false,
       required: true
     }),
-    video({ name: 'featuredVideo', title: 'Featured Video', group: 'content', useTitle: false }),
+    {
+      name: 'featuredVideo',
+      title: 'Featured Video',
+      type: 'file',
+      group: 'content',
+      options: {
+        accept: '.mp4'
+      }
+    },
+    media({
+      title: 'Project Intro Media',
+      name: 'introMedia',
+      description: 'Shown at the top of the project page',
+      group: 'content',
+      videoFile: true,
+      hasDisplayOptions: false,
+      useAltText: false,
+      required: true
+    }),
     {
       name: 'pageTitle',
       title: 'Headline',
@@ -110,6 +128,21 @@ export default {
       group: 'content'
     },
     projectModules('projectModules', 'Sections', 'content'),
+    {
+      name: 'relatedProjects',
+      title: 'Related Work',
+      type: 'array',
+      validation: Rule => Rule.max(3),
+      of: [
+        {
+          name: 'project',
+          title: 'Project',
+          type: 'reference',
+          to: { type: 'project' }
+        }
+      ],
+      group: 'content'
+    },
     {
       title: 'SEO / Share Settings',
       name: 'seo',

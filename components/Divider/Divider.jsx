@@ -8,8 +8,12 @@ const Divider = ({
 	prevTheme,
 	nextTheme,
 	isFirstSection,
+	mobileHide,
 	id
 }) => {
+	if (mobileHide) {
+		className = 'hidden md:block'
+	}
 	return (
 		<Section
 			className={className}

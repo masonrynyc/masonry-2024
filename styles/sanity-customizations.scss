@@ -1,26 +1,4 @@
 div[data-ui="NextStudioLayout"] {
-  fieldset [data-ui='Box'] legend [data-ui='Text'] > span {
-    font-size: 1.25rem;
-    font-weight: bold;
-    /* margin: 1em 0 0.1em; */
-  }
-
-  [data-ui='Box'] [data-testid] > [data-ui='Grid'],
-  fieldset [data-ui='Box'] > [data-ui='Grid'] {
-    row-gap: 1rem;
-  }
-
-  fieldset[data-level='1'] > [data-ui='Box'] {
-    border: none;
-    padding-left: 0;
-  }
-
-  fieldset[data-level='1'] > [data-ui='Flex']:first-of-type [data-ui='Box']:first-of-type legend [data-ui='Text'] > span {
-    font-size: 1.25rem;
-    font-weight: bold;
-    /*margin: 1em 0 0.1em;*/
-  }
-
   .section-icon svg {
     color: inherit !important;
   }

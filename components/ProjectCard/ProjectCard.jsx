@@ -7,15 +7,15 @@ import { getDocumentLink } from '@utils/helpers'
 const ProjectCard = ({
 	className = '',
 	project,
-	imageWrapperClassname = false,
-	openProject = () => {},
+	style,
+	imageWrapperClassname = false
 }) => {
 	let baseClassname = 'project-card flex flex-col'
 	let projectTitle = project?.subtitle ? project.title + ' ' + project.subtitle : title
 	
 	if (project?.featuredImage) {
 		return (
-			<div className={className ? className + ' ' + baseClassname : baseClassname}>
+			<div className={className ? className + ' ' + baseClassname : baseClassname} style={style}>
 				<Link
 					className='group w-full h-full flex flex-col text-left relative'
 					{...getDocumentLink(project)}
@@ -24,10 +24,14 @@ const ProjectCard = ({
 				>
 					<div
 						style={{ '--bg-color': project?.featuredImage?.palette?.darkVibrant?.background || '#000' }}
-						className={`${imageWrapperClassname ? imageWrapperClassname : 'aspect-3/4'} rounded bg-[var(--bg-color)] relative`}
+						className={`${imageWrapperClassname ? imageWrapperClassname : 'aspect-3/4'} overflow-hidden rounded bg-[var(--bg-color)] relative`}
 					>
 						{project?.featuredVideo?.id ? (
-							<Video vimeoId={project.featuredVideo.id} className='rounded' cover/>
+							<Video
+								videoFile={project.featuredVideo}
+								className='rounded'
+								cover
+							/>
 						) : (
 							<Image
 								className='rounded'
@@ -46,7 +50,7 @@ const ProjectCard = ({
 						</div>
 					</div>
 					{/* Move gradient out to own div */}
-					<div className="z-2 opacity-75 rounded absolute bottom-0 left-0 w-full h-1/2 bg-true-black bg-gradient-to-t from-[rgba(0,0,0,.5)] rounded"/>
+					<div className="z-2 rounded absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[rgba(0,0,0,.5)] to-[rgba(0,0,0,0)] rounded"/>
 					<div className="group-hover:opacity-40 transition-opacity duration-slow opacity-0 z-2 rounded absolute top-0 left-0 w-full h-full bg-true-black"/>
 				</Link>
 			</div>

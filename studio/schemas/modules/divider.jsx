@@ -17,6 +17,11 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'mobileHide',
+      title: 'Hide on mobile',
+      type: 'boolean'
+    },
+    {
       name: 'theme',
       title: 'Theme',
       type: 'theme',
