@@ -26,7 +26,7 @@ const ProjectCard = ({
 						style={{ '--bg-color': project?.featuredImage?.palette?.darkVibrant?.background || '#000' }}
 						className={`${imageWrapperClassname ? imageWrapperClassname : 'aspect-3/4'} overflow-hidden rounded bg-[var(--bg-color)] relative`}
 					>
-						{project?.featuredVideo?.id ? (
+						{project?.featuredVideo ? (
 							<Video
 								videoFile={project.featuredVideo}
 								className='rounded'
