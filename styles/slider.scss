@@ -1,6 +1,14 @@
  // Styled to work with Embla Carousel
  .slider {
   --slide-gap: var(--site-gutters);
+  --slides-to-show: var(--slides-xs, 1);
+  @media (min-width: 640px) { --slides-to-show: var(--slides-sm, 1); }
+  @media (min-width: 768px) { --slides-to-show: var(--slides-md, 1); }
+  @media (min-width: 1024px) { --slides-to-show: var(--slides-lg, 1); }
+  @media (min-width: 1280px) { --slides-to-show: var(--slides-xl, 1); }
+  @media (min-width: 1536px) { --slides-to-show: var(--slides-2xl, 1); }
+
+
   overflow: hidden;
   &.loop {
     // padding-right: 0;
@@ -16,13 +24,16 @@
 .slider-container {
   display: flex;
   grid-column-gap: var(--slide-gap);
+  .vertical & {
+    flex-direction: column;
+    height: 1.104em;
+    align-items: flex-start;
+  }
 }
 
 .slider-slide {
   &:not(.auto-width) {
-    --slides-to-show: var(--slides-xs, 4);
-    // --slide-width: calc(100% / var(--slides-to-show) + var(--slide-gap) / var(--slides-to-show));
-    --slide-width: calc((100% - (var(--slide-gap) * -1)) / var(--slides-to-show));
+    --slide-width: calc((100% - var(--slide-gap) * (var(--slides-to-show) - 1)) / var(--slides-to-show));
     flex: 0 0 calc((100% / var(--slides-to-show)) - var(--slide-gap) * (var(--slides-to-show) - 1) / var(--slides-to-show));
     flex: 0 0 var(--slide-width);
   }
@@ -31,15 +42,6 @@
   }
   
   min-width: 0;
-  @media only screen and (min-width: 640px) {
-    --slides-to-show: var(--slides-sm, 4);
-  }
-  @media only screen and (min-width: 1024px) {
-    --slides-to-show: var(--slides-md, 3);
-  }
-  @media only screen and (min-width: 1280px) {
-    --slides-to-show: var(--slides-lg, 4);
-  }
   img, video {
     min-width: 100%;
   }

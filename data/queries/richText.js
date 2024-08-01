@@ -7,6 +7,9 @@ export default `
 		...,
 		_type == "link" => {
 			${link}
+		},
+		_type == "rotatingText" => {
+			...
 		}
 	},
 	_type == "inlineImage" => {

@@ -22,6 +22,11 @@ export default {
       type: 'boolean'
     },
     {
+      name: 'mobileShow',
+      title: 'Show on mobile but not on desktop',
+      type: 'boolean'
+    },
+    {
       name: 'theme',
       title: 'Theme',
       type: 'theme',

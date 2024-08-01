@@ -3,6 +3,7 @@ import Image from '@components/Image'
 import Video from '@components/Video'
 import Link from '@components/Link'
 import Button from '@components/Button'
+import RotatingText from '@components/RotatingText'
 import { getLinkProps } from '@utils/helpers'
 // import vimeoVideo from '@components/Video/vimeoVideo'
 // import { getSlugLink } from 'utils/format'
@@ -115,6 +116,12 @@ export const components = {
         <Link
           {...getLinkProps(action)}
         >{props.children}</Link>
+      )
+    },
+    rotatingText: props => {
+      console.log(props)
+      return (
+        <RotatingText items={props?.value?.items}/>
       )
     }
   },

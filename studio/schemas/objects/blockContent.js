@@ -13,6 +13,12 @@ import {
 import ImagePreview from '@studio/components/previews/ImagePreview'
 import link from '@studio/schemas/objects/link'
 
+const RotatingTextPreview = props => {
+  return (
+    <span>{props.renderDefault(props)} <span className="inline-block body-small bold">({props?.value?.items?.length} Items)</span></span>
+  )
+}
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -57,7 +63,27 @@ export default {
             name: 'link',
             title: 'Link',
             needTitle: false
-          })
+          }),
+          {
+            name: 'rotatingText',
+            title: 'Rotating Text',
+            type: 'object',
+            components: { annotation: RotatingTextPreview },
+            fields: [
+              {
+                name: 'items',
+                title: 'Items',
+                type: 'array',
+                of: [
+                  {
+                    // name: 'item',
+                    // title: 'Item',
+                    type: 'string'
+                  }
+                ]
+              }
+            ]
+          }
         ]
       }
     },
