@@ -97,7 +97,7 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
       >
         <ScrollEntrance delay={6}>
           <div className="px-margin pb-v-space-md max-w-site-max-w mx-auto md:hidden"><h1 className='h5 border-t pt-3'>{project.title}</h1></div>
-          {project?.introMedia?.image || project?.introMedia?.video && (
+          {(project?.introMedia?.image || project?.introMedia?.video) && (
             <Section
               setTheme='default'
               prevTheme={false}
