@@ -52,7 +52,7 @@ const BlogPosts = ({
 		if (listingType !== 'currated') {
 			getClient().fetch(query, queryParams).then((res) => { setPostList(res) })
 		}
-	})
+	}, [])
 
 	const sliderLabel = {
 		'currated': 'Currated selection of blog posts',
