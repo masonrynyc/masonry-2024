@@ -9,7 +9,7 @@ const RotatingText = ({ className = '', items }) => {
 	
 	const autoplayOptions = {
 		stopOnInteraction: false,
-		delay: 3000
+		delay: 2000
 	}
 
 	let emblaPlugins = [ClassNames(), Autoplay(autoplayOptions)]

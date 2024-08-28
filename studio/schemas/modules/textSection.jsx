@@ -49,6 +49,14 @@ export default {
     },
     // More Fields
     {
+      name: 'homeIntro',
+      title: 'Is home intro',
+      description: 'Does special sizing to accomidate line breaking',
+      initialValue: false,
+      type: 'boolean',
+      group: 'settings'
+    },
+    {
       name: 'hidden',
       title: 'Hidden',
       initialValue: false,

@@ -91,7 +91,7 @@ const ProjectGrid = ({
 
 	if (view === 'small') {
 		cardClassname = {
-			small: 'w-full md:w-[20%] md:max-w-[20%]',
+			small: 'w-full md:w-[20%] md:max-w-1/3 grow',
 			medium: 'w-full md:w-1/3 md:grow md:max-w-1/2',
 			large: 'w-full md:grow md:w-1/3 md:max-w-1/2'
 		}
@@ -153,7 +153,7 @@ const ProjectGrid = ({
 												<path fillRule="evenodd" clipRule="evenodd" d="M16 0H0V2H16V0ZM16 14H0V16H16V14Z"/>
 											</svg>
 										}
-										className={`large square ${view === 'large' ? 'no-hover' : 'transparent'}`}
+										className={`square ${view === 'large' ? 'no-hover' : 'transparent'}`}
 									/>
 									<Button
 										onClick={() => setView('small')}
@@ -163,7 +163,7 @@ const ProjectGrid = ({
 												<path fillRule="evenodd" clipRule="evenodd" d="M4 0H0V4H4V0ZM16 0H12V4H16V0ZM12 12H16V16H12V12ZM4 12H0V16H4V12Z"/>
 											</svg>
 										}
-										className={`large square ${view === 'small' ? 'no-hover' : 'transparent'}`}
+										className={`square ${view === 'small' ? 'no-hover' : 'transparent'}`}
 									/>
 								</div>
 							)}

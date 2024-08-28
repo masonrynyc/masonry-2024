@@ -75,7 +75,7 @@ const Video = ({
 		const ratio = containerW / containerH
 		if (ratio !== aspectRatio && ratio !== Infinity) {
 			setAspectRatio(containerW / containerH)
-			setRatioFn(ratio)
+			setRatioFn(playerRatio)
 		}
 	}
 
@@ -89,10 +89,10 @@ const Video = ({
 			setIsMuted(false)
 		}
 
-		window.addEventListener("resize", getAspectRatio); // add event listener
-		return () => {
-			window.removeEventListener("resize", getAspectRatio); // clean up
-		}
+		// window.addEventListener("resize", getAspectRatio); // add event listener
+		// return () => {
+		// 	window.removeEventListener("resize", getAspectRatio); // clean up
+		// }
 	}, [])
 
 	if (!videoUrl) {

@@ -75,7 +75,9 @@ const Columns = ({
 							)
 						})}
 
-						<div className="w-full md:hidden"><div className="border-b"></div></div>
+						<ScrollEntrance className='w-full' delay={0}>
+							<div className="w-full md:hidden"><div className="border-b"></div></div>
+						</ScrollEntrance>
 
 						{actions?.length && (
 							<div className={'flex flex-wrap gap-gutter pt-8 md:pt-7 items-center justify-start md:px-half-gutter'}>

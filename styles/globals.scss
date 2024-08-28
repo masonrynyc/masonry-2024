@@ -62,3 +62,24 @@ body {
     direction: initial;
   }
 }
+
+// Homepage Intro Styles
+.home-intro h1 {
+  max-width: 11.75em;
+  @media (min-width: 520px) {
+    max-width: 100%;
+  }
+  br {
+    &:first-of-type {
+      @media (min-width: 520px) {
+        display: none;
+      }
+    }
+    &:last-of-type {
+      display: none;
+      @media (min-width: 520px) {
+        display: initial;
+      }
+    }
+  }
+}

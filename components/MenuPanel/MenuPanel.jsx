@@ -32,7 +32,7 @@ const MenuPanel = ({
 					opacity: visible ? '0' : '0',
 					visibility: visible ? 'visible' : 'hidden'
 				}}
-				className="md:hidden transition-all panel-overlay fixed top-0 left-0 w-full h-full bg-text-color opacity-10 z-1"
+				className={`${visible ? 'delay-500' : 'delay-500'} md:hidden transition-all panel-overlay fixed top-0 left-0 w-full h-full bg-text-color opacity-10 z-1`}
 				onClick={() => setMenuPanel(false)}
 			/>
 			<div
@@ -40,7 +40,7 @@ const MenuPanel = ({
 					opacity: visible ? 1 : 0,
 					visibility: visible ? 'visible' : 'hidden'
 				}}
-				className={`flex md:hidden flex-col transition-all duration-slow menu-panel fixed top-0 pt-header-height bottom-0 right-0 w-full bg-bg z-2 ` + className}
+				className={`${visible ? '' : 'delay-700'} flex md:hidden flex-col transition-all duration-slow menu-panel fixed top-0 pt-header-height bottom-0 right-0 w-full bg-bg z-2 ` + className}
 			>
 				<div className="grow w-full flex items-center pb-header-height">
 					{(navItems && navItems?.length) > 0 && (

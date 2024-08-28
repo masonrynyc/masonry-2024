@@ -16,7 +16,7 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Client',
       type: 'string',
       validation: Rule => Rule.required(),
       group: 'content'
@@ -37,6 +37,13 @@ export default {
         maxLength: 96
       },
       validation: Rule => Rule.required(),
+      group: 'content'
+    },
+    {
+      title: 'Coming Soon',
+      name: 'comingSoon',
+      type: 'boolean',
+      description: 'If true, the project will no be clickable in the project grid',
       group: 'content'
     },
     photo({

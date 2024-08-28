@@ -81,6 +81,7 @@ const WideMedia = ({
 								<div style={{ opacity: overlayOpacity / 100 }} className="absolute top-0 left-0 w-full h-full bg-true-black z-2"/>
 							)}
 							<Media media={media} cover={height !== 'auto'} className='w-full rounded' />
+							<div className="z-2 rounded-b absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[rgba(0,0,0,.5)] to-[rgba(0,0,0,0)]"/>
 						</div>
 						{hasText && (
 							<div className={`flex absolute z-2 top-0 left-0 w-full h-full p-margin ${vPlacementClass[placementValues[1]]} ${textColor === 'dark' ? 'text-true-black' : '-text-white'}`}>

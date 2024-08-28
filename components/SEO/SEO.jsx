@@ -44,7 +44,7 @@ function SEO ({
 	// Keywords
 	const metaKeywords = joinedKeywords(page?.seo?.keywords)
 
-	const titleTemplate = metaTitle && pagePath !== 'home' ? (siteTitle + ' | ' + metaTitle) : (siteTitle + ' | Homepage')
+	const titleTemplate = metaTitle && pagePath !== 'home' ? (siteTitle + ' | ' + metaTitle) : (siteTitle + ' | Home')
 
 	// Schema
 	let schema = false

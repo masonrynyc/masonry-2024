@@ -46,7 +46,7 @@ const Layout = ({ children, page, settings, menus, hideMobileMenuButton, closeFn
         // shareImage={pageMeta?.shareImage?.url || getBackupShareImage(modules)}
       />
       <Link to="#content" className='hidden'>Skip to content</Link>
-      <div id="Layout">
+      <div id="Layout" className='flex flex-col min-h-full min-h-screen'>
         <Header
           menus={menus}
           settings={settings}
@@ -55,8 +55,8 @@ const Layout = ({ children, page, settings, menus, hideMobileMenuButton, closeFn
           hideMobileMenuButton={hideMobileMenuButton}
           closeFn={closeFn}
         />
-        <main id="content">{children}</main>
-        <Footer menus={menus} />
+        <main id="content" className='grow'>{children}</main>
+        <Footer menus={menus} site={settings} />
       </div>
     </>
   )

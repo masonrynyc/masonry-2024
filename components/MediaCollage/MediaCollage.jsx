@@ -20,6 +20,8 @@ const MediaCollage = ({
 		}
 	}
 
+	console.log(ratios)
+
 	return (
 		<Section
 			className={className}
@@ -34,6 +36,8 @@ const MediaCollage = ({
 					return (
 						<div key={row._key} className="-mx-half-gutter grid gap-y-gutter md:flex">
 							{row?.item?.map((mediaItem, index) => {
+								const multipleItems = row?.item?.length > 1
+
 								let aspect1 = row?.item[0]?.customRatio || row?.item[0]?.aspectRatio
 								let aspect2 = row?.item[1]?.customRatio || row?.item[1]?.aspectRatio
 								let aspect3 = row?.item[2]?.customRatio || row?.item[2]?.aspectRatio
@@ -76,12 +80,12 @@ const MediaCollage = ({
 										className="relative px-half-gutter min-w-12"
 										style={{
 											boxSizing: 'border-box',
-											flex: widths[index],
+											flex: multipleItems ? widths[index] : '1',
 											'--image-bg': mediaItem?.palette?.darkVibrant?.background || '#000'
 										}}
 									>
 										<ScrollEntrance>
-											<div className='bg-[var(--image-bg)] rounded overflow-hidden'>
+											<div className='bg-[var(--image-bg)] rounded overflow-hidden relative'>
 												<Media
 													media={{
 														image: mediaItem,
@@ -89,7 +93,13 @@ const MediaCollage = ({
 														mediaType: mediaItem._type
 													}}
 													className='rounded bg-light-grey w-full'
-													setRatioFn={aspect => addRatio(mediaItem._key, aspect)}
+													setRatioFn={aspect => {
+														if (multipleItems) {
+															addRatio(mediaItem._key, aspect)
+														} else {
+															return false
+														}
+													}}
 													cover={false}
 												/>
 											</div>

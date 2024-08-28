@@ -35,7 +35,7 @@ const ProjectInfo = ({ project, className = '', ...rest }) => {
 
         {project?.projectMeta?.project && (
           <div className='border-t pt-3'>
-            <h3 className='h5 mb-4'>Project</h3>
+            <h3 className='h5 mb-4'>Project Type</h3>
             {project.projectMeta.project}
           </div>
         )}
@@ -187,9 +187,6 @@ const Project = ({
   preview,
   queryParams
 }) => {
-
-  console.log(projects)
-
   if (preview) {
     return (
       <PreviewWrapper query={projectQuery} queryParams={queryParams} initialData={data}>

@@ -12,15 +12,21 @@ const Divider = ({
 	mobileShow,
 	id
 }) => {
+	let visibleClassName = ''
+
 	if (mobileHide) {
-		className = 'hidden md:block'
+		visibleClassName = 'hidden md:block'
 	}
+
 	if (mobileShow) {
-		className = 'md:hidden'
+		visibleClassName = 'md:hidden'
 	}
+
+	console.log(visibleClassName)
+
 	return (
 		<Section
-			className={className}
+			className={className + ' ' + visibleClassName}
 			setTheme={theme}
 			prevTheme={prevTheme}
 			nextTheme={nextTheme}

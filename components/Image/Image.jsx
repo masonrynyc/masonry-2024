@@ -71,7 +71,7 @@ const Image = ({
 
   return (
 		<NextImage
-			alt={imgAlt}
+			// alt={imgAlt}
 			src={imgUrl}
 			width={imgWidth}
 			height={imgHeight}

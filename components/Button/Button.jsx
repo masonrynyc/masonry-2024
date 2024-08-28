@@ -45,7 +45,7 @@ const Button = ({
 			onClick={onClick}
 			disabled={disabled}
 			style={style}
-			title={title || name}
+			// title={title || name}
 			name={name || title}
 			aria-label={name || title}
 		>

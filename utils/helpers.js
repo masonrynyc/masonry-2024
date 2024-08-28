@@ -1,3 +1,5 @@
+import project from "@queries/project"
+
 export const slugify = (text, separator = '-') => {
 	if (!text) {
 		return ''
@@ -46,6 +48,11 @@ export const getShareTags = (host, page, settings) => {
 	let metaDescription = page?.seo?.metaDesc || distillModuleText(page?.modules) || settings?.seo?.metaDesc
 	let shareDescription = page?.seo?.shareDesc || distillModuleText(page?.modules) || settings?.seo?.shareDesc
 
+	let pageTitleOverride = false
+	if (page?._type === 'project') {
+		pageTitleOverride = page.subtitle
+	}
+
 	if (page?._type === 'post') {
 		if (page?.excerpt) {
 			metaDescription = portableToPlainText(page.excerpt)
@@ -59,11 +66,11 @@ export const getShareTags = (host, page, settings) => {
 	return {
 		host: host,
 		siteTitle: settings?.title || process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE,
-		title: page?.title,
+		title: pageTitleOverride || page?.title,
 		pagePath: page?.slug,
-		metaTitle: page?.seo?.metaTitle || page?.title,
+		metaTitle: page?.seo?.metaTitle || pageTitleOverride || page?.title,
 		metaDescription: metaDescription,
-		shareTitle: page?.seo?.shareTitle || page?.title,
+		shareTitle: page?.seo?.shareTitle || pageTitleOverride || page?.title,
 		shareDescription: shareDescription
 	}
 }

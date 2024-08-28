@@ -11,6 +11,7 @@ const TextSection = ({
 	text,
 	alignment = 'center',
 	extraSpacing,
+	homeIntro,
 	id
 }) => {
 	const alignmentClassnames = {
@@ -31,7 +32,7 @@ const TextSection = ({
 				<div className={`w-full max-w-site-max-w mx-auto ${extraSpacing ? 'py-v-space lg:py-v-space-md' : 'py-v-space-sm md:py-0'}`}>
 					<div className="grid md:grid-cols-12 gap-x-gutter">
 						<div className={alignmentClassnames[alignment]}>
-							<TextLockup lockup={text} alignment={alignment} className='max-w-[750px]'/>
+							<TextLockup lockup={text} alignment={alignment} className={homeIntro ? 'home-intro' : 'max-w-[750px]'}/>
 						</div>
 					</div>
 				</div>
