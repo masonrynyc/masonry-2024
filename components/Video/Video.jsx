@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import ReactPlayer from 'react-player'
-import Button from '@components/Button'
+import Image from '@components/Image'
 import { MdClose, MdPlayArrow } from 'react-icons/md'
 
 const Video = ({
@@ -20,7 +20,8 @@ const Video = ({
 	videoDuration,
 	onProgress = () => {},
 	onEnd = () => {},
-	setRatioFn = () => {}
+	setRatioFn = () => {},
+	preloadImage = false
 }) => {
 
 	if (clickToPlay) {
@@ -89,11 +90,15 @@ const Video = ({
 			setIsMuted(false)
 		}
 
-		// window.addEventListener("resize", getAspectRatio); // add event listener
-		// return () => {
-		// 	window.removeEventListener("resize", getAspectRatio); // clean up
-		// }
+		window.addEventListener("resize", getAspectRatio); // add event listener
+		return () => {
+			window.removeEventListener("resize", getAspectRatio); // clean up
+		}
 	}, [])
+
+	useEffect(() => {
+		getAspectRatio()
+	}, [loaded])
 
 	if (!videoUrl) {
 		return false
@@ -117,6 +122,7 @@ const Video = ({
 			const videoW = playerAspectDiv?.width
 			const videoH = playerAspectDiv?.height
 			const newPlayerRatio = videoW / videoH
+			getAspectRatio()
 			if (playerRatio !== newPlayerRatio) {
 				setPlayerRatio(newPlayerRatio)
 			}
@@ -126,7 +132,7 @@ const Video = ({
 	return (
 		<>
 			<div
-				className={`${videoFile ? 'mp4' : 'vimeo'} video-wrapper ${cover ? 'cover' : ''} ${aspectRatio < playerRatio ? 'portrait' : 'landscape'} ${className}`}
+				className={`${videoFile ? 'mp4' : 'vimeo'} relative video-wrapper ${cover ? 'cover' : ''} ${aspectRatio < playerRatio ? 'portrait' : 'landscape'} ${className}`}
 				ref={videoWrapper}
 				style={{ '--ratio': playerRatio }}
 			>
@@ -139,6 +145,11 @@ const Video = ({
 						className='transparent absolute top-gutter right-gutter z-2'
 					/>
 				)} */}
+				{preloadImage && !loaded && (
+					<div className="preload bg-[red] absolute top-0 left-0 !w-full !h-full z-10">
+						<Image image={preloadImage} alt='Loading' cover />
+					</div>
+				)}
 				{hasWindow && (
 					<ReactPlayer
 						ref={videoPlayer}

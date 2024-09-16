@@ -9,6 +9,7 @@ export const projectFragmentMin = `
   ...,
   title,
   "slug": slug.current,
+  comingSoon,
   categories[] -> {
     ${categoryFragment}
   },
@@ -17,6 +18,9 @@ export const projectFragmentMin = `
   },
   featuredVideo {
     ...,
+    preloadImage {
+      ${image}
+    },
     "url": asset->url
   },
   seo {

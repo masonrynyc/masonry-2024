@@ -65,6 +65,9 @@
     --button-hover-bg: transparent;
     --button-hover-color: currentcolor;
     --button-hover-border: var(--hr-color);
+    @media (max-width: 520px) {
+      --button-hover-border: transparent;
+    }
   }
 
   &.solid {

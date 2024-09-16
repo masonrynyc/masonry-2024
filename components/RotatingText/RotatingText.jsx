@@ -25,14 +25,9 @@ const RotatingText = ({ className = '', items }) => {
 	const updateCurrentSlide = useCallback((emblaApi, eventName) => {
 		const newSlideIndex = emblaApi.slideNodes().findIndex(node => node?.classList.value?.includes('is-snapped', 'is-in-view'))
 		const newSlide = emblaApi.slideNodes().find(node => node?.classList.value?.includes('is-snapped', 'is-in-view'))
-		// console.log(newSlide)
 		setSlideshowWidth(newSlide.getBoundingClientRect().width)
 		setCurrentSlide(newSlideIndex)
   }, [])
-
-	// useEffect(() => {
-  //   updateCurrentSlide(emblaApi)
-  // }, [])
 
 	useEffect(() => {
     if (emblaApi) emblaApi.on('init', updateCurrentSlide)

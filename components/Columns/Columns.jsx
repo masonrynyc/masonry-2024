@@ -80,22 +80,24 @@ const Columns = ({
 						</ScrollEntrance>
 
 						{actions?.length && (
-							<div className={'flex flex-wrap gap-gutter pt-8 md:pt-7 items-center justify-start md:px-half-gutter'}>
-								{actions.map((action, index) => {
-									if (!action.title || !getLinkProps(action)?.to) {
-										return false
-									}
-									return (
-										<Button
-											key={action._key}
-											className='!mb-0'
-											{...getLinkProps(action)}
-										>
-											{action.title}
-										</Button>
-									)
-								})}
-							</div>
+							<ScrollEntrance className='w-full' delay={0}>
+								<div className={'flex flex-wrap gap-gutter pt-8 md:pt-7 items-center justify-start md:px-half-gutter'}>
+									{actions.map((action, index) => {
+										if (!action.title || !getLinkProps(action)?.to) {
+											return false
+										}
+										return (
+											<Button
+												key={action._key}
+												className='!mb-0'
+												{...getLinkProps(action)}
+											>
+												{action.title}
+											</Button>
+										)
+									})}
+								</div>
+							</ScrollEntrance>
 						)}
 					</div>
 				</div>

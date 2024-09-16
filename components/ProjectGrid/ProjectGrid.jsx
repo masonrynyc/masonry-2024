@@ -89,9 +89,9 @@ const ProjectGrid = ({
 		large: 'w-full md:grow md:w-full'
 	}
 
-	if (view === 'small') {
+	if (view === 'small' || filters?.length > 0) {
 		cardClassname = {
-			small: 'w-full md:w-[20%] md:max-w-1/3 grow',
+			small: 'w-full md:w-[20%] md:max-w-1/2 grow',
 			medium: 'w-full md:w-1/3 md:grow md:max-w-1/2',
 			large: 'w-full md:grow md:w-1/3 md:max-w-1/2'
 		}

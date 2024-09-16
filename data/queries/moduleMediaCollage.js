@@ -8,6 +8,12 @@ export default `
 			...,
 			_type == "image" => {
 				${image}
+			},
+			_type == "video" => {
+				...,
+				preloadImage {
+					${image}
+				}
 			}
 		}
 	}

@@ -68,7 +68,21 @@ const ProjectInfo = ({ project, className = '', ...rest }) => {
 
 export const ProjectContent = ({ data, settings, menus, projects, preview = false }) => {
   const router = useRouter()
+  const [infoOverlay, setInfoOverlay] = useState(false)
   const [infoVisible, setInfoVisible] = useState(false)
+
+  const toggleInfoPanel = visible => {
+    if (!visible) {
+      setInfoVisible(visible)
+      setTimeout(() => {
+        // Delay background fade out
+        setInfoOverlay(visible)
+      }, 700)
+    } else {
+      setInfoOverlay(visible)
+      setInfoVisible(visible)
+    }
+  }
 
   const project = data
 
@@ -93,7 +107,7 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
         menus={menus}
         preview={preview}
         hideMobileMenuButton={infoVisible}
-        closeFn={infoVisible ? () => setInfoVisible(false) : false}
+        closeFn={infoVisible ? () => toggleInfoPanel(false) : false}
       >
         <ScrollEntrance delay={6}>
           <div className="px-margin pb-v-space-md max-w-site-max-w mx-auto md:hidden"><h1 className='h5 border-t pt-3'>{project.title}</h1></div>
@@ -141,7 +155,7 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
               </div>
 
               <div className="md:hidden pt-7">
-                <Button onClick={() => setInfoVisible(!infoVisible)}>Information</Button>
+                <Button onClick={() => toggleInfoPanel(!infoVisible)}>Information</Button>
               </div>
             </div>
           </Section>
@@ -163,8 +177,8 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
       </Layout>
       <div
         style={{
-					opacity: infoVisible ? 1 : 0,
-					visibility: infoVisible ? 'visible' : 'hidden'
+					opacity: infoOverlay ? 1 : 0,
+					visibility: infoOverlay ? 'visible' : 'hidden'
 				}}
         className={`overflow-auto transition-all duration-slow md:hidden px-margin py-header-height fixed top-0 left-0 w-full h-full bg-bg z-2`}
       >
@@ -206,8 +220,11 @@ export async function getStaticPaths() {
     groq`${allProjects}`
   )
 
+  // Filter out coming soon projects
+  const routes = paths.map(({ slug, comingSoon }) => ({params: {slug, comingSoon} })).filter(value => !value.params.comingSoon)
+
   return {
-    paths: paths.map(({ slug }) => ({params: {slug}})),
+    paths: routes,
     fallback: true
   }
 }

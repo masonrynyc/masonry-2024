@@ -24,7 +24,14 @@ export const wideMedia = (requirements, name) => {
         },
         media({ hasDisplayOptions: true }),
         {
+          name: 'showGradient',
+          title: 'Add gradient overlay',
+          initialValue: true,
+          type: 'boolean'
+        },
+        {
           name: 'hasOverlayText',
+          title: 'Overlay Text',
           description: 'Text to be shown over image or video',
           initialValue: false,
           type: 'boolean',

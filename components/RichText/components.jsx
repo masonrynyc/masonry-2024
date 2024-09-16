@@ -119,7 +119,6 @@ export const components = {
       )
     },
     rotatingText: props => {
-      console.log(props)
       return (
         <RotatingText items={props?.value?.items}/>
       )

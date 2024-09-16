@@ -12,7 +12,6 @@ export const MediaThumbnail = ({
 	if (media?.mediaType === 'video') {
 		const video = media?.video
 		if (video?.id) {
-			console.log(media)
 			const imageUrl = 'https://vumbnail.com/' + media.video.id + '.jpg'
 			return (
 				<div className={'sanity-video-thumbnail relative w-full h-full ' + className}>

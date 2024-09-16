@@ -22,8 +22,6 @@ const Divider = ({
 		visibleClassName = 'md:hidden'
 	}
 
-	console.log(visibleClassName)
-
 	return (
 		<Section
 			className={className + ' ' + visibleClassName}

@@ -15,7 +15,6 @@ const ContactSection = ({
 	rightColumn,
 	id
 }) => {
-	console.log(leftColumn)
 	return (
 		<Section
 			className={className}

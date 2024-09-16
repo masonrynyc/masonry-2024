@@ -15,6 +15,8 @@ const ProjectCard = ({
 	let projectTitle = project?.subtitle ? project.title + ' ' + project.subtitle : title
 	const comingSoon = project.comingSoon
 
+	console.log(project.title, project)
+
 	let LinkEl = Link
 	let LinkElProps = getDocumentLink(project)
 	if (comingSoon) {
@@ -45,6 +47,7 @@ const ProjectCard = ({
 						{project?.featuredVideo ? (
 							<Video
 								videoFile={project.featuredVideo}
+								preloadImage={project.featuredImage}
 								className='rounded'
 								cover
 							/>
@@ -66,7 +69,7 @@ const ProjectCard = ({
 								<span className='inline whitespace-nowrap group-hover:translate-y-0 translate-y-3 transition duration-slow'>{project?.title}</span> {project?.subtitle && <span className='inline whitespace-nowrap h4 group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-3 transition-all duration-slow group-hover:delay-[.07s]'>{project.subtitle}</span>}
 							</h3>
 							{comingSoon && (
-								<div className={`absolute top-0 left-0 p-gutter lg:p-6 translate-y-3 duration-slow transition ${comingSoonActive ? 'translate-y-0' : 'opacity-0'}`}>
+								<div className={`absolute top-0 left-0 p-gutter lg:p-6 duration-slow transition ${comingSoonActive ? 'translate-y-0' : 'translate-y-3 opacity-0'}`}>
 									<h4>Coming Soon</h4>
 								</div>
 							)}

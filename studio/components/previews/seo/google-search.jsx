@@ -64,7 +64,6 @@ class GoogleSearchResult extends React.PureComponent {
     )
 
     const metaDesc = seo?.metaDesc || defaultSEO?.metaDesc
-    console.log(defaultSEO._id)
 
     return (
       <div className='seoItem'>

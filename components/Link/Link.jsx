@@ -26,8 +26,8 @@ const Link = ({
 		<NextLink
 			href={href || to || ''}
 			className={className + ' cursor-pointer'}
-			title={title || name}
-			name={name || title}
+			// title={title || name}
+			// name={name || title}
 			aria-label={ariaLabel}
 			// onClick={() => onClick || setPageTransition(pageTransition)} // TODO: Set page transition from link
 			as={as}

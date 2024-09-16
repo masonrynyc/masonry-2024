@@ -66,7 +66,13 @@ export default ({
             ]
           }
         }
-      ] : [])
+      ] : []),
+      {
+        name: 'preloadImage',
+        title: 'Preload Image',
+        type: 'image',
+        hidden: ({ parent }) => parent?.videoPlaySetting !== 'autoplay',
+      }
     ],
     ...props,
     preview: {

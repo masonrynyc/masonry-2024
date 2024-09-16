@@ -7,6 +7,9 @@ export default `
   },
   video {
     ...,
+    preloadImage {
+      ${image}
+    },
     videoFile {
       ...,
       "url": asset->url

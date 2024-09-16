@@ -36,6 +36,8 @@ const Media = ({
     videoWrapperClassname = 'h-full relative'
   }
 
+  console.log(media?.video?.preloadImage)
+
   if (media.mediaType === 'video' && (vimeoId || video?.url)) {
     return (
       <div
@@ -50,6 +52,7 @@ const Media = ({
           cover={ratio || cover}
           clickToPlay={media?.video?.videoPlaySetting === 'clickToPlay'}
           setRatioFn={setRatioFn}
+          preloadImage={media?.video?.preloadImage}
         />
       </div>
     )
