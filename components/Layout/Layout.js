@@ -46,7 +46,7 @@ const Layout = ({ children, page, settings, menus, hideMobileMenuButton, closeFn
         // shareImage={pageMeta?.shareImage?.url || getBackupShareImage(modules)}
       />
       <Link to="#content" className='hidden'>Skip to content</Link>
-      <div id="Layout" className='flex flex-col min-h-full min-h-screen-height'>
+      <div id="Layout" className='flex flex-col min-h-full md:min-h-screen-height'>
         <Header
           menus={menus}
           settings={settings}
