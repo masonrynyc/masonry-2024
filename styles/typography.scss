@@ -15,7 +15,7 @@
 		font-family: var(--tertiary-font);
 		line-height: 1.104em;
 		letter-spacing: .01em;
-		font-weight: normal;
+		font-weight: var(--light);
 		font-style: normal;
 		text-transform: none;
 	}
@@ -57,7 +57,7 @@
 		font-family: var(--tertiary-font);
 		line-height: 1.104em;
 		letter-spacing: 0;
-		font-weight: normal;
+		font-weight: var(--light);
 		font-style: normal;
 		text-transform: none;
 	}
@@ -70,7 +70,7 @@
 		font-family: var(--secondary-font);
 		line-height: 1em;
 		letter-spacing: .1em;
-		font-weight: normal;
+		font-weight: var(--medium);
 		font-style: normal;
 		text-transform: uppercase;
 	}
@@ -83,7 +83,7 @@
 		font-family: var(--secondary-font);
 		line-height: 1em;
 		letter-spacing: .15em;
-		font-weight: normal;
+		font-weight: var(--medium);
 		font-style: normal;
 		text-transform: uppercase;
 	}

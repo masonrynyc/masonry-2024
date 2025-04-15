@@ -65,7 +65,7 @@ const ProjectCard = ({
 					</div>
 					<div className='transition-opacity duration-slow group-hover:opacity-100 opacity-0 z-3 p-gutter lg:p-6 grow-0 shrink-0 absolute top-0 left-0 w-full h-full'>
 						<div>
-							<h3 className={`h3 flex gap-x-[.25em] flex-wrap transition duration-slow ${comingSoonActive ? '-translate-y-3 opacity-0' : ''}`}>
+							<h3 className={`h3 flex gap-x-[.25em] flex-wrap items-baseline transition duration-slow ${comingSoonActive ? '-translate-y-3 opacity-0' : ''}`}>
 								<span className='inline whitespace-nowrap group-hover:translate-y-0 translate-y-3 transition duration-slow'>{project?.title}</span> {project?.subtitle && <span className='inline whitespace-nowrap h4 group-hover:translate-y-0 group-hover:opacity-100 opacity-0 translate-y-3 transition-all duration-slow group-hover:delay-[.07s]'>{project.subtitle}</span>}
 							</h3>
 							{comingSoon && (

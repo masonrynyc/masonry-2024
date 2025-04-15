@@ -37,11 +37,11 @@ const RotatingText = ({ className = '', items }) => {
 
 	return (
 		<div
-			className={'inline-flex overflow-hidden ' + className}
+			className={'inline-flex align-baseline overflow-hidden ' + className}
 			style={{ '--slideshow-width': slideshowWidth + 'px' }}
 		>
 			<div
-				className="slider vertical duration-slow transition-[width] w-[var(--slideshow-width)]"
+				className="slider vertical duration-slow transition-[width] w-[var(--slideshow-width)] pb-[.1em]"
 				style={{
 					'--slide-gap': '0px',
 					'--slides-xs': 1,
@@ -51,7 +51,7 @@ const RotatingText = ({ className = '', items }) => {
 				}}
 				ref={emblaRef}
 			>
-				<div className="slider-container">
+				<div className="slider-container -mt-[.1em]">
 					{items.map((item, index) => {
 						return (
 							<div
