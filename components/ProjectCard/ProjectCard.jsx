@@ -15,8 +15,6 @@ const ProjectCard = ({
 	let projectTitle = project?.subtitle ? project.title + ' ' + project.subtitle : title
 	const comingSoon = project.comingSoon
 
-	console.log(project.title, project)
-
 	let LinkEl = Link
 	let LinkElProps = getDocumentLink(project)
 	if (comingSoon) {

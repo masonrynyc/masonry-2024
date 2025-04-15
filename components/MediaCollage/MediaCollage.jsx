@@ -92,7 +92,6 @@ const MediaCollage = ({
 													}}
 													className='rounded bg-light-grey w-full'
 													setRatioFn={aspect => {
-														console.log(aspect)
 														if (multipleItems) {
 															addRatio(mediaItem._key, aspect)
 														} else {

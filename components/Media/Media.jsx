@@ -36,8 +36,6 @@ const Media = ({
     videoWrapperClassname = 'h-full relative'
   }
 
-  console.log(media?.video?.preloadImage)
-
   if (media.mediaType === 'video' && (vimeoId || video?.url)) {
     return (
       <div
