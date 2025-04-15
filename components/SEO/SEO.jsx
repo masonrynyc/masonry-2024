@@ -122,11 +122,13 @@ function SEO ({
 				<meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US" />
 
 				{/* Preconnect Domains */}
+				<link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
 				<link rel="preconnect" href="https://cdn.sanity.io" crossOrigin=""/>
 
 				{/* Icons */}
 				<link rel="icon" type="image/png" sizes="any" href={favicon}/>
 				<link rel="apple-touch-icon" type="image/png" sizes="120x120" href={touchIcon}/>
+				<link rel="stylesheet" href="https://use.typekit.net/otw8zea.css" />
 
 				{/* Schema data (LD+JSON) */}
 				{schema && (

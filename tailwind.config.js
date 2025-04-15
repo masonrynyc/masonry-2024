@@ -21,8 +21,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Basis Grotesque', 'sans-serif'],
-      'sans-2': ['Sweet Sans', 'sans-serif'],
-      serif: ['Freight', 'serif']
+      'sans-2': ['sweet-sans-pro', 'sans-serif'],
+      serif: ['freight-display-pro', 'serif']
     },
     colors: {
       'current': 'currentColor',

@@ -16,7 +16,7 @@
 
   @extend .h6;
   height: var(--button-height);
-  padding: 0 var(--button-h-padding);
+  padding: 0 var(--button-h-padding) .1em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
