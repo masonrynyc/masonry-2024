@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Logo from '@components/Logo'
@@ -7,7 +7,6 @@ import Button from '@components/Button'
 import MenuPanel from '@components/MenuPanel'
 import { getLinkProps, isBrowser } from '@utils/helpers'
 import ScrollEntrance from '@components/ScrollEntrance'
-import { useLenis } from 'lenis/react'
 
 const showHideEffect = true
 
@@ -26,21 +25,26 @@ const Header = ({ className = '', menus, settings, hasAtf, firstTheme, hideMobil
 		scrollThreshold = 10
 	}
 
-	const lenis = useLenis(({scroll, direction}) => {
-		if (scroll >= scrollThreshold) {
-			setAtTop(false)
-		} else {
-			setAtTop(true)
+	const lastScrollY = useRef(0)
+
+	useEffect(() => {
+		const onScroll = () => {
+			const scroll = window.scrollY
+			setAtTop(scroll < scrollThreshold)
+
+			if (scroll > lastScrollY.current) {
+				setScrollDirection('down')
+			} else if (scroll < lastScrollY.current) {
+				setScrollDirection('up')
+			}
+
+			lastScrollY.current = scroll
 		}
 
-		if (direction === 1) {
-			setScrollDirection('down')
-		}
-
-		if (direction === -1) {
-			setScrollDirection('up')
-		}
-  })
+		window.addEventListener('scroll', onScroll, { passive: true })
+		onScroll()
+		return () => window.removeEventListener('scroll', onScroll)
+	}, [scrollThreshold])
 
 	useEffect(() => {
 		if (!atTop) {
