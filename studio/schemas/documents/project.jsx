@@ -151,6 +151,25 @@ export default {
       group: 'content'
     },
     {
+      title: 'Password Protection',
+      name: 'security',
+      type: 'object',
+      group: 'settings',
+      fields: [
+        {
+          name: 'usePassword',
+          type: 'boolean',
+          title: 'Use Password'
+        },
+        {
+          name: 'password',
+          type: 'string',
+          title: 'Password',
+          hidden: ({ parent }) => !parent?.usePassword,
+        }
+      ]
+    },
+    {
       title: 'SEO / Share Settings',
       name: 'seo',
       type: 'seo',

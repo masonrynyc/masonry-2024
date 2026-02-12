@@ -43,6 +43,10 @@ export const projectFragment = `
   },
   relatedProjects[] -> {
     ${projectFragmentMin}
+  },
+  security {
+    usePassword,
+    password
   }
 `
 

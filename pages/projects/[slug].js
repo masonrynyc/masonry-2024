@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { getClient } from '@lib/sanity'
 import groq from 'groq'
 import Layout from '@components/Layout'
 import PreviewWrapper from '@components/PreviewWrapper'
+import Input from '@components/Input'
 import projectQuery, { allProjects } from '@queries/project'
 // Global Site Data
 import settingsQuery from '@queries/settings'
@@ -16,8 +17,9 @@ import Modules from '@components/Modules'
 import RichText from '@components/RichText'
 import Button from '@components/Button'
 import ProjectGrid from '@components/ProjectGrid'
-import Divider from '@components/Divider'
-import TextSection from '@components/TextSection'
+import { MdCheck } from 'react-icons/md'
+
+const PASSWORD_EXPIRY_HOURS = 24
 
 const ProjectInfo = ({ project, className = '', ...rest }) => {
   return (
@@ -66,10 +68,22 @@ const ProjectInfo = ({ project, className = '', ...rest }) => {
   )
 }
 
-export const ProjectContent = ({ data, settings, menus, projects, preview = false }) => {
+export const ProjectContent = ({
+  data,
+  settings,
+  menus,
+  projects,
+  preview = false
+}) => {
   const router = useRouter()
   const [infoOverlay, setInfoOverlay] = useState(false)
   const [infoVisible, setInfoVisible] = useState(false)
+  const [passwordInput, setPasswordInput] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [passwordError, setPasswordError] = useState(false)
+  const [shakeKey, setShakeKey] = useState(0)
+  const [passwordSuccess, setPasswordSuccess] = useState(false)
+  const [passwordFadeOut, setPasswordFadeOut] = useState(false)
 
   const toggleInfoPanel = visible => {
     if (!visible) {
@@ -98,6 +112,120 @@ export const ProjectContent = ({ data, settings, menus, projects, preview = fals
 
   let projectCats = []
   project?.categories?.forEach(cat => projectCats?.push(cat?.slug))
+
+  const requiresPassword = project.security?.usePassword && project.security?.password
+
+  useEffect(() => {
+    if (!requiresPassword) return
+    const storageKey = `project_access_${project.slug}`
+    try {
+      const stored = localStorage.getItem(storageKey)
+      if (stored) {
+        const { timestamp } = JSON.parse(stored)
+        const hoursElapsed = (Date.now() - timestamp) / (1000 * 60 * 60)
+        if (hoursElapsed < PASSWORD_EXPIRY_HOURS) {
+          setIsAuthenticated(true)
+        } else {
+          localStorage.removeItem(storageKey)
+        }
+      }
+    } catch {
+      localStorage.removeItem(storageKey)
+    }
+  }, [requiresPassword, project.slug])
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault()
+    if (passwordInput === project.security.password) {
+      localStorage.setItem(
+        `project_access_${project.slug}`,
+        JSON.stringify({ timestamp: Date.now() })
+      )
+      setPasswordError(false)
+      setPasswordSuccess(true)
+      setTimeout(() => setPasswordFadeOut(true), 1100)
+      setTimeout(() => setIsAuthenticated(true), 1500)
+    } else {
+      setPasswordError(true)
+      setShakeKey(prev => prev + 1)
+    }
+  }
+
+  if (requiresPassword && !isAuthenticated) {
+    return (
+      <Layout
+        page={project}
+        settings={settings}
+        menus={menus}
+        preview={preview}
+        hideMobileMenuButton={infoVisible}
+      >
+        <div className='h-[calc(var(--vh)*100-var(--full-header-height))] pb-full-header-height flex items-center justify-center px-margin'>
+          <ScrollEntrance delay={6} className='py-v-space w-full max-w-[325px]'>
+            <div>
+              <div
+                className="border rounded-full w-[70px] h-[70px] flex items-center justify-center mx-auto relative"
+                style={{
+                  transition: 'opacity 0.4s ease, margin 0.5s ease',
+                  marginBottom: passwordSuccess ? 0 : 40,
+                  opacity: passwordFadeOut ? 0 : 1,
+                }}
+              >
+                <svg
+                  viewBox="0 0 58.12 77.82"
+                  className='w-[14px] block h-auto absolute'
+                  style={{
+                    transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+                    opacity: passwordSuccess ? 0 : 1,
+                    transform: passwordSuccess ? 'translateY(100%)' : 'none',
+                  }}
+                >
+                  <path class="cls-1" d="M54.7,33.93h-7.66v-15.95C47.04,8.06,38.97,0,29.06,0S11.35,7.68,11.09,17.58v16.35H3.42c-1.89,0-3.42,1.53-3.42,3.42v37.04c0,1.89,1.53,3.42,3.42,3.42h51.27c1.89,0,3.42-1.53,3.42-3.42v-37.04c0-1.89-1.53-3.42-3.42-3.42ZM18.08,17.67c.16-5.99,4.98-10.67,10.97-10.67s10.98,4.92,10.98,10.98v15.95h-21.95v-16.26Z"/>
+                </svg>
+                <MdCheck
+                  size='24px'
+                  className='absolute'
+                  style={{
+                    transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+                    opacity: passwordSuccess ? 1 : 0,
+                    transform: passwordSuccess ? 'none' : 'translateY(-50%)',
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <div style={{
+                transition: 'transform 0.5s ease, opacity 0.5s ease',
+                transform: passwordSuccess ? 'translateY(200%)' : 'none',
+                opacity: passwordSuccess ? 0 : 1,
+                overflow: 'hidden',
+              }}>
+                <form onSubmit={handlePasswordSubmit}>
+                  <Input
+                    key={shakeKey}
+                    placeholder='password'
+                    className={`solid${passwordError ? ' shake' : ''}`}
+                    inputClass='!text-center !h6 !pb-[2px]'
+                    type='password'
+                    name='password'
+                    value={passwordInput}
+                    onChange={(e) => setPasswordInput(e.target.value)}
+                    error={passwordError}
+                    style={{
+                      '--input-bg': 'rgba(255, 255, 255, .05)',
+                      '--input-hover-bg': 'rgba(255, 255, 255, .075)',
+                      '--input-focus-bg': 'rgba(255, 255, 255, .05)',
+                      '--input-placeholder': 'rgba(255, 255, 255, .2)'
+                    }}
+                  />
+                </form>
+              </div>
+            </div>
+          </ScrollEntrance>
+        </div>
+      </Layout>
+    )
+  }
 
   return (
     <>

@@ -17,7 +17,9 @@ const Input = ({
 	placeholder,
 	label,
 	spellcheck = false,
+	inputClass = '',
 	name,
+	style,
 	onChange = () => {}
 }) => {
 	const [focused, setFocused] = useState(false)
@@ -83,9 +85,14 @@ const Input = ({
 	}
 
 	return (
-		<div className={inputWrapperClassName} theme={setTheme || theme} data-focused={focused}>
+		<div
+			className={inputWrapperClassName}
+			theme={setTheme || theme}
+			data-focused={focused}
+			style={style}
+		>
 			<input
-				className={inputClassName}
+				className={inputClassName + ' ' + inputClass}
 				type={type}
 				placeholder={placeholder}
 				disabled={disabled}

@@ -6,6 +6,7 @@
     --input-color: var(--text-color);
     --input-border: var(--text-color);
     --input-border-radius: var(--base-border-radius);
+    --input-placeholder: var(--text-color);
     /* Hover */
     --input-hover-bg: transparent;
     --input-hover-color: var(--text-color);
@@ -78,7 +79,7 @@
   
   .input-component .input::placeholder,
   .input-component textarea::placeholder {
-    color: var(--text-color)
+    color: var(--input-placeholder);
   }
   
   .input-component .input:not([class*="transition"]),
@@ -171,6 +172,19 @@
   }
   .input-component.error .input {
     border-color: var(--error);
+  }
+  .input-component.shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    15% { transform: translateX(-6px); }
+    30% { transform: translateX(5px); }
+    45% { transform: translateX(-4px); }
+    60% { transform: translateX(3px); }
+    75% { transform: translateX(-2px); }
+    90% { transform: translateX(1px); }
   }
   
   .input-component.success .input-icon,
