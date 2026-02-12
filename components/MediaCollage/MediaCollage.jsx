@@ -16,8 +16,16 @@ const MediaCollage = ({
 
 	const addRatio = (key, ratio) => {
 		if (typeof ratio === 'number') {
-			setRatios({...ratios, [key]: ratio})
+			setRatios(prev => ({...prev, [key]: ratio}))
 		}
+	}
+
+	const getAspect = (item) => {
+		if (!item) return 1
+		if (item._type === 'video') {
+			return ratios[item._key] || 1
+		}
+		return item.customRatio || item.aspectRatio || 1
 	}
 
 	return (
@@ -30,81 +38,46 @@ const MediaCollage = ({
 			id={id}
 		>
 			<div className="flex px-margin flex-col gap-gutter">
-				{rows?.map((row, index) => {
+				{rows?.map((row) => {
+					const items = row?.item || []
+					const multipleItems = items.length > 1
+
+					const aspects = items.map(getAspect)
+					const totalAspect = aspects.reduce((sum, a) => sum + a, 0)
+					const widths = aspects.map(a => a / totalAspect)
+
 					return (
 						<div key={row._key} className="-mx-half-gutter grid gap-y-gutter md:flex">
-							{row?.item?.map((mediaItem, index) => {
-								const multipleItems = row?.item?.length > 1
-
-								let aspect1 = row?.item[0]?.customRatio || row?.item[0]?.aspectRatio
-								let aspect2 = row?.item[1]?.customRatio || row?.item[1]?.aspectRatio
-								let aspect3 = row?.item[2]?.customRatio || row?.item[2]?.aspectRatio
-
-								if (row?.item[0]?._type === 'video') {
-									aspect1 = ratios[row?.item[0]._key]
-								}
-
-								if (row?.item[1]?._type === 'video') {
-									aspect2 = ratios[row?.item[1]._key]
-								}
-
-								if (row?.item[2]?._type === 'video') {
-									aspect3 = ratios[row?.item[2]._key]
-								}
-
-								let width1 = aspect1 / (aspect1 + aspect2)
-								let width2 = aspect2 / (aspect1 + aspect2)
-								let width3 = null
-
-								if (aspect3 || row?.item[2]) {
-									width1 = aspect1 / (aspect1 + aspect2 + aspect3)
-									width2 = aspect2 / (aspect1 + aspect2 + aspect3)
-									width3 = aspect3 / (aspect1 + aspect2 + aspect3)
-								}
-
-								if (!row?.item[1]) {
-									width1 = 1
-								}
-
-								const widths = [
-									width1,
-									width2,
-									width3
-								]
-
-								return (
-									<div
-										key={mediaItem._key}
-										className="relative px-half-gutter min-w-12"
-										style={{
-											boxSizing: 'border-box',
-											flex: multipleItems ? widths[index] : '1',
-											'--image-bg': mediaItem?.palette?.darkVibrant?.background || '#000'
-										}}
-									>
-										<ScrollEntrance>
-											<div className='bg-[var(--image-bg)] rounded overflow-hidden relative'>
-												<Media
-													media={{
-														image: mediaItem,
-														video: mediaItem,
-														mediaType: mediaItem._type
-													}}
-													className='rounded bg-light-grey w-full'
-													setRatioFn={aspect => {
-														if (multipleItems) {
-															addRatio(mediaItem._key, aspect)
-														} else {
-															return false
-														}
-													}}
-													cover={false}
-												/>
-											</div>
-										</ScrollEntrance>
-									</div>
-								)
-							})}
+							{items.map((mediaItem, index) => (
+								<div
+									key={mediaItem._key}
+									className="relative px-half-gutter min-w-12"
+									style={{
+										boxSizing: 'border-box',
+										flex: multipleItems ? widths[index] : '1',
+										'--image-bg': mediaItem?.palette?.darkVibrant?.background || '#000'
+									}}
+								>
+									<ScrollEntrance>
+										<div className='bg-[var(--image-bg)] rounded overflow-hidden relative'>
+											<Media
+												media={{
+													image: mediaItem,
+													video: mediaItem,
+													mediaType: mediaItem._type
+												}}
+												className='rounded bg-light-grey w-full'
+												setRatioFn={aspect => {
+													if (multipleItems) {
+														addRatio(mediaItem._key, aspect)
+													}
+												}}
+												cover={false}
+											/>
+										</div>
+									</ScrollEntrance>
+								</div>
+							))}
 						</div>
 					)
 				})}
