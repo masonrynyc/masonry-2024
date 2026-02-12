@@ -85,6 +85,27 @@ export const ProjectContent = ({
   const [passwordSuccess, setPasswordSuccess] = useState(false)
   const [passwordFadeOut, setPasswordFadeOut] = useState(false)
 
+  const requiresPassword = data?.security?.usePassword && data?.security?.password
+
+  useEffect(() => {
+    if (!requiresPassword || !data?.slug) return
+    const storageKey = `project_access_${data.slug}`
+    try {
+      const stored = localStorage.getItem(storageKey)
+      if (stored) {
+        const { timestamp } = JSON.parse(stored)
+        const hoursElapsed = (Date.now() - timestamp) / (1000 * 60 * 60)
+        if (hoursElapsed < PASSWORD_EXPIRY_HOURS) {
+          setIsAuthenticated(true)
+        } else {
+          localStorage.removeItem(storageKey)
+        }
+      }
+    } catch {
+      localStorage.removeItem(storageKey)
+    }
+  }, [requiresPassword, data?.slug])
+
   const toggleInfoPanel = visible => {
     if (!visible) {
       setInfoVisible(visible)
@@ -112,27 +133,6 @@ export const ProjectContent = ({
 
   let projectCats = []
   project?.categories?.forEach(cat => projectCats?.push(cat?.slug))
-
-  const requiresPassword = project.security?.usePassword && project.security?.password
-
-  useEffect(() => {
-    if (!requiresPassword) return
-    const storageKey = `project_access_${project.slug}`
-    try {
-      const stored = localStorage.getItem(storageKey)
-      if (stored) {
-        const { timestamp } = JSON.parse(stored)
-        const hoursElapsed = (Date.now() - timestamp) / (1000 * 60 * 60)
-        if (hoursElapsed < PASSWORD_EXPIRY_HOURS) {
-          setIsAuthenticated(true)
-        } else {
-          localStorage.removeItem(storageKey)
-        }
-      }
-    } catch {
-      localStorage.removeItem(storageKey)
-    }
-  }, [requiresPassword, project.slug])
 
   const handlePasswordSubmit = (e) => {
     e.preventDefault()
