@@ -85,5 +85,4 @@ const MediaCollage = ({
 		</Section>
 	)
 }
-
 export default MediaCollage
