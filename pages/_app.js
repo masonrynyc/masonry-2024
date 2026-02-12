@@ -9,19 +9,19 @@ export default function App({ Component, pageProps, router }) {
     return (
       <PreviewProvider previewToken={pageProps?.previewToken}>
         <AppProvider>
-          <ReactLenis
+          {/* <ReactLenis
             root
             options={{
               duration: .25
             }}
-          >
+          > */}
             <PageTransition location={router?.asPath}>
               <Component
                 {...pageProps}
                 key={router.route}
               />
             </PageTransition>
-          </ReactLenis>
+          {/* </ReactLenis> */}
         </AppProvider>
       </PreviewProvider>
     )
